@@ -1,0 +1,17 @@
+{
+    "name": "axproo/auth-lib",
+    "description": "Librarie CI4 sécurisée pour authentification avec JWT",
+    "type": "library",
+    "licence": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Axproo\\Auth\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "firebase/php-jwt": "^6.11"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
