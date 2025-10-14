@@ -168,6 +168,22 @@ php spark db:seed Axproo\\Auth\\Database\\Seeders\\RoleSeeder
 php spark db:seed Axproo\\Auth\\Database\\Seeders\\UserSeeder
 ```
 
+### 3️⃣ Lancer les tests unitaires (si installés)
+Si vous avez activé PHPUnit :
+
+```bash
+vendor/bin/phpunit
+```
+
+### 4️⃣ Connexion à l’aide des données seedées
+Vous pouvez ensuite tester la connexion via :
+
+```php
+$auth = new \Axproo\Auth\Services\AuthService();
+$response = $auth->login('admin@example.com', 'password123');
+print_r($response);
+```
+
 ## 🔒 Bonnes pratiques
 
 - Ne jamais committer le .env dans le dépôt public.
