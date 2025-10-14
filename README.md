@@ -15,16 +15,22 @@ Elle peut être utilisée seule ou intégrée dans un projet **CodeIgniter 4** e
 
 ```css
 auth-lib/
-│
 ├── src/
-│   ├── Config/
-│   │   └── Auth.php
-│   ├── AuthService.php
-│   └── TokenManager.php
-│
-├── test.php
+│   ├── Services/
+│   │   ├── AuthService.php
+│   │   ├── TokenManager.php
+│   │   └── PasswordHasher.php
+│   ├── Models/
+|   |   ├── RuleModel.php
+|   |   └── UserModel.php
+│   ├── Entities/
+|   |   ├── RoleEntity.php
+|   |   └── UserEntity.php
+│   └── Configs/
+├── tests/
+│   └── AuthTest.php
 ├── composer.json
-└── README.md
+└── phpunit.xml
 ```
 
 ## ⚙️ Installation
