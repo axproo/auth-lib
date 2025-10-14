@@ -5,6 +5,10 @@ class UserManager
 {
     private bool $secure = false;
 
+    public function __construct() {
+        $this->secure = filter_var(getenv('SECURE_COOKIE'), FILTER_VALIDATE_BOOLEAN);
+    }
+
     public function getUserAccount(?object $user, array $overrides = []) : array {
         return array_merge([
             'uid'       => $user->id,
@@ -27,6 +31,11 @@ class UserManager
             'path'      => '/',
             'samesite'  => 'lax' // Lax ou Strict pour plus de sécurité
         ]);
+    }
+
+    public function getCookie() {
+        $response = service('request');
+        return $response->getCookie();
     }
 
     public function getStatus($status) {

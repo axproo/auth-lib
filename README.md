@@ -137,7 +137,9 @@ Pour charger des données de test (utilisateur admin, rôles, etc.), commencez p
 ```bash
 php spark make:seeder role --suffix
 php spark make:seeder user --suffix
+php spark make:seeder tenant --suffix
 ```
+
 Exemple de fichier RoleSeeder
 
 ```php
@@ -172,6 +174,7 @@ puis exécutez :
 ```bash
 php spark db:seed Axproo\\Auth\\Database\\Seeders\\RoleSeeder
 php spark db:seed Axproo\\Auth\\Database\\Seeders\\UserSeeder
+php spark db:seed Axproo\\Auth\\Database\\Seeders\\TenantSeeder
 ```
 
 ### 3️⃣ Lancer les tests unitaires (si installés)

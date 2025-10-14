@@ -16,6 +16,7 @@ class AuthService
     protected PasswordHasher $hasher;
     protected TokenManager $token;
     protected UserManager $account;
+    protected TenantService $tenant;
 
     public function __construct() {
         $this->validation = Services::validation();
@@ -26,6 +27,7 @@ class AuthService
         $this->roles = new RuleModel();
         $this->token = new TokenManager();
         $this->account = new UserManager();
+        $this->tenant = new TenantService();
     }
 
     public function login(array $data = []) {
@@ -54,7 +56,7 @@ class AuthService
 
         // Généré le token
         $userData = array_merge([
-            'tenant_id'     => '',
+            'tenant_id'     => $this->tenant->getUserTenant($user->id),
             'role'          => $this->roles->findByUser($user->role_id)
         ], $this->account->getUserAccount($user, $overrides));
         $token = $this->token->generateToken($userData);
@@ -66,10 +68,16 @@ class AuthService
                 'token' => $token
             ]);
         }
-        $this->account->setCookie($token, getenv('JWT_EXPIRE'));
+
+        // Enregistrement du cookie
+        $this->account->setCookie($token, 86400);
 
         return axprooResponse(200, 'Success', [
-            'redirect'  => '/dashboard',
+            'redirect'  => '/dashboard'
         ]);
+    }
+
+    public function validateToken(string $token) {
+        return $this->token->validateToken($token);
     }
 }
