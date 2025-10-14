@@ -115,6 +115,59 @@ Token généré : eyJ0eXAiOiJKV1QiLCJh...
 Décodé : stdClass Object ( [user_id] => 1 [role] => admin [iat] => ... [exp] => ... )
 ```
 
+La librairie **Axproo Auth** peut être testée localement avant intégration dans un projet existant.
+Si vous souhaitez tester les fonctionnalités avec des données réelles (utilisateurs, rôles, etc.), suivez les étapes suivantes
+
+### 1️⃣ Exécuter les migrations
+Créez les tables nécessaires à l’authentification dans votre base de données :
+
+```bash
+php spark migrate --all
+```
+
+### 2️⃣ (Optionnel) Exécuter les seeders
+Pour charger des données de test (utilisateur admin, rôles, etc.), commencez par ajouter les données dans vos tables avec la commande Seeder, ex:
+
+```bash
+php spark make:seeder role --suffix
+php spark make:seeder user --suffix
+```
+Exemple de fichier RoleSeeder
+
+```php
+$data = [
+    [
+        'role_name'     => 'superadmin',
+        'description'   => 'Administrateur avec tous les super privilèges'
+    ],
+    [
+        'role_name'     => 'admin',
+        'description'   => 'Administrateur avec tous les privilèges'
+    ],
+    [
+        'role_name'     => 'user',
+        'description'   => 'Utilisateurs avec droits limités'
+    ],
+];
+$builder = $this->db->table('rules');
+
+foreach ($data as $row) {
+    $exists = $builder
+        ->where('role_name', $row['role_name'])
+        ->get()->getRow();
+    if (!$exists) {
+        $builder->insert($row);
+    }
+}
+```
+
+puis exécutez :
+
+```bash
+php spark db:seed Axproo\\Auth\\Database\\Seeders\\RoleSeeder
+php spark db:seed Axproo\\Auth\\Database\\Seeders\\UserSeeder
+```
+
 ## 🔒 Bonnes pratiques
 
 - Ne jamais committer le .env dans le dépôt public.
