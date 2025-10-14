@@ -1,7 +1,7 @@
 <?php 
-namespace Axproo\Auth;
+namespace Axproo\Auth\Services;
 
-use Axproo\Auth\Config\Auth;
+use Axproo\Auth\Configs\Auth;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -12,24 +12,15 @@ class TokenManager
     private int $expire;
 
     public function __construct(?string $secret = null, ?string $refresh = null, ?int $expire = null) {
-        // Si l'appelant passe les valeurs, on les utilise (DI);
-        if ($secret !== null && $refresh !== null && $expire !== null) {
-            $this->secret = $secret;
-            $this->refresh = $refresh;
-            $this->expire = $expire;
-            return;
-        }
-
         $config = new Auth();
-        $this->secret = $config->jwtSecret;
-        $this->refresh = $config->jwtRefresh;
-        $this->expire = $config->jwtExpire;
+        $this->secret   = $secret ?? $config->jwtSecret;
+        $this->refresh  = $refresh ?? $config->jwtRefresh;
+        $this->expire   = $expire ?? $config->jwtExpire;
     }
 
     public function generateToken(array $payload) : string {
         $payload['iat'] = time();
         $payload['exp'] = $payload['iat'] + $this->expire;
-
         return JWT::encode($payload, $this->secret, 'HS256');
     }
 
