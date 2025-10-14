@@ -42,11 +42,11 @@ class AuthFilter implements FilterInterface
             $decoded = $authService->validateToken($token);
 
             if (isset($decoded->twofa_pending) && $decoded->twofa_pending === true) {
-                return axprooResponse(401, lang('Twofactor.failed.verify'));
+                return $this->unauthorizedResponse("Access denied! " . lang('Message.token.failed.verify'));
             }
 
             if (!isset($decoded->role)) {
-                return axprooResponse(401, lang('Message.token.failed.role'));
+                return $this->unauthorizedResponse("Access denied! " . lang('Message.token.failed.role'));
             }
 
             AccessService::set($decoded);
