@@ -39,6 +39,7 @@ class AuthConfig extends BaseConfig
         ];
 
         $this->auth = $this->render(['email','password']);
+        $this->otp  = $this->render(['email']);
     }
 
     public function render(array $fields) : array {

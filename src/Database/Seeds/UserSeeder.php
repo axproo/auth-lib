@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Database\Seeds;
+namespace Axproo\Auth\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 use CodeIgniter\I18n\Time;

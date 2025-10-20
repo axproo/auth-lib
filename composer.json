@@ -2,6 +2,7 @@
   "name": "axproo/auth-lib",
   "description": "Bibliothèque d'authentification complète et réutilisable pour CodeIgniter 4.",
   "type": "library",
+  "version": "1.0.1",
   "license": "MIT",
   "authors": [
     {
@@ -14,7 +15,8 @@
     "php": ">=8.1",
     "firebase/php-jwt": "^6.10",
     "codeigniter4/framework": "^4.5",
-    "ramsey/uuid": "^4.9"
+    "ramsey/uuid": "^4.9",
+    "axproo/mailer": "^1.0.0"
   },
   "autoload": {
     "psr-4": {
@@ -26,7 +28,7 @@
       "Axproo\\Auth\\Tests\\": "tests/"
     }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "scripts": {
     "test": "phpunit"
