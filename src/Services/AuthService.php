@@ -28,7 +28,7 @@ class AuthService extends BaseService
         $this->tenant = new TenantService();
     }
 
-    public function login(array $data = []) {
+    public function login() {
         $data = $this->get_data_from_post();
         
         // Validation du formulaire
@@ -40,13 +40,13 @@ class AuthService extends BaseService
         $user = $this->users->findByEmail($data['email']);
         $statusCheck = $this->account->getStatus($user->status);
 
-        if (is_array($statusCheck)) {
-            return $this->respondError(lang('Auth.failed.account.verify', $statusCheck));
-        }
-
         // Vérification du mot de passe
         if (!$this->hasher->verify($data['password'], $user->password)) {
             return $this->respondError(lang('Auth.failed.password.incorrect'));
+        }
+
+        if (is_array($statusCheck)) {
+            return $this->respondError(lang('Auth.failed.account.verify', $statusCheck));
         }
 
         $overrides = [];
