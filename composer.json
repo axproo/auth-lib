@@ -2,7 +2,7 @@
   "name": "axproo/auth-lib",
   "description": "Bibliothèque d'authentification complète et réutilisable pour CodeIgniter 4.",
   "type": "library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "authors": [
     {
