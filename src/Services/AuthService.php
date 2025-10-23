@@ -4,11 +4,9 @@ namespace Axproo\Auth\Services;
 use Axproo\Auth\Configs\Validation\AuthConfig;
 use Axproo\Auth\Models\RuleModel;
 use Axproo\Auth\Models\UserModel;
-use Config\Services;
 
-class AuthService
+class AuthService extends BaseService
 {
-    protected $validation;
     protected $validate;
 
     protected UserModel $users;
@@ -19,7 +17,7 @@ class AuthService
     protected TenantService $tenant;
 
     public function __construct() {
-        $this->validation = Services::validation();
+        parent::__construct();
         $this->validate = new AuthConfig;
 
         $this->users = new UserModel();
@@ -31,11 +29,11 @@ class AuthService
     }
 
     public function login(array $data = []) {
-        $rules = $this->validate->auth;
+        $data = $this->get_data_from_post();
         
         // Validation du formulaire
-        if (!$this->validation->setRules($rules)->run($data)) {
-            return axprooResponse(403, $this->validation->getErrors());
+        if (!$this->validate($this->validate->auth)) {
+            return $this->respondError($this->validation->getErrors());
         }
 
         // Vérification du status du user
@@ -43,12 +41,12 @@ class AuthService
         $statusCheck = $this->account->getStatus($user->status);
 
         if (is_array($statusCheck)) {
-            return axprooResponse(403, lang('Auth.failed.account.verify', $statusCheck));
+            return $this->respondError(lang('Auth.failed.account.verify', $statusCheck));
         }
 
         // Vérification du mot de passe
         if (!$this->hasher->verify($data['password'], $user->password)) {
-            return axprooResponse(500, lang('Auth.failed.password.incorrect'));
+            return $this->respondError(lang('Auth.failed.password.incorrect'));
         }
 
         $overrides = [];
@@ -63,7 +61,7 @@ class AuthService
 
         // Authentification à 2 facteurs 2FA
         if ($userData['twofa_pending'] === true) {
-            return axprooResponse(401, lang('Auth.failed.twofactor_need'), [
+            return $this->respondError(lang('Auth.failed.twofactor_need'), 401, [
                 'redirect' => '/2FA',
                 'token' => $token
             ]);
@@ -73,7 +71,8 @@ class AuthService
         $this->account->setCookie($token, 86400);
 
         return axprooResponse(200, 'Success', [
-            'redirect'  => '/dashboard'
+            'redirect'  => '/dashboard',
+            'user' => $user
         ]);
     }
 
