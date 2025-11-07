@@ -204,7 +204,7 @@ $response = $auth->login();
 print_r($response);
 ```
 
-exemple d'appel de formulaire login
+Exemple d'appel de formulaire login
 
 ```php
 $fields = ['email','password']; // ex: ['email','password','code','rememberMe']
