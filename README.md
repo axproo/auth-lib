@@ -204,14 +204,16 @@ $response = $auth->login();
 print_r($response);
 ```
 
-## Appel de formulaire de connexion
+exemple d'appel de formulaire login
 
 ```php
 $fields = ['email','password']; // ex: ['email','password','code','rememberMe']
+
 $overrides = [
     'email' => ['isLabel' => false],
     'password' => ['required' => true]
 ]; // Pour le formatage des champs
+
 $form = new FormBuilder('/login') // url pour l'action du formulaire
 print_r($form->build($fields, $overrides));
 ```
