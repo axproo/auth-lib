@@ -204,17 +204,37 @@ $response = $auth->login();
 print_r($response);
 ```
 
-Exemple d'appel de formulaire login
+## Identifian de connexion par défaut
+
+Lors de la première connexion, une utilisation de démonstration est automatiquement insérée en base de données.
+
+| Champ            | Valeur                  |
+| ---------------- | ----------------------- |
+| **Email**        | `john_doe@company1.com` |
+| **Mot de passe** | `demo123`               |
+
+⚠️ Ces identifiants sont uniquement destinés aux tests.
+Pensez à les modifier ou les supprimer en production.
+
+## Exemple d'utilisation avec FormBuilder
+
+Vous pouvez rapidement générer un formulaire de connexion dynamique à l’aide du **FormBuilder** intégré :
 
 ```php
-$fields = ['email','password']; // ex: ['email','password','code','rememberMe']
+use Axproo\Auth\Helpers\FormBuilder;
 
+// Définition des champs du formulaire
+$fields = ['email', 'password']; // Exemple : ['email','password']
+
+// Personnalisation du rendu ou des contraintes, par défaut les champs email et password sont require
 $overrides = [
-    'email' => ['isLabel' => false],
+    'email'    => ['isLabel' => false],
     'password' => ['required' => true]
-]; // Pour le formatage des champs
+];
 
-$form = new FormBuilder('/login') // url pour l'action du formulaire
+// Création du formulaire de connexion
+$form = new FormBuilder('/login'); // URL cible du formulaire
+
 print_r($form->build($fields, $overrides));
 ```
 
