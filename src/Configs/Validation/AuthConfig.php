@@ -8,6 +8,7 @@ class AuthConfig extends BaseConfig
     public array $auth  = [];
     public array $otp   = [];
     public array $code  = [];
+    public array $passwd = [];
 
     protected array $baseDefinitions = [];
 
@@ -35,11 +36,19 @@ class AuthConfig extends BaseConfig
                     'min_length' => lang('Auth.failed.otp.invalid'),
                     'max_length' => lang('Auth.failed.otp.invalid')
                 ]
+            ],
+            'redirect' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => lang('Auth.failed.redirect.required')
+                ]
             ]
         ];
 
         $this->auth = $this->render(['email','password']);
         $this->otp  = $this->render(['email']);
+        $this->code = $this->render(['code']);
+        $this->passwd = $this->render(['email','redirect']);
     }
 
     public function render(array $fields) : array {

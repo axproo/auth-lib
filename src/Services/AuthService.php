@@ -38,14 +38,22 @@ class AuthService extends BaseService
 
         // Vérification du status du user
         $user = $this->users->findByEmail($data['email']);
-        $statusCheck = $this->account->getStatus($user->status);
 
         // Vérification du mot de passe
         if (!$this->hasher->verify($data['password'], $user->password)) {
             return $this->respondError(lang('Auth.failed.password.incorrect'));
         }
 
+        $token = $this->token->generateToken([
+            'tenant' => $this->tenant->getUserTenant($user->id),
+            'email'  => $user->email,
+            'role'   => $this->roles->findByUser($user->role_id),
+            'redirect' => '/2FA'
+        ]);
+
+        $statusCheck = $this->account->getStatus($user->status, $token);
         if (is_array($statusCheck)) {
+            $this->account->setCookie($token, 900);
             return $this->respondError(lang('Auth.failed.account.verify', $statusCheck));
         }
 
@@ -70,8 +78,17 @@ class AuthService extends BaseService
         // Enregistrement du cookie
         $this->account->setCookie($token, 86400);
 
-        return axprooResponse(200, 'Success', [
-            'redirect'  => '/dashboard',
+        return $this->respondSuccess('Success', [
+            'redirect' => '/dashboard'
+        ]);
+    }
+
+    public function me() {
+        $user = $this->token->validateToken($this->request->getCookie('jwt'));
+        if (!$user) {
+            return $this->respondError('Me');
+        }
+        return $this->respondSuccess('Me', [
             'user' => $user
         ]);
     }

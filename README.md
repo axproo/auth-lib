@@ -46,6 +46,7 @@ composer install
 ```
 
 ### 2. Ajout à un projet CodeIgniter 4
+
 Ajoutez dans le composer.json de votre projet :
 
 ```json
@@ -61,11 +62,13 @@ Ajoutez dans le composer.json de votre projet :
 ```
 
 Puis exécutez :
+
 ```bash
 composer update
 ```
 
 ## 🔑 Configuration
+
 Créez un fichier .env à la racine de votre projet ou du répertoire auth-lib :
 
 ```init
@@ -79,6 +82,7 @@ JWT_EXPIRE=3600
 ## 💻 Utilisation
 
 **Exemple rapide dans** test.php
+
 ```php
 <?php
 require __DIR__ . '/vendor/autoload.php';
@@ -100,15 +104,17 @@ print_r($decoded);
 
 ## 🧠 Concepts clés
 
-| Élément           | Description                               |
-| ----------------- | ----------------------------------------- |
-| `TokenManager`    | Classe principale de gestion des JWT      |
-| `generateToken()` | Crée un token d’accès avec durée définie  |
-| `refreshToken()`  | Permet de décoder un refresh token        |
-| `validateToken()` | Vérifie la validité d’un token            |
-| `.env`            | Contient les clés et durées configurables |
+| Élément                   | Description                               |
+| --------------------------| ----------------------------------------- |
+| `TokenManager`            | Classe principale de gestion des JWT      |
+| `generateToken()`         | Crée un token d’accès avec durée définie  |
+| `generateRefreshToken()`  | Rafraichir la durée du token d'accès      |
+| `validateToken()`         | Vérifie la validité d’un token            |
+| `renewToken()`            | Renouveller le token d'accès              |
+| `.env`                    | Contient les clés et durées configurables |
 
 ## 🧪 Tests
+
 Pour tester la librairie seule :
 
 ```bash
@@ -116,6 +122,7 @@ php test.php
 ```
 
 Résultat attendue :
+
 ```java
 Token généré : eyJ0eXAiOiJKV1QiLCJh...
 Décodé : stdClass Object ( [user_id] => 1 [role] => admin [iat] => ... [exp] => ... )
@@ -125,6 +132,7 @@ La librairie **Axproo Auth** peut être testée localement avant intégration da
 Si vous souhaitez tester les fonctionnalités avec des données réelles (utilisateurs, rôles, etc.), suivez les étapes suivantes
 
 ### 1️⃣ Exécuter les migrations
+
 Créez les tables nécessaires à l’authentification dans votre base de données :
 
 ```bash
@@ -132,6 +140,7 @@ php spark migrate --all
 ```
 
 ### 2️⃣ (Optionnel) Exécuter les seeders
+
 Pour charger des données de test (utilisateur admin, rôles, etc.), commencez par ajouter les données dans vos tables avec la commande Seeder, ex:
 
 ```bash
@@ -178,6 +187,7 @@ php spark db:seed Axproo\\Auth\\Database\\Seeders\\TenantSeeder
 ```
 
 ### 3️⃣ Lancer les tests unitaires (si installés)
+
 Si vous avez activé PHPUnit :
 
 ```bash
@@ -185,13 +195,47 @@ vendor/bin/phpunit
 ```
 
 ### 4️⃣ Connexion à l’aide des données seedées
+
 Vous pouvez ensuite tester la connexion via :
 
 ```php
 $auth = new \Axproo\Auth\Services\AuthService();
-$response = $auth->login('admin@example.com', 'password123');
+$response = $auth->login();
 print_r($response);
 ```
+
+## Appel de formulaire de connexion
+
+```php
+$fields = ['email','password']; // ex: ['email','password','code','rememberMe']
+$overrides = [
+    'email' => ['isLabel' => false],
+    'password' => ['required' => true]
+]; // Pour le formatage des champs
+$form = new FormBuilder('/login') // url pour l'action du formulaire
+print_r($form->build($fields, $overrides));
+```
+
+## Gestion des formulaires dynamiques
+
+Pour la gestion des formulaires statiques et dynamique, veuillez installer le repo **AXPROO Form Library** github.
+
+```bash
+"repositories": [
+  {
+    "type": "vcs",
+    "url": "https://github.com/axproo/form-lib.git"
+  }
+]
+```
+
+Puis executer
+
+```bash
+composer require axproo/form-lib:dev-main
+```
+
+Consulter la documentation (README.md) du repo **Axproo Form Library** pour plus de details.
 
 ## 🔒 Bonnes pratiques
 

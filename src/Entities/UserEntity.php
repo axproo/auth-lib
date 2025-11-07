@@ -16,7 +16,7 @@ class UserEntity extends Entity
         'owner_id' => null,
         'owner_type' => null,
         'status' => null,
-        'email_verified' => null,
+        'email_verified' => false,
         'email_verified_at' => null,
         'totp_secret' => null,
         'reset_token' => null,
