@@ -133,7 +133,7 @@ Si vous souhaitez tester les fonctionnalités avec des données réelles (utilis
 
 ### 1️⃣ Exécuter les migrations
 
-Créez les tables nécessaires à l’authentification dans votre base de données :
+Créez les tables nécessaires à l’authentification dans votre base de données, vous pouvez également vous reférer à la librairie **Axproo DataBase-lib** pour installer les tables par défaut :
 
 ```bash
 php spark migrate --all
@@ -211,7 +211,7 @@ Lors de la première connexion, une utilisation de démonstration est automatiqu
 | Champ            | Valeur                  |
 | ---------------- | ----------------------- |
 | **Email**        | `john_doe@company1.com` |
-| **Mot de passe** | `demo123`               |
+| **Mot de passe** | `demo_admin@123`        |
 
 ⚠️ Ces identifiants sont uniquement destinés aux tests.
 Pensez à les modifier ou les supprimer en production.
