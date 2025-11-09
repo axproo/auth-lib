@@ -72,9 +72,32 @@ composer update
 Créez un fichier .env à la racine de votre projet ou du répertoire auth-lib :
 
 ```init
+#--------------------------------------------------------------------
+# JWT
+#--------------------------------------------------------------------
 JWT_SECRET=ma_cle_super_secrete
 JWT_REFRESH_SECRET=ma_cle_refresh_encore_plus_secrete
 JWT_EXPIRE=3600
+
+#--------------------------------------------------------------------
+# Cookie Security
+# HTTP = false, HTTPS = true
+#--------------------------------------------------------------------
+SECURE_COOKIE = false
+```
+
+Pour générer un jwt secret, faire ceci:
+Avec OpenSSL
+
+```bash
+echo "JWT_SECRET=$(openssl rand -base64 32)" >> .env
+```
+
+* Génère une clé Base64 de 32 octets et l’ajoute à la fin du fichier .env.
+* Si tu veux remplacer l’ancienne valeur si elle existe :
+
+```bash
+sed -i '/^JWT_SECRET=/d' .env && echo "JWT_SECRET=$(openssl rand -base64 32)" >> .env
 ```
 
 ⚠️ Si vous testez la librairie seule (en dehors de CodeIgniter 4), la classe Auth chargera automatiquement ce fichier .env.
@@ -202,6 +225,20 @@ Vous pouvez ensuite tester la connexion via :
 $auth = new \Axproo\Auth\Services\AuthService();
 $response = $auth->login();
 print_r($response);
+```
+
+### Activation de compte via un code OTP
+
+#### générer un formulaire avec FormBuilder
+
+```php
+use Axproo\Auth\Helpers\FormBuilder;
+
+$fields = ['email'];
+$overrides = [];
+
+$form = new FormBuilder('/generate');
+print_r($form->build($fields, $overrides));
 ```
 
 ## Identifian de connexion par défaut

@@ -6,12 +6,16 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'Laminas\\Escaper\\' => array($vendorDir . '/laminas/laminas-escaper/src'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'CodeIgniter\\' => array($vendorDir . '/codeigniter4/framework/system'),
+    'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'Axproo\\Mailer\\' => array($vendorDir . '/axproo/mailer/src'),
     'Axproo\\Auth\\Tests\\' => array($baseDir . '/tests'),
     'Axproo\\Auth\\' => array($baseDir . '/src'),
 );

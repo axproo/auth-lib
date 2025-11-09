@@ -1,26 +1,40 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '1a8e66fbb7422955a422bcbb6f44ed90b3a73076',
+        'pretty_version' => '1.0.4',
+        'version' => '1.0.4.0',
+        'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
-        'aliases' => array(
-            0 => '1.x-dev',
-        ),
+        'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '1a8e66fbb7422955a422bcbb6f44ed90b3a73076',
+            'pretty_version' => '1.0.4',
+            'version' => '1.0.4.0',
+            'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
-            'aliases' => array(
-                0 => '1.x-dev',
-            ),
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'axproo/mailer' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => '70bd6df7ddd969bc68fa5d571077437543552725',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../axproo/mailer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'brick/math' => array(
+            'pretty_version' => '0.14.0',
+            'version' => '0.14.0.0',
+            'reference' => '113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../brick/math',
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'codeigniter4/framework' => array(
@@ -148,6 +162,30 @@
             'install_path' => __DIR__ . '/../psr/log',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'ramsey/collection' => array(
+            'pretty_version' => '2.1.1',
+            'version' => '2.1.1.0',
+            'reference' => '344572933ad0181accbf4ba763e85a0306a8c5e2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ramsey/collection',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'ramsey/uuid' => array(
+            'pretty_version' => '4.9.1',
+            'version' => '4.9.1.0',
+            'reference' => '81f941f6f729b1e3ceea61d9d014f8b6c6800440',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ramsey/uuid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'rhumsaa/uuid' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '4.9.1',
+            ),
         ),
         'sebastian/cli-parser' => array(
             'pretty_version' => '4.2.0',

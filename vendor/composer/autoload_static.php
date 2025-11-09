@@ -8,10 +8,17 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'e1c4ddb6c005b31dfa19a4643907bad7' => __DIR__ . '/..' . '/axproo/mailer/src/helpers.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'R' => 
+        array (
+            'Ramsey\\Uuid\\' => 12,
+            'Ramsey\\Collection\\' => 18,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -33,14 +40,27 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         array (
             'CodeIgniter\\' => 12,
         ),
+        'B' => 
+        array (
+            'Brick\\Math\\' => 11,
+        ),
         'A' => 
         array (
+            'Axproo\\Mailer\\' => 14,
             'Axproo\\Auth\\Tests\\' => 18,
             'Axproo\\Auth\\' => 12,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
+        'Ramsey\\Collection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/collection/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
@@ -64,6 +84,14 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         'CodeIgniter\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeigniter4/framework/system',
+        ),
+        'Brick\\Math\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Axproo\\Mailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/axproo/mailer/src',
         ),
         'Axproo\\Auth\\Tests\\' => 
         array (
