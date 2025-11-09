@@ -93,11 +93,17 @@ Avec OpenSSL
 echo "JWT_SECRET=$(openssl rand -base64 32)" >> .env
 ```
 
-* Génère une clé Base64 de 32 octets et l’ajoute à la fin du fichier .env.
-* Si tu veux remplacer l’ancienne valeur si elle existe :
+Génère une clé Base64 de 32 octets et l’ajoute à la fin du fichier .env.
+Si tu veux remplacer l’ancienne valeur si elle existe :
 
 ```bash
 sed -i '/^JWT_SECRET=/d' .env && echo "JWT_SECRET=$(openssl rand -base64 32)" >> .env
+```
+
+💡 Astuce : toujours vérifier le contenu du .env après insertion :
+
+```bash
+cat .env | grep JWT_SECRET
 ```
 
 ⚠️ Si vous testez la librairie seule (en dehors de CodeIgniter 4), la classe Auth chargera automatiquement ce fichier .env.
