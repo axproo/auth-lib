@@ -46,9 +46,9 @@ abstract class BaseAuthService
 
     protected function redirectTo($status, ?string $token = null) {
         switch ($status) {
-            case 'active': '/dashboard';
-            case 'pending': '/verify-email';
-            default: throw new \Exception(lang('Account.unknown', ['status' => $status]));
+            case 'active': return '/dashboard';
+            case 'pending': return '/verify-email';
+            default: throw new \Exception(lang('Status.unknown', ['status' => $status]));
         }
     }
 
