@@ -44,9 +44,13 @@ abstract class BaseAuthService
         return axprooResponse($code, $message, $data);
     }
 
-    protected function redirectTo($status, ?string $token = null) {
-        switch ($status) {
-            case 'active': return '/dashboard';
+    protected function redirectTo($user) {
+        switch ($user->status) {
+            case 'active': 
+                if (!empty($user->totp_secret) || $user->totp_secret !== null) {
+                    return '/verify-otp';
+                }
+                return '/dashboard';
             case 'pending': return '/verify-email';
             default: throw new \Exception(lang('Status.unknown', ['status' => $status]));
         }

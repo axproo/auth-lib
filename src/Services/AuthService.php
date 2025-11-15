@@ -34,12 +34,12 @@ class AuthService extends BaseAuthService
             'tenant' => $this->tenant->getTenantById($user->id),
             'email' => $user->email,
             'role' => $this->rules->getRoleById($user->role_id),
-            'redirect' => $this->redirectTo($user->status)
+            'redirect' => $this->redirectTo($user)
         ]);
 
         return $this->respondSuccess('Success connexion', [
             'token' => $token,
-            'redirect' => $this->redirectTo($user->status, $token)
+            'redirect' => $this->redirectTo($user),
         ]);
     }
 }
