@@ -3,12 +3,10 @@
 namespace Axproo\Auth\Services;
 
 use Axproo\Auth\Config\Validation\AuthConfig;
-use Axproo\Auth\Libraries\PasswordManager;
 
 class AuthService extends BaseAuthService
 {
     protected $valid;
-    protected PasswordManager $hasher;
 
     public function __construct() {
         parent::__construct();
