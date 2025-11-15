@@ -3,6 +3,8 @@
 namespace Axproo\Auth\Services;
 
 use Axproo\Auth\Libraries\PasswordManager;
+use Axproo\Auth\Libraries\RoleManager;
+use Axproo\Auth\Libraries\TenantManager;
 use Axproo\Auth\Models\UsersModel;
 use Axproo\Otp\Libraries\TokenManager;
 use Config\Services;
@@ -14,11 +16,15 @@ abstract class BaseAuthService
     protected $validation;
     protected TokenManager $token;
     protected PasswordManager $hasher;
+    protected TenantManager $tenant;
+    protected RoleManager $rules;
 
     public function __construct() {
         $this->model = new UsersModel();
         $this->hasher = new PasswordManager();
         $this->token = new TokenManager();
+        $this->tenant = new TenantManager();
+        $this->rules = new RoleManager();
         $this->request = service('request');
         $this->validation = Services::validation();
     }
@@ -36,6 +42,14 @@ abstract class BaseAuthService
 
     protected function respondError(string|array $message, int $code = 403, array $data = []) {
         return axprooResponse($code, $message, $data);
+    }
+
+    protected function redirectTo($status, ?string $token = null) {
+        switch ($status) {
+            case 'active': '/dashboard';
+            case 'pending': '/verify-email';
+            default: throw new \Exception(lang('Account.unknown', ['status' => $status]));
+        }
     }
 
     protected function get_data_from_post() {
