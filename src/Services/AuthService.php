@@ -24,19 +24,20 @@ class AuthService extends BaseAuthService
         // Vérification du status et du mot de passe de l'utilisateur
         $user = $this->model->findByEmail($data['email']);
 
-        if (!$this->hasher->password_verify($data['password'], $user->password)) {
-            return $this->respondError(lang(line: 'Password.incorrect'));
-        }
+        // if (!$this->hasher->password_verify($data['password'], $user->password)) {
+        //     return $this->respondError(lang(line: 'Password.incorrect'));
+        // }
 
-        $token = $this->token->generateToken([
-            'tenant' => '',
-            'email' => $user->email,
-            'role' => '',
-            'redirect' => ''
-        ]);
+        // $token = $this->token->generateToken([
+        //     'tenant' => '',
+        //     'email' => $user->email,
+        //     'role' => '',
+        //     'redirect' => ''
+        // ]);
 
         return $this->respondSuccess('Success connexion', [
-            'token' => $token
+            'data' => $user
+            // 'token' => $token
         ]);
     }
 }
