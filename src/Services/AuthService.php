@@ -28,16 +28,15 @@ class AuthService extends BaseAuthService
             return $this->respondError(lang(line: 'Password.incorrect'));
         }
 
-        // $token = $this->token->generateToken([
-        //     'tenant' => '',
-        //     'email' => $user->email,
-        //     'role' => '',
-        //     'redirect' => ''
-        // ]);
+        $token = $this->token->generateToken([
+            'tenant' => '',
+            'email' => $user->email,
+            'role' => '',
+            'redirect' => ''
+        ]);
 
         return $this->respondSuccess('Success connexion', [
-            'data' => $user
-            // 'token' => $token
+            'token' => $token
         ]);
     }
 }
