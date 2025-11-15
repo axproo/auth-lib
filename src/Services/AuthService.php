@@ -3,10 +3,12 @@
 namespace Axproo\Auth\Services;
 
 use Axproo\Auth\Config\Validation\AuthConfig;
+use Axproo\Auth\Libraries\PasswordManager;
 
 class AuthService extends BaseAuthService
 {
     protected $valid;
+    protected PasswordManager $hasher;
 
     public function __construct() {
         parent::__construct();
@@ -20,8 +22,23 @@ class AuthService extends BaseAuthService
         if (!$this->validate($this->valid->auth)) {
             return $this->respondError($this->validation->getErrors());
         }
+
+        // Vérification du status et du mot de passe de l'utilisateur
+        $user = $this->model->findByEmail($data['email']);
+
+        if (!$this->hasher->password_verify($data['password'], $user->password)) {
+            return $this->respondError(lang(line: 'Password.incorrect'));
+        }
+
+        $token = $this->token->generateToken([
+            'tenant' => '',
+            'email' => $user->email,
+            'role' => '',
+            'redirect' => ''
+        ]);
+
         return $this->respondSuccess('Success connexion', [
-            'data' => $data
+            'token' => $token
         ]);
     }
 }

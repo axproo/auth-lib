@@ -12,4 +12,8 @@ class UsersModel extends Model
     protected $allowedFields = ['email','password','name','role_id','status','email_verified','email_verified_at'];
     protected $returnType = 'Axproo\Auth\Entities\UsersEntity';
     protected $useTimestamps = true;
+
+    public function findByEmail(string $email) {
+        return $this->where('email', $email)->first();
+    }
 }
