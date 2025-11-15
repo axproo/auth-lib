@@ -47,7 +47,7 @@ abstract class BaseAuthService
     protected function redirectTo($user) {
         switch ($user->status) {
             case 'active': 
-                if (!empty($user->totp_secret) || $user->totp_secret !== null) {
+                if (!empty($user->totp_secret) && $user->totp_secret !== null) {
                     return '/verify-otp';
                 }
                 return '/dashboard';
