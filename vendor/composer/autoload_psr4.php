@@ -15,6 +15,7 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'CodeIgniter\\' => array($vendorDir . '/codeigniter4/framework/system'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'Axproo\\Otp\\' => array($vendorDir . '/axproo/otp-lib/src'),
     'Axproo\\Mailer\\' => array($vendorDir . '/axproo/mailer/src'),
     'Axproo\\Auth\\Tests\\' => array($baseDir . '/tests'),
     'Axproo\\Auth\\' => array($baseDir . '/src'),

@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace Axproo\Auth\Database\Seeds;
 

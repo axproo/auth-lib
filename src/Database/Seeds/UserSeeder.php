@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace Axproo\Auth\Database\Seeds;
 
@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
                 'first_name' => 'Admin',
                 'last_name'  => 'TEST',
                 'email'      => 'admin@example.com',
-                'password'   => password_hash(password: 'demo_admin@123', PASSWORD_BCRYPT),
+                'password'   => password_hash('adminpass@123', PASSWORD_BCRYPT),
                 'role_id'    => 1,
                 'updated_at' => Time::now()
             ],
@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'first_name' => 'John',
                 'last_name'  => 'Doe',
                 'email'      => 'test@company.com',
-                'password'   => password_hash(password: 'demo_client@123', PASSWORD_BCRYPT),
+                'password'   => password_hash('clientpass@123', PASSWORD_BCRYPT),
                 'role_id'    => 2,
                 'updated_at' => Time::now()
             ]

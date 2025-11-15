@@ -46,6 +46,7 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         ),
         'A' => 
         array (
+            'Axproo\\Otp\\' => 11,
             'Axproo\\Mailer\\' => 14,
             'Axproo\\Auth\\Tests\\' => 18,
             'Axproo\\Auth\\' => 12,
@@ -88,6 +89,10 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Axproo\\Otp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/axproo/otp-lib/src',
         ),
         'Axproo\\Mailer\\' => 
         array (
@@ -1390,7 +1395,6 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',
         'TheSeer\\Tokenizer\\Token' => __DIR__ . '/..' . '/theseer/tokenizer/src/Token.php',
         'TheSeer\\Tokenizer\\TokenCollection' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollection.php',
-        'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
         'staabm\\SideEffectsDetector\\SideEffect' => __DIR__ . '/..' . '/staabm/side-effects-detector/lib/SideEffect.php',

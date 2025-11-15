@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => '1.0.4',
-        'version' => '1.0.4.0',
+        'pretty_version' => '1.0.5',
+        'version' => '1.0.5.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => '1.0.4',
-            'version' => '1.0.4.0',
+            'pretty_version' => '1.0.5',
+            'version' => '1.0.5.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
@@ -26,6 +26,17 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/mailer',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'axproo/otp-lib' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '85a52e3b26daf1cb84f823c1c35aeeb84b239f84',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../axproo/otp-lib',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -56,9 +67,9 @@
             'dev_requirement' => false,
         ),
         'laminas/laminas-escaper' => array(
-            'pretty_version' => '2.17.0',
-            'version' => '2.17.0.0',
-            'reference' => 'df1ef9503299a8e3920079a16263b578eaf7c3ba',
+            'pretty_version' => '2.18.0',
+            'version' => '2.18.0.0',
+            'reference' => '06f211dfffff18d91844c1f55250d5d13c007e18',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laminas/laminas-escaper',
             'aliases' => array(),
@@ -74,9 +85,9 @@
             'dev_requirement' => true,
         ),
         'nikic/php-parser' => array(
-            'pretty_version' => 'v5.6.1',
-            'version' => '5.6.1.0',
-            'reference' => 'f103601b29efebd7ff4a1ca7b3eeea9e3336a2a2',
+            'pretty_version' => 'v5.6.2',
+            'version' => '5.6.2.0',
+            'reference' => '3a454ca033b9e06b63282ce19562e892747449bb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
@@ -146,9 +157,9 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '12.4.1',
-            'version' => '12.4.1.0',
-            'reference' => 'fc5413a2e6d240d2f6d9317bdf7f0a24e73de194',
+            'pretty_version' => '12.4.3',
+            'version' => '12.4.3.0',
+            'reference' => 'd8f644d8d9bb904867f7a0aeb1bd306e0d966949',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
@@ -314,9 +325,9 @@
             'dev_requirement' => true,
         ),
         'theseer/tokenizer' => array(
-            'pretty_version' => '1.2.3',
-            'version' => '1.2.3.0',
-            'reference' => '737eda637ed5e28c3413cb1ebe8bb52cbf1ca7a2',
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => 'd74205c497bfbca49f34d4bc4c19c17e22db4ebb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../theseer/tokenizer',
             'aliases' => array(),
