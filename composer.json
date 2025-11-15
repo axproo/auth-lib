@@ -2,7 +2,7 @@
   "name": "axproo/auth-lib",
   "description": "Bibliothèque d'authentification complète et réutilisable pour CI4.",
   "type": "library",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT",
   "authors": [
     {
