@@ -18,6 +18,7 @@ abstract class BaseAuthService
     public function __construct() {
         $this->model = new UsersModel();
         $this->hasher = new PasswordManager();
+        $this->token = new TokenManager();
         $this->request = service('request');
         $this->validation = Services::validation();
     }
