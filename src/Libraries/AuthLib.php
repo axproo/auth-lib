@@ -22,7 +22,15 @@ class AuthLib
             $ref = new ReflectionClass($stepClass);
             $step = $ref->newInstance();
 
+            if (!method_exists($step, 'handle')) {
+                throw new AuthException("Step class {$stepClass} must implement handle()", 500);
+            }
+
             $data = $step->handle($data);
+
+            if (!is_array($data)) {
+                throw new AuthException("Step {$stepClass} must return an array", 500);
+            }
         }
         return $data;
     }
