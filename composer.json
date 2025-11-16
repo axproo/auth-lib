@@ -29,12 +29,13 @@
       "Axproo\\Auth\\Tests\\": "tests/"
     }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "prefer-stable": true,
   "scripts": {
     "test": "phpunit"
   },
   "extra": {
+    "prefer-lowest": false,
     "branch-alias": {
       "dev-main": "1.x-dev"
     }
