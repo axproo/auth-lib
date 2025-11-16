@@ -35,6 +35,8 @@ class FinalizeLogin
         $user->last_login_at = Time::now();
         $user->ip_address = $data['ip_address'] ?? null;
         // $this->model->save($user);
-        return $data;
+        return [
+            'user' => $user
+        ];
     }
 }
