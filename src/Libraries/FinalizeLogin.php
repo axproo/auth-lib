@@ -25,7 +25,7 @@ class FinalizeLogin
         if (!$user) throw new AuthException(lang('Users.missing'), 500);
 
         $token = $this->token->generateToken([
-            'tenant' => $this->tenant->getTenantById($user['id']),
+            // 'tenant' => $this->tenant->getTenantById($user['id']),
             'email' => $user['email'],
             // 'role' => $this->rules->getRoleById($user['id']),
             // 'redirect' => ''
@@ -38,6 +38,8 @@ class FinalizeLogin
         // //     'role' => $this->rules->getRoleById($user->role_id),
         // //     'redirect' => $this->redirectTo($user)
         // // ]);
-        return $user;
+        return [
+            'email' => $user['email']
+        ];
     }
 }
