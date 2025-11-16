@@ -10,7 +10,7 @@ class Auth extends BaseConfig
      * Forcer la vérification d'email pout Tous les utilisateurs avant connexion
      * @var bool
      */
-    public bool $forceEmailVerification = true;
+    public bool $forceEmailVerification = false;
 
     /**
      * Forcer l'authentification à 2 facteurs pour tous les utilisateurs
