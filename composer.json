@@ -13,11 +13,11 @@
   ],
   "require": {
     "php": ">=8.1",
-    "firebase/php-jwt": "^6.10",
+    "axproo/helper-lib": "dev-main",
+    "axproo/mailer": "^1.0.0",
     "codeigniter4/framework": "^4.5",
-    "ramsey/uuid": "^4.9",
-    "axproo/otp-lib": "dev-main",
-    "axproo/mailer": "^1.0.0"
+    "firebase/php-jwt": "^6.10",
+    "ramsey/uuid": "^4.9"
   },
   "autoload": {
     "psr-4": {
@@ -50,6 +50,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/axproo/mailer.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/axproo/helper-lib.git"
     }
   ],
   "keywords": ["codeigniter4", "auth", "jwt", "library", "axproo"],

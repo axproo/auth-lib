@@ -31,7 +31,11 @@ class AuthService extends BaseAuthService
             $code = $e->getCode() ?: 403;
 
             // return $this->respondError($e->getMessage(), $code, $payload);
-            throw new AuthException($e->getMessage(), $code, $payload);
+            // throw new AuthException($e->getMessage(), $code, $payload);
+            // return $this->respond([
+                
+            // ])
+            return axprooResponse($code, $e->getMessage(), $payload, $payload['action']);
         } catch (\Throwable $t) {
             throw new AuthException($t->getMessage());
         }

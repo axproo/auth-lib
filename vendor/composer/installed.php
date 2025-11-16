@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => '1.0.5',
-        'version' => '1.0.5.0',
+        'pretty_version' => '1.0.6',
+        'version' => '1.0.6.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,12 +11,23 @@
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => '1.0.5',
-            'version' => '1.0.5.0',
+            'pretty_version' => '1.0.6',
+            'version' => '1.0.6.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'axproo/helper-lib' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'd0116d245d6e6601092e6450b19a2a4fcdca0a91',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../axproo/helper-lib',
+            'aliases' => array(
+                0 => '1.x-dev',
+            ),
             'dev_requirement' => false,
         ),
         'axproo/mailer' => array(
@@ -26,17 +37,6 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/mailer',
             'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'axproo/otp-lib' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '85a52e3b26daf1cb84f823c1c35aeeb84b239f84',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../axproo/otp-lib',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
             'dev_requirement' => false,
         ),
         'brick/math' => array(

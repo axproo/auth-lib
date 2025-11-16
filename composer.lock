@@ -4,8 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a653e526c8b1d34282fb7e74d717bf4",
+    "content-hash": "36aac9577f3823e8396ae9c799c9607d",
     "packages": [
+        {
+            "name": "axproo/helper-lib",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axproo/helper-lib.git",
+                "reference": "d0116d245d6e6601092e6450b19a2a4fcdca0a91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axproo/helper-lib/zipball/d0116d245d6e6601092e6450b19a2a4fcdca0a91",
+                "reference": "d0116d245d6e6601092e6450b19a2a4fcdca0a91",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/framework": "^4.5",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^12.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Axproo\\HelperLib\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Axproo\\HelperLib\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian DJOMOU",
+                    "email": "developper@axproo.com"
+                }
+            ],
+            "description": "Bibliothèque Axproo des helpers réutilisables pour CI4 ou PHP native",
+            "support": {
+                "source": "https://github.com/axproo/helper-lib/tree/main",
+                "issues": "https://github.com/axproo/helper-lib/issues"
+            },
+            "time": "2025-11-16T02:26:29+00:00"
+        },
         {
             "name": "axproo/mailer",
             "version": "1.0.0",
@@ -67,72 +126,6 @@
                 "issues": "https://github.com/axproo/mailer/issues"
             },
             "time": "2025-10-20T05:10:04+00:00"
-        },
-        {
-            "name": "axproo/otp-lib",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:axproo/otp-lib.git",
-                "reference": "85a52e3b26daf1cb84f823c1c35aeeb84b239f84"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/85a52e3b26daf1cb84f823c1c35aeeb84b239f84",
-                "reference": "85a52e3b26daf1cb84f823c1c35aeeb84b239f84",
-                "shasum": ""
-            },
-            "require": {
-                "codeigniter4/framework": "^4.5",
-                "firebase/php-jwt": "^6.10",
-                "php": ">=8.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^12.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.x.dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Axproo\\Otp\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Axproo\\Otp\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
-            "authors": [
-                {
-                    "name": "Christian DJOMOU",
-                    "email": "developer@axproo.com",
-                    "homepage": "https://axproo.com"
-                }
-            ],
-            "description": "Bibliothèque officielle AXPROO pour la génération, la validation et la gestion des OTP (One-Time Password) et endpoints d’authentification sécurisés.",
-            "keywords": [
-                "api",
-                "auth",
-                "axproo",
-                "codeigniter4",
-                "library",
-                "otp"
-            ],
-            "support": {
-                "source": "https://github.com/axproo/otp-lib/tree/main",
-                "issues": "https://github.com/axproo/otp-lib/issues"
-            },
-            "time": "2025-11-15T05:58:47+00:00"
         },
         {
             "name": "brick/math",
@@ -2276,7 +2269,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "axproo/otp-lib": 20
+        "axproo/helper-lib": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
