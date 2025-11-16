@@ -25,7 +25,7 @@ class CheckEmailVerified
     private function toBool($val) : bool {
         if (\is_bool($val)) return $val;
         if (\is_int($val)) return $val === 1;
-        if (\is_string($val)) return in_array(strtolower($val), ['1','true','yes'], true);
+        if (\is_string($val)) return \in_array(strtolower($val), ['1','true','yes'], true);
         return false;
     }
 }

@@ -16,5 +16,5 @@ class Auth extends BaseConfig
      * Forcer l'authentification à 2 facteurs pour tous les utilisateurs
      * @var bool
      */
-    public bool $force2FA = false;
+    public bool $force2FA = true;
 }
