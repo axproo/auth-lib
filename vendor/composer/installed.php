@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => '1.0.7',
-        'version' => '1.0.7.0',
+        'pretty_version' => '1.0.9',
+        'version' => '1.0.9.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => '1.0.7',
-            'version' => '1.0.7.0',
+            'pretty_version' => '1.0.9',
+            'version' => '1.0.9.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',

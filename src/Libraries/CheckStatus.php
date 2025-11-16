@@ -16,12 +16,14 @@ class CheckStatus
 
         switch ($status) {
             case 'pending':
-                throw new AuthException(lang('Account.pending'), 404, [
+                throw new AuthException(lang('Account.pending'), 403, [
                     'action' => 'verify_email'
                 ]);
 
-            case 'inactive': throw new AuthException(lang('Account.inactive'), 403);
-            case 'blocked': throw new AuthException(lang('Account.blocked'), 403);
+            case 'inactive': 
+                throw new AuthException(lang('Account.inactive'), 403);
+            case 'blocked': 
+                throw new AuthException(lang('Account.blocked'), 403);
             case 'active':
             default:
                 $data['user_status_checked'] = true;
