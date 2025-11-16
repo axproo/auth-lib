@@ -21,14 +21,16 @@ class AuthService extends BaseAuthService
 
         try {
             $result = $pipeline->handle($payload);
-            return $this->respondSuccess('Successfully login', $result);
+            // return $this->respondSuccess('Successfully login', $result);
+            return axprooResponse(200, 'Successfully Login', $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
 
-            return $this->respondError($e->getMessage(), $code, $payload);
+            // return $this->respondError($e->getMessage(), $code, $payload);
+            throw new AuthException($e->getMessage(), $code, $payload);
         } catch (\Throwable $t) {
-            throw new \Exception($t->getMessage());
+            throw new AuthException($t->getMessage());
         }
         // $data = $this->get_data_from_post();
 
