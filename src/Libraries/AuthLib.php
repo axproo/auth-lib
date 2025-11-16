@@ -10,7 +10,8 @@ class AuthLib
     protected array $steps = [
         CheckUserExists::class,
         CheckStatus::class,
-        CheckPassword::class
+        CheckPassword::class,
+        CheckEmailVerified::class
     ];
 
     public function handle(array $payload) : array {
