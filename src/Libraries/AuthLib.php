@@ -7,8 +7,9 @@ class AuthLib
     protected array $steps = [];
 
     public function handle(array $payload) : array {
-        return [
-            'pipeline' => true
-        ];
+        $data = $payload;
+
+
+        return $data;
     }
 }
