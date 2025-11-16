@@ -10,7 +10,7 @@ class CheckPassword
         $user = $data['user'] ?? null;
         $password = $data['password'] ?? null;
 
-        if (!$user || $password) {
+        if (!$user || !$password) {
             throw new AuthException(lang('Auth.invalid_credential'), 401);
         }
 
