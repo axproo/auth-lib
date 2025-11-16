@@ -31,7 +31,7 @@ class AuthService extends BaseAuthService
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 404;
             
-            return axprooResponse($code, $e->getMessage());
+            return axprooResponse($code, $e->getMessage(), $payload);
         } catch (\Throwable $t) {
             return axprooResponse(500, $t->getMessage());
         }
