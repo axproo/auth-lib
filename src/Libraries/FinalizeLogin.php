@@ -27,7 +27,7 @@ class FinalizeLogin
         $token = $this->token->generateToken([
             'tenant' => $this->tenant->getTenantById($user['id']),
             'email' => $user['email'],
-            'role' => $this->rules->getRoleById($user['id']),
+            // 'role' => $this->rules->getRoleById($user['id']),
             // 'redirect' => ''
         ]);
 
