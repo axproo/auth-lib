@@ -24,12 +24,12 @@ class FinalizeLogin
         $user = $data['user'] ?? null;
         if (!$user) throw new AuthException(lang('Users.missing'), 500);
 
-        $token = $this->token->generateToken([
-            // 'tenant' => $this->tenant->getTenantById($user['id']),
-            'email' => $user['email'],
-            // 'role' => $this->rules->getRoleById($user['id']),
-            // 'redirect' => ''
-        ]);
+        // $token = $this->token->generateToken([
+        //     // 'tenant' => $this->tenant->getTenantById($user['id']),
+        //     'email' => $user['email'],
+        //     // 'role' => $this->rules->getRoleById($user['id']),
+        //     // 'redirect' => ''
+        // ]);
 
 
         // // $token = $this->token->generateToken([
