@@ -6,7 +6,7 @@ use Axproo\Auth\Exceptions\AuthException;
 
 class CheckStatus
 {
-    public function handle(array $payload) : array {
+    public function handle(array $data) : array {
         $user = $data['user'] ?? null;
         if (!$user) {
             throw new AuthException(lang('Users.missing'), 500);
