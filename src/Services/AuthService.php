@@ -20,6 +20,9 @@ class AuthService extends BaseAuthService
         $pipeline = new AuthLib();
 
         try {
+            if (!$this->validate($this->valid->auth)) {
+                return $this->respondError($this->validation->getErrors());
+            }
             $result = $pipeline->handle($payload);
             // return $this->respondSuccess('Successfully login', $result);
             return axprooResponse(200, 'Successfully Login', $result);

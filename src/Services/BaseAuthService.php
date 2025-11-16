@@ -36,13 +36,13 @@ abstract class BaseAuthService
         return true;
     }
 
-    // protected function respondSuccess(string $message, array $data = []) {
-    //     return axprooResponse(200, $message, $data);
-    // }
+    protected function respondSuccess(string $message, array $data = []) {
+        return axprooResponse(200, $message, $data);
+    }
 
-    // protected function respondError(string|array $message, int $code = 403, array $data = []) {
-    //     return axprooResponse($code, $message, $data);
-    // }
+    protected function respondError(string|array $message, int $code = 403, array $data = []) {
+        return axprooResponse($code, $message, $data);
+    }
 
     // protected function checkStatus($user) {
     //     switch ($user->status) {
