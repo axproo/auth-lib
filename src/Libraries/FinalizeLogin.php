@@ -39,7 +39,7 @@ class FinalizeLogin
         // //     'redirect' => $this->redirectTo($user)
         // // ]);
         return [
-            'email' => $user['email']
+            'email' => $user->email
         ];
     }
 }
