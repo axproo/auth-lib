@@ -8,7 +8,8 @@ use ReflectionClass;
 class AuthLib
 {
     protected array $steps = [
-        CheckUserExists::class
+        CheckUserExists::class,
+        CheckStatus::class
     ];
 
     public function handle(array $payload) : array {
