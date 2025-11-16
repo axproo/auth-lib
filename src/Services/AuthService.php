@@ -21,7 +21,9 @@ class AuthService extends BaseAuthService
 
         try {
             $result = $pipeline->handle($payload);
-            return $this->respondSuccess('Successfully login', $result);
+            return $this->respondSuccess('Successfully login', [
+                'data' => $result
+            ]);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
