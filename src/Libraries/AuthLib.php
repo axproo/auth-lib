@@ -12,7 +12,8 @@ class AuthLib
         CheckStatus::class,
         CheckPassword::class,
         CheckEmailVerified::class,
-        CheckTwoFactor::class
+        CheckTwoFactor::class,
+        FinalizeLogin::class
     ];
 
     public function handle(array $payload) : array {

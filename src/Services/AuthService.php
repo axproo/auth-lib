@@ -35,12 +35,5 @@ class AuthService extends BaseAuthService
         } catch (\Throwable $t) {
             return axprooResponse(500, $t->getMessage());
         }
-
-        // // $token = $this->token->generateToken([
-        // //     'tenant' => $this->tenant->getTenantById($user->id),
-        // //     'email' => $user->email,
-        // //     'role' => $this->rules->getRoleById($user->role_id),
-        // //     'redirect' => $this->redirectTo($user)
-        // // ]);
     }
 }
