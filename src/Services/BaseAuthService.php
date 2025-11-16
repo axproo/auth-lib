@@ -52,7 +52,7 @@ abstract class BaseAuthService
                 }
                 return '/dashboard';
             case 'pending': return '/verify-email';
-            default: throw new \Exception(lang('Status.unknown', ['status' => $status]));
+            default: throw new \Exception(lang('Status.unknown', ['status' => $user->status]));
         }
     }
 
