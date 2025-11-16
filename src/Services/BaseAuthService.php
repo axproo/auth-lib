@@ -44,14 +44,12 @@ abstract class BaseAuthService
         return axprooResponse($code, $message, $data);
     }
 
-    protected function redirectTo($user) {
+    protected function checkStatus($user) {
         switch ($user->status) {
-            case 'active': 
-                if (!empty($user->totp_secret) && $user->totp_secret !== null) {
-                    return '/verify-otp';
-                }
-                return '/dashboard';
+            case 'active': return true;
             case 'pending': return '/verify-email';
+            case 'blocked': throw new \Exception("Account.blocked");
+            case 'inactive': throw new \Exception(lang('Account.inactive'));
             default: throw new \Exception(lang('Status.unknown', ['status' => $user->status]));
         }
     }
