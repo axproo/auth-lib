@@ -37,7 +37,8 @@ class FinalizeLogin
 
         $this->model->save($user);
         return [
-            'token' => $token
+            'token' => $token,
+            'redirect' => '/dasbhoard'
         ];
     }
 }
