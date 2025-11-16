@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fef41985abcb6b87db25d6cd4475ad84",
+    "content-hash": "2c35b44ec62222df445a4c70d2d131ae",
     "packages": [
         {
             "name": "axproo/helper-lib",
@@ -125,6 +125,72 @@
                 "issues": "https://github.com/axproo/mailer/issues"
             },
             "time": "2025-10-20T05:10:04+00:00"
+        },
+        {
+            "name": "axproo/otp-lib",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:axproo/otp-lib.git",
+                "reference": "69b95e801268edd736a14f700f8bd85be36dbeab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/69b95e801268edd736a14f700f8bd85be36dbeab",
+                "reference": "69b95e801268edd736a14f700f8bd85be36dbeab",
+                "shasum": ""
+            },
+            "require": {
+                "axproo/helper-lib": "^1.0",
+                "codeigniter4/framework": "^4.5",
+                "firebase/php-jwt": "^6.10",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^12.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.x.dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Axproo\\Otp\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Axproo\\Otp\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Christian DJOMOU",
+                    "email": "developer@axproo.com",
+                    "homepage": "https://axproo.com"
+                }
+            ],
+            "description": "Bibliothèque officielle AXPROO pour la génération, la validation et la gestion des OTP (One-Time Password) et endpoints d’authentification sécurisés.",
+            "keywords": [
+                "api",
+                "auth",
+                "axproo",
+                "codeigniter4",
+                "library",
+                "otp"
+            ],
+            "support": {
+                "source": "https://github.com/axproo/otp-lib/tree/1.0.2",
+                "issues": "https://github.com/axproo/otp-lib/issues"
+            },
+            "time": "2025-11-16T03:52:27+00:00"
         },
         {
             "name": "brick/math",

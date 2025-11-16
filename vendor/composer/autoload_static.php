@@ -46,6 +46,7 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         ),
         'A' => 
         array (
+            'Axproo\\Otp\\' => 11,
             'Axproo\\Mailer\\' => 14,
             'Axproo\\HelperLib\\' => 17,
             'Axproo\\Auth\\Tests\\' => 18,
@@ -89,6 +90,10 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Axproo\\Otp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/axproo/otp-lib/src',
         ),
         'Axproo\\Mailer\\' => 
         array (

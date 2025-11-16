@@ -35,17 +35,6 @@ class AuthService extends BaseAuthService
         } catch (\Throwable $t) {
             return axprooResponse(500, $t->getMessage());
         }
-        // $data = $this->get_data_from_post();
-
-        // // Validation des données
-        // if (!$this->validate($this->valid->auth)) {
-        //     return $this->respondError($this->validation->getErrors());
-        // }
-
-        // // Vérification du status et du mot de passe de l'utilisateur
-        // $user = $this->model->findByEmail($data['email']);
-        // $status = $this->checkStatus($user);
-        // // $checkStatus = 
 
         // // $token = $this->token->generateToken([
         // //     'tenant' => $this->tenant->getTenantById($user->id),
@@ -53,16 +42,5 @@ class AuthService extends BaseAuthService
         // //     'role' => $this->rules->getRoleById($user->role_id),
         // //     'redirect' => $this->redirectTo($user)
         // // ]);
-
-        // // Vérification du mot de passe
-        // if (!$this->hasher->verify_password($data['password'], $user->password)) {
-        //     return $this->respondError(lang(line: 'Password.incorrect'));
-        // }
-
-        // return $this->respondSuccess('Success connexion', [
-        //     'status' => $status
-        //     // 'token' => $token,
-        //     // 'redirect' => $this->redirectTo($user),
-        // ]);
     }
 }

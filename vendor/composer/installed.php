@@ -37,6 +37,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'axproo/otp-lib' => array(
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
+            'reference' => '69b95e801268edd736a14f700f8bd85be36dbeab',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../axproo/otp-lib',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'brick/math' => array(
             'pretty_version' => '0.14.0',
             'version' => '0.14.0.0',
