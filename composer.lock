@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/axproo/helper-lib.git",
-                "reference": "d0116d245d6e6601092e6450b19a2a4fcdca0a91"
+                "reference": "7123d482f175a4e5ea8e71e649724c704d68f052"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/helper-lib/zipball/d0116d245d6e6601092e6450b19a2a4fcdca0a91",
-                "reference": "d0116d245d6e6601092e6450b19a2a4fcdca0a91",
+                "url": "https://api.github.com/repos/axproo/helper-lib/zipball/7123d482f175a4e5ea8e71e649724c704d68f052",
+                "reference": "7123d482f175a4e5ea8e71e649724c704d68f052",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 "source": "https://github.com/axproo/helper-lib/tree/main",
                 "issues": "https://github.com/axproo/helper-lib/issues"
             },
-            "time": "2025-11-16T02:26:29+00:00"
+            "time": "2025-11-16T02:43:08+00:00"
         },
         {
             "name": "axproo/mailer",

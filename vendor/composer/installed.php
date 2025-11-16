@@ -22,7 +22,7 @@
         'axproo/helper-lib' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'd0116d245d6e6601092e6450b19a2a4fcdca0a91',
+            'reference' => '7123d482f175a4e5ea8e71e649724c704d68f052',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/helper-lib',
             'aliases' => array(
