@@ -16,7 +16,7 @@ class CheckPassword
 
         // Password verification
         if (!password_verify($password, $user->password)) {
-            throw new AuthException(lang('Auth.invalid_credential'), 401);
+            throw new AuthException(lang('Auth.invalid_credential'), 402);
         }
 
         $data['password_checked'] = true;
