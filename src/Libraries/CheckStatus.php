@@ -16,7 +16,7 @@ class CheckStatus
 
         switch ($status) {
             case 'pending':
-                throw new AuthException(lang('Account.pending'), 403, [
+                throw new AuthException(lang('Account.pending'), 404, [
                     'action' => 'verify_email'
                 ]);
 
