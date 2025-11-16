@@ -21,6 +21,11 @@ class CheckUserExists
         }
 
         $user = $this->model->where('email', $email)->first();
-        return ['user' => $user];
+
+        if (!$user) {
+            throw new AuthException(lang('Auth.invalid_credential'), 401);
+        }
+        $data['user'] = $user;
+        return $data;
     }
 }
