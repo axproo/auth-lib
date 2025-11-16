@@ -33,7 +33,7 @@ class AuthLib
 
             $data = $step->handle($data);
 
-            if (!is_array($data)) {
+            if (!\is_array($data)) {
                 throw new AuthException("Step {$stepClass} must return an array", 500);
             }
         }

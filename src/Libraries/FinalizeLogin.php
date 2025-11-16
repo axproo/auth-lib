@@ -9,13 +9,13 @@ use Axproo\Otp\Libraries\TokenManager;
 class FinalizeLogin
 {
     protected TokenManager $token;
-    protected UsersModel $model;
+    // protected UsersModel $model;
     protected TenantManager $tenant;
     protected RoleManager $rules;
 
     public function __construct() {
         $this->token = new TokenManager();
-        $this->model = new UsersModel();
+        // $this->model = new UsersModel();
         $this->tenant = new TenantManager();
         $this->rules = new RoleManager();
     }
@@ -38,8 +38,6 @@ class FinalizeLogin
         // //     'role' => $this->rules->getRoleById($user->role_id),
         // //     'redirect' => $this->redirectTo($user)
         // // ]);
-        return [
-            'user_id' => $user['id']
-        ];
+        return $data;
     }
 }

@@ -44,16 +44,6 @@ abstract class BaseAuthService
         return axprooResponse($code, $message, $data);
     }
 
-    // protected function checkStatus($user) {
-    //     switch ($user->status) {
-    //         case 'active': return true;
-    //         case 'pending': return '/verify-email';
-    //         case 'blocked': throw new \Exception("Account.blocked");
-    //         case 'inactive': throw new \Exception(lang('Account.inactive'));
-    //         default: throw new \Exception(lang('Status.unknown', ['status' => $user->status]));
-    //     }
-    // }
-
     protected function get_data_from_post() {
         return (array) $this->request->getVar();
     }
