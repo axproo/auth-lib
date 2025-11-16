@@ -3,6 +3,8 @@
 namespace Axproo\Auth\Services;
 
 use Axproo\Auth\Config\Validation\AuthConfig;
+use Axproo\Auth\Exceptions\AuthException;
+use Axproo\Auth\Libraries\AuthLib;
 
 class AuthService extends BaseAuthService
 {
@@ -14,34 +16,48 @@ class AuthService extends BaseAuthService
     }
 
     public function login() {
-        $data = $this->get_data_from_post();
+        $payload = $this->get_data_from_post();
+        $pipeline = new AuthLib();
 
-        // Validation des données
-        if (!$this->validate($this->valid->auth)) {
-            return $this->respondError($this->validation->getErrors());
+        try {
+            $result = $pipeline->handle($payload);
+            return $this->respondSuccess('Successfully login', $result);
+        } catch (AuthException $e) {
+            $payload = $e->getPayload();
+            $code = $e->getCode() ?: 403;
+
+            return $this->respondError($e->getMessage(), $code, $payload);
+        } catch (\Throwable $t) {
+            throw new \Exception($t->getMessage());
         }
+        // $data = $this->get_data_from_post();
 
-        // Vérification du status et du mot de passe de l'utilisateur
-        $user = $this->model->findByEmail($data['email']);
-        $status = $this->checkStatus($user);
-        // $checkStatus = 
+        // // Validation des données
+        // if (!$this->validate($this->valid->auth)) {
+        //     return $this->respondError($this->validation->getErrors());
+        // }
 
-        // $token = $this->token->generateToken([
-        //     'tenant' => $this->tenant->getTenantById($user->id),
-        //     'email' => $user->email,
-        //     'role' => $this->rules->getRoleById($user->role_id),
-        //     'redirect' => $this->redirectTo($user)
+        // // Vérification du status et du mot de passe de l'utilisateur
+        // $user = $this->model->findByEmail($data['email']);
+        // $status = $this->checkStatus($user);
+        // // $checkStatus = 
+
+        // // $token = $this->token->generateToken([
+        // //     'tenant' => $this->tenant->getTenantById($user->id),
+        // //     'email' => $user->email,
+        // //     'role' => $this->rules->getRoleById($user->role_id),
+        // //     'redirect' => $this->redirectTo($user)
+        // // ]);
+
+        // // Vérification du mot de passe
+        // if (!$this->hasher->verify_password($data['password'], $user->password)) {
+        //     return $this->respondError(lang(line: 'Password.incorrect'));
+        // }
+
+        // return $this->respondSuccess('Success connexion', [
+        //     'status' => $status
+        //     // 'token' => $token,
+        //     // 'redirect' => $this->redirectTo($user),
         // ]);
-
-        // Vérification du mot de passe
-        if (!$this->hasher->verify_password($data['password'], $user->password)) {
-            return $this->respondError(lang(line: 'Password.incorrect'));
-        }
-
-        return $this->respondSuccess('Success connexion', [
-            'status' => $status
-            // 'token' => $token,
-            // 'redirect' => $this->redirectTo($user),
-        ]);
     }
 }
