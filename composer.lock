@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3187bea25ceb9dfed9cde6fdf5f10b88",
+    "content-hash": "fc8f33d201e26e8741a5d14fd7265a83",
     "packages": [
         {
             "name": "axproo/helper-lib",
-            "version": "dev-main",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axproo/helper-lib.git",
-                "reference": "7123d482f175a4e5ea8e71e649724c704d68f052"
+                "reference": "c21ee12d6ec55964c632128c25af9ebe7bbd72f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/helper-lib/zipball/7123d482f175a4e5ea8e71e649724c704d68f052",
-                "reference": "7123d482f175a4e5ea8e71e649724c704d68f052",
+                "url": "https://api.github.com/repos/axproo/helper-lib/zipball/c21ee12d6ec55964c632128c25af9ebe7bbd72f6",
+                "reference": "c21ee12d6ec55964c632128c25af9ebe7bbd72f6",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^12.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -60,10 +59,10 @@
             ],
             "description": "Bibliothèque Axproo des helpers réutilisables pour CI4 ou PHP native",
             "support": {
-                "source": "https://github.com/axproo/helper-lib/tree/main",
+                "source": "https://github.com/axproo/helper-lib/tree/1.0.2",
                 "issues": "https://github.com/axproo/helper-lib/issues"
             },
-            "time": "2025-11-16T02:43:08+00:00"
+            "time": "2025-11-16T03:31:13+00:00"
         },
         {
             "name": "axproo/mailer",
@@ -2268,9 +2267,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "axproo/helper-lib": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

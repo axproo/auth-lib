@@ -1,6 +1,6 @@
 {
     "name": "axproo/helper-lib",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Bibliothèque Axproo des helpers réutilisables pour CI4 ou PHP native",
     "type": "library",
     "require": {
@@ -24,7 +24,7 @@
             "email": "developper@axproo.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "extra": {
         "branch-alias": {
             "dev-main": "1.x-dev"

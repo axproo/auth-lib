@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => '1.0.6',
-        'version' => '1.0.6.0',
+        'pretty_version' => '1.0.7',
+        'version' => '1.0.7.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => '1.0.6',
-            'version' => '1.0.6.0',
+            'pretty_version' => '1.0.7',
+            'version' => '1.0.7.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
@@ -20,14 +20,12 @@
             'dev_requirement' => false,
         ),
         'axproo/helper-lib' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '7123d482f175a4e5ea8e71e649724c704d68f052',
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
+            'reference' => 'c21ee12d6ec55964c632128c25af9ebe7bbd72f6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/helper-lib',
-            'aliases' => array(
-                0 => '1.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'axproo/mailer' => array(

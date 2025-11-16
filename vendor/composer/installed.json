@@ -2,17 +2,17 @@
     "packages": [
         {
             "name": "axproo/helper-lib",
-            "version": "dev-main",
-            "version_normalized": "dev-main",
+            "version": "1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axproo/helper-lib.git",
-                "reference": "7123d482f175a4e5ea8e71e649724c704d68f052"
+                "reference": "c21ee12d6ec55964c632128c25af9ebe7bbd72f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/helper-lib/zipball/7123d482f175a4e5ea8e71e649724c704d68f052",
-                "reference": "7123d482f175a4e5ea8e71e649724c704d68f052",
+                "url": "https://api.github.com/repos/axproo/helper-lib/zipball/c21ee12d6ec55964c632128c25af9ebe7bbd72f6",
+                "reference": "c21ee12d6ec55964c632128c25af9ebe7bbd72f6",
                 "shasum": ""
             },
             "require": {
@@ -22,8 +22,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^12.4"
             },
-            "time": "2025-11-16T02:43:08+00:00",
-            "default-branch": true,
+            "time": "2025-11-16T03:31:13+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -57,7 +56,7 @@
             ],
             "description": "Bibliothèque Axproo des helpers réutilisables pour CI4 ou PHP native",
             "support": {
-                "source": "https://github.com/axproo/helper-lib/tree/main",
+                "source": "https://github.com/axproo/helper-lib/tree/1.0.2",
                 "issues": "https://github.com/axproo/helper-lib/issues"
             },
             "install-path": "../axproo/helper-lib"
