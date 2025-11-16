@@ -23,6 +23,7 @@ class AuthService extends BaseAuthService
             if (!$this->validate($this->valid->auth)) {
                 return $this->respondError($this->validation->getErrors());
             }
+            $payload['ip_address'] = $this->request->getIPAddress();
 
             $result = $pipeline->handle($payload);
             return axprooResponse(200, 'Successfully Login', $result);
