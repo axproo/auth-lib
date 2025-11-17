@@ -42,7 +42,7 @@ class AuthService extends BaseAuthService
         try {
             $token = $this->request->getCookie('jwt');
             if (!$token) {
-                return axprooResponse(lang('Token.missing'));
+                return axprooResponse(403, lang('Token.missing'));
             }
             $session = new UserSessionService();
             $session->destroySession($token->uid, $token);

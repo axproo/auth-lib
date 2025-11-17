@@ -48,7 +48,6 @@ class CheckSessionAgent
             throw new AuthException(lang('Session.is_connected'), 403);
         }
         $data['token'] = $token;
-        $data['session'] = $existingSession;
         return $data;
     }
 }
