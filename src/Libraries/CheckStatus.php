@@ -23,7 +23,7 @@ class CheckStatus
 
         switch ($status) {
             case 'pending':
-                $this->otp->generate(10);
+                // $this->otp->generate(10);
                 throw new AuthException(lang('Account.pending'), 403, [
                     'redirectTo' => '/verify-email'
                 ]);
