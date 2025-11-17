@@ -10,7 +10,7 @@ class OtpService
         $this->manager = new OtpManager($options);
     }
 
-    public function sendForEMail(string $email, array $meta = []) {
+    public function sendForEmail(string $email, array $meta = []) {
         return $this->manager->send($email, array_merge($meta, ['channel' => 'email']), 'email');
     }
 

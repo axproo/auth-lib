@@ -23,7 +23,7 @@ class CheckStatus
 
         switch ($status) {
             case 'pending':
-                $response = $this->otp->sendForEMail($user->email, ['ttl' => 300]);
+                $response = $this->otp->sendForEmail($user->email, ['ttl' => 300]);
                 throw new AuthException(lang('Account.pending'), 403, [
                     'redirectTo' => '/verify-email',
                     'data' => $response
