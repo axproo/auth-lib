@@ -41,14 +41,13 @@ class CheckSessionAgent
             'two_factor_enabled' => filter_var($user->two_factor_enabled, FILTER_VALIDATE_BOOLEAN)
         ]);
 
-        // $token = $this->token->validateToken($this->request->getCookie('jwt'));
         $existingSession = $this->session->validateSession($user->id, $token);
-        // $existingSession = '';
 
         if (!empty($existingSession)) {
             throw new AuthException(lang('Session.is_connected'), 403);
         }
         $data['token'] = $token;
+        $data['session'] = $existingSession;
         return $data;
     }
 }

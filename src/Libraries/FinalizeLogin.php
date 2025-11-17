@@ -48,6 +48,7 @@ class FinalizeLogin
         // Update last session
         $this->session->registerSession($token, $user);
         return [
+            'data' => $data,
             'token' => $token,
             'redirect' => '/dasbhoard',
             'cookie' => $data['cookie'] ?? null
