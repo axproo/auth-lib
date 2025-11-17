@@ -12,12 +12,16 @@ class CheckSessionAgent
     protected UsersModel $model;
     protected TokenManager $token;
     protected UserSessionService $session;
+    protected TenantManager $tenant;
+    protected RoleManager $rules;
     protected $request;
 
     public function __construct() {
         $this->model = new UsersModel();
         $this->token = new TokenManager();
         $this->session = new UserSessionService();
+        $this->tenant = new TenantManager();
+        $this->rules = new RoleManager();
         $this->request = session('request');
     }
 
@@ -27,13 +31,24 @@ class CheckSessionAgent
             throw new AuthException(lang('Auth.invalid_credential'), 401);
         }
 
+        $token = $this->token->generateToken([
+            'uid' => $user->id,
+            'tenant' => $this->tenant->getTenantById($user->id),
+            'email' => $user->email,
+            'fullname' => "{$user->first_name} {$user->last_name}",
+            'role' => $this->rules->getRoleById($user->id),
+            'status' => $user->status,
+            'two_factor_enabled' => filter_var($user->two_factor_enabled, FILTER_VALIDATE_BOOLEAN)
+        ]);
+
         // $token = $this->token->validateToken($this->request->getCookie('jwt'));
-        // $existingSession = $this->session->validateSession($user->id, $token);
-        $existingSession = '';
+        $existingSession = $this->session->validateSession($user->id, $token);
+        // $existingSession = '';
 
         if (!empty($existingSession)) {
             throw new AuthException(lang('Session.is_connected'), 403);
         }
+        $data['token'] = $token;
         return $data;
     }
 }
