@@ -8,6 +8,8 @@ class ComposerStaticInit34a01ba6830ae0410a4cf1304dab603a
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        'e1c4ddb6c005b31dfa19a4643907bad7' => __DIR__ . '/..' . '/axproo/mailer/src/helpers.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     );
 
@@ -15,7 +17,13 @@ class ComposerStaticInit34a01ba6830ae0410a4cf1304dab603a
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Clock\\' => 10,
             'PhpParser\\' => 10,
+            'ParagonIE\\ConstantTime\\' => 23,
+        ),
+        'O' => 
+        array (
+            'OTPHP\\' => 6,
         ),
         'L' => 
         array (
@@ -37,6 +45,7 @@ class ComposerStaticInit34a01ba6830ae0410a4cf1304dab603a
         array (
             'Axproo\\Otp\\Tests\\' => 17,
             'Axproo\\Otp\\' => 11,
+            'Axproo\\Mailer\\' => 14,
             'Axproo\\HelperLib\\' => 17,
         ),
     );
@@ -46,9 +55,21 @@ class ComposerStaticInit34a01ba6830ae0410a4cf1304dab603a
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'ParagonIE\\ConstantTime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
+        ),
+        'OTPHP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spomky-labs/otphp/src',
         ),
         'Laminas\\Escaper\\' => 
         array (
@@ -73,6 +94,10 @@ class ComposerStaticInit34a01ba6830ae0410a4cf1304dab603a
         'Axproo\\Otp\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Axproo\\Mailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/axproo/mailer/src',
         ),
         'Axproo\\HelperLib\\' => 
         array (

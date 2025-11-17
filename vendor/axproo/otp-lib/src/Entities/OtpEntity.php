@@ -9,6 +9,8 @@ class OtpEntity extends Entity
         'id' => null,
         'user_id' => null,
         'code' => null,
+        'receiver' => null,
+        'channel' => null,
         'purpose' => null,
         'target' => "email",
         'is_used' => null,

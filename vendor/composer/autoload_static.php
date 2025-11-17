@@ -7,8 +7,9 @@ namespace Composer\Autoload;
 class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
 {
     public static $files = array (
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         'e1c4ddb6c005b31dfa19a4643907bad7' => __DIR__ . '/..' . '/axproo/mailer/src/helpers.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
     );
@@ -22,7 +23,13 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Clock\\' => 10,
             'PhpParser\\' => 10,
+            'ParagonIE\\ConstantTime\\' => 23,
+        ),
+        'O' => 
+        array (
+            'OTPHP\\' => 6,
         ),
         'L' => 
         array (
@@ -67,9 +74,21 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'ParagonIE\\ConstantTime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
+        ),
+        'OTPHP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spomky-labs/otphp/src',
         ),
         'Laminas\\Escaper\\' => 
         array (
