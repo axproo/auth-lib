@@ -22,7 +22,7 @@ class CheckSessionAgent
         $existingSession = $user->current_sess_token;
 
         if (!empty($existingSession)) {
-            throw new AuthException(lang('Account.is_connected'), 403);
+            throw new AuthException(lang('Session.is_connected'), 403);
         }
         return $data;
     }

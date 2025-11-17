@@ -48,7 +48,8 @@ class FinalizeLogin
         $this->session->registerSession($token, $user);
         return [
             'token' => $token,
-            'redirect' => '/dasbhoard'
+            'redirect' => '/dasbhoard',
+            'user' => $user
         ];
     }
 }
