@@ -1,7 +1,7 @@
 <?php 
 namespace Axproo\Otp\Libraries;
 
-use Axproo\Otp\Configs\Auth;
+use Axproo\Otp\Config\Auth;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 

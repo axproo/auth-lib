@@ -1,5 +1,5 @@
 <?php 
-namespace Axproo\Otp\Configs;
+namespace Axproo\Otp\Config;
 
 class Auth
 {
