@@ -42,19 +42,23 @@ class AuthService extends BaseAuthService
         try {
             $token = $this->request->getCookie('jwt');
             if (!$token) {
-                return axprooResponse(403, lang('Session.destroy'));
+                return $this->respondError(lang('Session.destroy'), 403);
+                // return axprooResponse(403, lang('Session.destroy'));
             }
             $decoded = $this->validateToken($token);
 
             $session = new UserSessionService();
-            $session->destroySession($decoded->uid);
+            $delete = $session->destroySession($decoded->uid);
+            if (!$delete) {
+                return $this->respondError(lang('Agent.not_delete'));
+            }
             $session->setCookie('', -3600);
 
-            return axprooResponse(200, lang('Seesion.disconnected'), [
+            return $this->respondSuccess(lang('Session.disconnected'), [
                 'redirectTo' => '/login'
             ]);
         } catch (\Throwable $e) {
-            return axprooResponse(500, $e->getMessage());
+            return $this->respondError($e->getMessage(), 500);;
         }
     }
 
