@@ -8,6 +8,7 @@ use Axproo\Otp\Services\OtpService;
 class CheckStatus
 {
     protected OtpService $otp;
+    // protected OtpService $otp;
 
     public function __construct() {
         $this->otp = new OtpService();
@@ -23,14 +24,15 @@ class CheckStatus
 
         switch ($status) {
             case 'pending':
-                $this->otp->sendForMail($user->email, ['ttl' => 300]);
+                $response = $this->otp->sendForMail($user->email, ['ttl' => 300]);
+                // $this->otp->sendForMail($user->email, ['ttl' => 300]);
                 throw new AuthException(lang('Account.pending'), 403, [
                     'redirectTo' => '/verify-email'
                 ]);
 
-            case 'inactive': 
+            case 'inactive':
                 throw new AuthException(lang('Account.inactive'), 403);
-            case 'blocked': 
+            case 'blocked':
                 throw new AuthException(lang('Account.blocked'), 403);
             case 'active':
             default:
