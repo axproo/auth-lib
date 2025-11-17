@@ -41,11 +41,11 @@ class AuthService extends BaseAuthService
     public function logout() {
         try {
             $token = $this->request->getCookie('jwt');
+            if (!$token) {
+                return axprooResponse(403, lang('Session.destroy'));
+            }
             $decoded = $this->validateToken($token);
 
-            if (!$token) {
-                return axprooResponse(403, lang('Token.missing'));
-            }
             $session = new UserSessionService();
             $session->destroySession($decoded->uid, $token);
 
