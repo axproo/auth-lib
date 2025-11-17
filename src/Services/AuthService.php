@@ -47,7 +47,8 @@ class AuthService extends BaseAuthService
             $decoded = $this->validateToken($token);
 
             $session = new UserSessionService();
-            $session->destroySession($decoded->uid, $token);
+            $session->destroySession($decoded->uid);
+            $session->setCookie('', -3600);
 
             return axprooResponse(200, lang('Seesion.disconnected'), [
                 'redirectTo' => '/login'

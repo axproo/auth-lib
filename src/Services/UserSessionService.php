@@ -45,8 +45,7 @@ class UserSessionService extends BaseAuthService
         return true;
     }
 
-    public function destroySession(int $userId, $token) : bool {
-        $this->setCookie('', -3600);
+    public function destroySession(int $userId) : bool {
         return $this->model->delete($userId);
     }
 
