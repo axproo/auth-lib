@@ -42,7 +42,7 @@ class AuthService extends BaseAuthService
         try {
             $token = $this->request->getCookie('jwt');
             $decoded = $this->validateToken($token);
-            
+
             if (!$token) {
                 return axprooResponse(403, lang('Token.missing'));
             }
@@ -50,7 +50,8 @@ class AuthService extends BaseAuthService
             $session->destroySession($decoded->uid, $token);
 
             return axprooResponse(200, lang('Seesion.disconnected'), [
-                'redirectTo' => '/login'
+                'redirectTo' => '/login',
+                'jwt' => $token
             ]);
         } catch (\Throwable $e) {
             return axprooResponse(500, $e->getMessage());
