@@ -49,7 +49,7 @@ class FinalizeLogin
         return [
             'token' => $token,
             'redirect' => '/dasbhoard',
-            'user' => $user
+            'cookie' => $data['cookie'] ?? null
         ];
     }
 }

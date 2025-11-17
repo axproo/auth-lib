@@ -35,10 +35,8 @@ class UserSessionService extends BaseAuthService
     public function validateSession(int $userId, string $token) : bool {
         $row = $this->model->where('user_id', $userId)->first();
 
-        if (!$row) {
-            // Aucun enregistrement -> autoriser et enregistrer la session
-            return true;
-        }
+        // Aucun enregistrement -> autoriser et enregistrer la session
+        if (!$row) return true;
 
         // Comparer le token avec celui stocké
         if ($row->jwt_token !== $token) {

@@ -24,7 +24,7 @@ class AuthService extends BaseAuthService
                 return $this->respondError($this->validation->getErrors());
             }
             $payload['ip_address'] = $this->request->getIPAddress();
-            $payload['current_sess_agent'] = $this->request->getUserAgent();
+            $payload['cookie'] = $this->request->getCookie('jwt');
 
             $result = $pipeline->handle($payload);
             return axprooResponse(200, 'Successfully Login', $result);
