@@ -5,22 +5,15 @@ namespace Axproo\Auth\Libraries;
 use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Auth\Models\UsersModel;
 use Axproo\Auth\Services\UserSessionService;
-use Axproo\Otp\Libraries\TokenManager;
 use CodeIgniter\I18n\Time;
 
 class FinalizeLogin
 {
-    protected TokenManager $token;
     protected UsersModel $model;
-    protected TenantManager $tenant;
-    protected RoleManager $rules;
     protected UserSessionService $session;
 
     public function __construct() {
-        $this->token = new TokenManager();
         $this->model = new UsersModel();
-        $this->tenant = new TenantManager();
-        $this->rules = new RoleManager();
         $this->session = new UserSessionService();
     }
 
