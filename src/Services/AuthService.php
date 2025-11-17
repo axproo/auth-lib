@@ -50,8 +50,7 @@ class AuthService extends BaseAuthService
             $session->destroySession($decoded->uid, $token);
 
             return axprooResponse(200, lang('Seesion.disconnected'), [
-                'redirectTo' => '/login',
-                'jwt' => $token
+                'redirectTo' => '/login'
             ]);
         } catch (\Throwable $e) {
             return axprooResponse(500, $e->getMessage());
