@@ -41,13 +41,15 @@ class AuthService extends BaseAuthService
     public function logout() {
         try {
             $token = $this->request->getCookie('jwt');
-            if (!$token) {
-                return axprooResponse(403, lang('Token.missing'));
-            }
-            $session = new UserSessionService();
-            $session->destroySession($token->uid, $token);
+            // if (!$token) {
+            //     return axprooResponse(403, lang('Token.missing'));
+            // }
+            // $session = new UserSessionService();
+            // $session->destroySession($token->uid, $token);
 
-            return axprooResponse(200, lang('Seesion.disconnected'));
+            return axprooResponse(200, lang('Seesion.disconnected'), [
+                'token' => $token
+            ]);
         } catch (\Throwable $e) {
             return axprooResponse(500, $e->getMessage());
         }

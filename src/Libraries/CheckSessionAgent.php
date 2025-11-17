@@ -44,6 +44,10 @@ class CheckSessionAgent
 
         $existingSession = $this->session->validateSession($user->id, $token);
 
+        if (!$existingSession) {
+            throw new AuthException(lang('Session.is_connected'), 403);
+        }
+
         // if (!empty($existingSession) || $existingSession === false) {
         //     throw new AuthException(lang('Session.is_connected'), 403);
         // }

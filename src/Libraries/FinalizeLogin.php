@@ -28,16 +28,6 @@ class FinalizeLogin
         $token = $data['token'] ?? null;
         $user = $data['user'] ?? null;
         if (!$user) throw new AuthException(lang('Users.missing'), 500);
-
-        // $token = $this->token->generateToken([
-        //     'uid' => $user->id,
-        //     'tenant' => $this->tenant->getTenantById($user->id),
-        //     'email' => $user->email,
-        //     'fullname' => "{$user->first_name} {$user->last_name}",
-        //     'role' => $this->rules->getRoleById($user->id),
-        //     'status' => $user->status,
-        //     'two_factor_enabled' => filter_var($user->two_factor_enabled, FILTER_VALIDATE_BOOLEAN)
-        // ]);
         
         // update user
         $user->last_login_at  = Time::now();
@@ -51,7 +41,6 @@ class FinalizeLogin
             'data' => $data,
             'token' => $token,
             'redirect' => '/dasbhoard',
-            'cookie' => $data['cookie'] ?? null
         ];
     }
 }
