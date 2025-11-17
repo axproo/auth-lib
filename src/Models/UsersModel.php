@@ -28,13 +28,4 @@ class UsersModel extends Model
     public function findByEmail(string $email) {
         return $this->where('email', $email)->first();
     }
-
-    // public function clearActiveSession(int $userId) {
-    //     return $this->save([
-    //         'current_sess_token'    => null,
-    //         'current_sess_ip'       => null,
-    //         'current_sess_agent'    => null,
-    //         'current_sess_at'       => null
-    //     ]);
-    // }
 }
