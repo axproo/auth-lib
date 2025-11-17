@@ -3,9 +3,16 @@
 namespace Axproo\Auth\Libraries;
 
 use Axproo\Auth\Exceptions\AuthException;
+use Axproo\Otp\Services\OtpService;
 
 class CheckStatus
 {
+    protected OtpService $otp;
+
+    public function __construct() {
+        $this->otp = new OtpService();
+    }
+
     public function handle(array $data) : array {
         $user = $data['user'] ?? null;
         if (!$user) {
@@ -16,6 +23,7 @@ class CheckStatus
 
         switch ($status) {
             case 'pending':
+                $this->otp->generate(10);
                 throw new AuthException(lang('Account.pending'), 403, [
                     'redirectTo' => '/verify-email'
                 ]);
