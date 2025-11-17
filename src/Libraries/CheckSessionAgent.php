@@ -40,6 +40,7 @@ class CheckSessionAgent
             'status' => $user->status,
             'two_factor_enabled' => filter_var($user->two_factor_enabled, FILTER_VALIDATE_BOOLEAN)
         ]);
+        $this->session->setCookie($token);
 
         $existingSession = $this->session->validateSession($user->id, $token);
 

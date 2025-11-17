@@ -8,11 +8,13 @@ use Config\Services;
 abstract class BaseAuthService
 {
     protected $request;
+    protected $response;
     protected $validation;
     protected TokenManager $token;
 
     public function __construct() {
         $this->request = service('request');
+        $this->response = service('response');
         $this->validation = Services::validation();
         $this->token = new TokenManager();
     }
