@@ -60,5 +60,6 @@ class UserSessionService extends BaseAuthService
             'path'      => '/',
             'samesite'  => 'lax' // Lax ou Strict pour plus de sécurité
         ]);
+        $this->response->setHeader('Clear-Site-Data', '"cookies"');
     }
 }

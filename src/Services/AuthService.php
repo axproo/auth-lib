@@ -42,11 +42,11 @@ class AuthService extends BaseAuthService
         try {
             $token = $this->request->getCookie('jwt');
             $decoded = $this->validateToken($token);
-            // if (!$token) {
-            //     return axprooResponse(403, lang('Token.missing'));
-            // }
-            // $session = new UserSessionService();
-            // $session->destroySession($token->uid, $token);
+            if (!$token) {
+                return axprooResponse(403, lang('Token.missing'));
+            }
+            $session = new UserSessionService();
+            $session->destroySession($decoded->uid, $token);
 
             return axprooResponse(200, lang('Seesion.disconnected'), [
                 'token' => $decoded
