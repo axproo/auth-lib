@@ -47,7 +47,7 @@ class AuthFilter implements FilterInterface
             // Vérification de session unique (empêche connexion ailleurs)
             $session = new UserSessionService();
             if (!$session->validateSession($decoded->uid, $token)) {
-                return $this->unAuthorizeResponse(lang('Session.replaced'), 409);
+                return $this->unAuthorizeResponse(lang(line: 'Session.is_connected'), 409);
             }
 
             // Stocker l'utilisateur dans le contexte global
