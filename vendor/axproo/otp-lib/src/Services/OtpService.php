@@ -2,11 +2,16 @@
 
 namespace Axproo\Otp\Services;
 
+use Axproo\Otp\Config\Otp as OtpConfig;
+
 class OtpService
 {
     protected OtpManager $manager;
 
     public function __construct(array $options = []) {
+        $config = config(OtpConfig::class);
+
+        $options['redis'] ??= $config->redis;
         $this->manager = new OtpManager($options);
     }
 

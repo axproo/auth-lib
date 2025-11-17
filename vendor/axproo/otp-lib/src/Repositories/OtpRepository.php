@@ -14,9 +14,12 @@ class OtpRepository
     public function __construct(array $options = []) {
         $this->model = new OtpModel();
 
-        if (!empty($options['redis'] && extension_loaded('redis'))) {
+        // Sécurité: s'assurer que 'redis' est bien un tableau
+        $redisOptions = $options['redis'] ?? [];
+
+        if (is_array($redisOptions) && !empty($redisOptions['enabled']) && extension_loaded('redis')) {
             $this->useRedis = true;
-            $this->redis = $options['redis'];
+            $this->redis = $redisOptions['instance'] ?? null;
         }
     }
 
