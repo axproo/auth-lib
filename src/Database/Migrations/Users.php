@@ -21,10 +21,12 @@ class Users extends Migration
             'status'                => ['type' => 'ENUM', 'constraint' => ['active', 'inactive', 'blocked', 'pending'], 'default' => 'pending'],
             'email_verified'        => ['type' => 'BOOLEAN', 'default' => false],
             'email_verified_at'     => ['type' => 'DATETIME', 'null' => true],
+            'two_factor_enabled'    => ['type' => 'BOOLEAN', 'default' => false],
             'totp_secret'           => ['type' => 'VARCHAR', 'constraint' => 255],
             'reset_token'           => ['type' => 'VARCHAR', 'constraint' => 255],
             'reset_token_expires'   => ['type' => 'DATETIME', 'null' => true],
             'registration_type'     => ['type' => 'ENUM', 'constraint' => ['admin','self'], 'default' => 'self'],
+            'last_login_at'         => ['type' => 'DATETIME', 'null' => true],
             'ip_address'            => ['type' => 'VARCHAR', 'constraint' => 45],
             'created_at timestamp default current_timestamp',
             'updated_at'            => ['type' => 'DATETIME', 'null' => true]

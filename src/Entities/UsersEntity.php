@@ -7,25 +7,30 @@ use CodeIgniter\Entity\Entity;
 class UsersEntity extends Entity
 {
     protected $attributes = [
-        'id' => null,
-        'first_name' => null,
-        'last_name' => null,
-        'email' => null,
-        'password' => null,
-        'role_id' => null,
-        'user_type' => null,
-        'owner_id' => null,
-        'owner_type' => null,
-        'status' => null,
-        'email_verified' => false,
-        'email_verified_at' => null,
-        'totp_secret' => null,
-        'reset_token' => null,
-        'reset_token_expires' => null,
-        'registration_type' => null,
-        'ip_address' => null,
-        'updated_at' => null,
-        'created_at' => null
+        'id'                    => null,
+        'first_name'            => null,
+        'last_name'             => null,
+        'email'                 => null,
+        'password'              => null,
+        'role_id'               => null,
+        'user_type'             => 'employee',
+        'owner_id'              => null,
+        'owner_type'            => null,
+        'status'                => 'pending',
+        'email_verified'        => false,
+        'email_verified_at'     => null,
+        'two_factor_enabled'    => false,
+        'totp_secret'           => null,
+        'reset_token'           => null,
+        'reset_token_expires'   => null,
+        'registration_type'     => 'self',
+        'current_sess_token'    => null,
+        'current_sess_ip'       => null,
+        'current_sess_agent'    => null,
+        'current_sess_at'       => null,
+        'ip_address'            => null,
+        'updated_at'            => null,
+        'created_at'            => null
     ];
     protected $datamap = [];
     protected $dates   = ['created_at', 'updated_at', 'deleted_at'];
@@ -36,5 +41,6 @@ class UsersEntity extends Entity
         'role_id' => 'integer',
         'owner_id' => 'integer',
         'email_verified' => 'boolean',
+        'two_factor_enabled' => 'boolean'
     ];
 }

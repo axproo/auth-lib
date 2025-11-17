@@ -12,6 +12,7 @@ class AuthLib
         CheckStatus::class,
         CheckPassword::class,
         CheckEmailVerified::class,
+        CheckSessionAgent::class,
         CheckTwoFactor::class,
         FinalizeLogin::class
     ];
