@@ -39,19 +39,16 @@ class AuthService extends BaseAuthService
     }
 
     public function logout() {
+        $session = new UserSessionService();
+
         try {
             $token = $this->request->getCookie('jwt');
             if (!$token) {
                 return $this->respondError(lang('Session.destroy'), 403);
             }
             $decoded = $this->validateToken($token);
-
-            if (!$decoded) {
-                return $this->respondError(lang('Token.missing'), 403);
-            }
-            
-            $session = new UserSessionService();
             $delete = $session->destroySession($decoded->uid);
+            
             if (!$delete) {
                 return $this->respondError(lang(line: 'Session.not_delete'));
             }

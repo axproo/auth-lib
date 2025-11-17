@@ -17,7 +17,7 @@ class CheckStatus
         switch ($status) {
             case 'pending':
                 throw new AuthException(lang('Account.pending'), 403, [
-                    'action' => 'verify_email'
+                    'redirectTo' => '/verify-email'
                 ]);
 
             case 'inactive': 

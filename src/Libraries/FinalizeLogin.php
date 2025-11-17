@@ -31,7 +31,7 @@ class FinalizeLogin
         // Update last session
         $this->session->registerSession($token, $user);
         return [
-            'redirect' => '/dasbhoard',
+            'redirectTo' => '/dasbhoard',
         ];
     }
 }

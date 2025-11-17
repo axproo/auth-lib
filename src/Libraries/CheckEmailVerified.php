@@ -16,7 +16,7 @@ class CheckEmailVerified
         $forceVerify = config('Auth')->forceEmailVerification ?? false;
 
         if ($forceVerify && !$this->toBool($emailVerified)) {
-            throw new AuthException(lang('Email.not_verified'), 403, ['action' => 'verify_email']);
+            throw new AuthException(lang('Email.not_verified'), 403, ['redirectTo' => '/verify-email']);
         }
         $data['email_checked'] = true;
         return $data;
