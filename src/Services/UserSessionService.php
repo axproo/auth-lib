@@ -46,18 +46,30 @@ class UserSessionService extends BaseAuthService
     }
 
     public function destroySession(int $userId) : bool {
-        return $this->model->delete($userId);
+        return $this->model->where('user_id', $userId)->delete();
     }
 
     public function setCookie($token, $expire = 86400) {
         $this->response->setCookie([
             'name'      => 'jwt',
             'value'     => $token,
-            'expire'    => $expire, // 24h par défaut
+            'expire'    => time() + $expire, // 24h par défaut
             'httponly'  => true,
             'secure'    => false, // mettre à true en production avec HTTPS
             'path'      => '/',
-            'samesite'  => 'lax' // Lax ou Strict pour plus de sécurité
+            'samesite'  => 'Lax' // Lax ou Strict pour plus de sécurité
+        ]);
+    }
+
+    public function clearCookie() {
+        $this->response->setCookie([
+            'name' => 'jwt',
+            'value' => '',
+            'expire' => time() - 3600,
+            'httponly' => true,
+            'secure' => false, // Mettre à true en production avec HTTPS
+            'path' => '/',
+            'samesite' => 'Lax' // Lax ou Strict pour plus de sécurité
         ]);
         $this->response->setHeader('Clear-Site-Data', '"cookies"');
     }
