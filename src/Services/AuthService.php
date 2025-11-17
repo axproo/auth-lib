@@ -47,6 +47,7 @@ class AuthService extends BaseAuthService
             $session = new UserSessionService();
             $session->destroySession($token->uid, $token);
 
+            return axprooResponse(200, lang('Seesion.disconnected'));
         } catch (\Throwable $e) {
             return axprooResponse(500, $e->getMessage());
         }
