@@ -5,6 +5,7 @@ namespace Axproo\Auth\Services;
 use Axproo\Auth\Config\Validation\AuthConfig;
 use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Auth\Libraries\AuthLib;
+use Axproo\Auth\Libraries\GenerateTotp;
 use Axproo\Auth\Libraries\ValidEmailVerified;
 
 class AuthService extends BaseAuthService
@@ -50,6 +51,18 @@ class AuthService extends BaseAuthService
 
             $result = $pipeline->handle($payload);
             return $this->respondSuccess(lang('Otp.verified'), $result);
+        } catch (\Throwable $e) {
+            return $this->respondError($e->getMessage(), 403);
+        }
+    }
+
+    public function generateOtp() {
+        $pipeline = new GenerateTotp();
+        try {
+            $result = $pipeline->handle();
+            return $this->respondSuccess(lang('Totp.success.generated'), [
+                'data' => $result
+            ]);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 403);
         }

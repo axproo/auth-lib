@@ -128,16 +128,16 @@
         },
         {
             "name": "axproo/otp-lib",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "git@github.com:axproo/otp-lib.git",
-                "reference": "0474b7401ffd35f9d0a36a4907bed5763f8566e1"
+                "reference": "64c438c50e1106c064d8332e111a477c9111a613"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/0474b7401ffd35f9d0a36a4907bed5763f8566e1",
-                "reference": "0474b7401ffd35f9d0a36a4907bed5763f8566e1",
+                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/64c438c50e1106c064d8332e111a477c9111a613",
+                "reference": "64c438c50e1106c064d8332e111a477c9111a613",
                 "shasum": ""
             },
             "require": {
@@ -189,10 +189,10 @@
                 "otp"
             ],
             "support": {
-                "source": "https://github.com/axproo/otp-lib/tree/1.0.9",
+                "source": "https://github.com/axproo/otp-lib/tree/1.0.10",
                 "issues": "https://github.com/axproo/otp-lib/issues"
             },
-            "time": "2025-11-18T02:31:37+00:00"
+            "time": "2025-11-18T10:43:13+00:00"
         },
         {
             "name": "brick/math",

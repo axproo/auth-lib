@@ -30,4 +30,8 @@ class OtpService
     public function verifyTotp(string $secret, string $code) {
         return $this->manager->verify($secret, $code, 'totp');
     }
+    
+    public function generateTotp() {
+        return $this->manager->generate();
+    }
 }

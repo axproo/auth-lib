@@ -18,4 +18,9 @@ class TotpDriver implements OtpDriverInterface
         $totp = TOTP::create($receiver);
         return $totp->verify($code);
     }
+
+    public function generate() {
+        $totp = TOTP::create();
+        return $totp->getSecret();
+    }
 }
