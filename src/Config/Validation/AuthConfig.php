@@ -7,6 +7,7 @@ use CodeIgniter\Config\BaseConfig;
 class AuthConfig extends BaseConfig
 {
     public array $auth = [];
+    public array $code = [];
 
     protected array $baseDefinitions = [];
 
@@ -26,9 +27,18 @@ class AuthConfig extends BaseConfig
                     'required'  => lang('Auth.failed.password.required'),
                     'min_length' => lang('Auth.failed.password.length')
                 ]
+            ],
+            'code' => [
+                'rules' => 'required|numeric|min_length[6]|max_length[6]',
+                'errors' => [
+                    'required'  => lang('Auth.failed.code.required'),
+                    'min_length' => lang('Auth.failed.code.invalid'),
+                    'max_length' => lang('Auth.failed.code.invalid')
+                ]
             ]
         ];
         $this->auth = $this->render(['email','password']);
+        $this->code = $this->render(['email', 'code']);
     }
 
     public function render(array $fields) : array {
