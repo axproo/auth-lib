@@ -31,9 +31,9 @@ class AuthConfig extends BaseConfig
             'code' => [
                 'rules' => 'required|numeric|min_length[6]|max_length[6]',
                 'errors' => [
-                    'required'  => lang('Auth.failed.code.required'),
-                    'min_length' => lang('Auth.failed.code.invalid'),
-                    'max_length' => lang('Auth.failed.code.invalid')
+                    'required'  => lang('Otp.required'),
+                    'min_length' => lang('Otp.invalid'),
+                    'max_length' => lang('Otp.invalid')
                 ]
             ]
         ];

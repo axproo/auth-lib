@@ -3,7 +3,6 @@
 namespace Axproo\Auth\Services;
 
 use Axproo\Otp\Libraries\TokenManager;
-use Axproo\Otp\Services\OtpService;
 use Config\Services;
 
 abstract class BaseAuthService
@@ -12,14 +11,12 @@ abstract class BaseAuthService
     protected $response;
     protected $validation;
     protected TokenManager $token;
-    protected OtpService $otp;
 
     public function __construct() {
         $this->request = service('request');
         $this->response = service('response');
         $this->validation = Services::validation();
         $this->token = new TokenManager();
-        $this->otp = new OtpService();
     }
 
     protected function validate(array $rules) : bool {

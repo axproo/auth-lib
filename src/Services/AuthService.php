@@ -48,64 +48,11 @@ class AuthService extends BaseAuthService
                 return $this->respondError($this->validation->getErrors());
             }
 
-            $result = [];
+            $result = $pipeline->handle($payload);
             return $this->respondSuccess(lang('Otp.verified'), $result);
-
-            // $verified = $this->otp->verify($payload['email'], $payload['code']);
-            // if (!$verified) {
-            //     return $this->respondError(lang('Otp.invalid'), 400);
-            // }
-
-            
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 403);
         }
-        // $email = $this->request->getVar('email') ?? null;
-        // $code = $this->request->getVar('code') ?? null;
-
-        // try {
-        //     $verified = $this->otp->verify($email, $code);
-
-        //     if (!$verified) {
-        //         return $this->respondError(lang('Otp.invalid'), 400);
-        //     }
-
-        //     $user = $this->model->findByEmail($email);
-        //     if (!$user) {
-        //         return $this->respondError(lang('Users.missing'), 500);
-        //     }
-
-        //     // Mise à jour de l'utilisateur
-        //     $user['status'] = 'active';
-        //     $user['email_verified'] = true;
-        //     $user['email_verified_at'] = Time::now();
-        //     $user['last_login_at'] = Time::now();
-        //     $user['ip_address'] = $this->request->getIPAddress();
-
-        //     // Mise à jour de la session
-
-        //     return $this->respondSuccess(lang('Otp.verified'), [
-        //         'redirectTo' => '/'
-        //     ]);
-        // } catch (\Throwable $e) {
-        //     return $this->respondError($e->getMessage(), 403);
-        // }
-
-        // $email = $this->request->getVar('email') ?? null;
-        // $code = $this->request->getVar('code') ?? null;
-
-        // try {
-        //     $verified = $this->otp->verify($email, $code);
-
-        //     if (!$verified) {
-        //         return $this->respondError(lang('Otp.invalid'), 400);
-        //     }
-        //     return $this->respondSuccess(lang('Otp.verified'), [
-        //         'redirectTo' => '/'
-        //     ]);
-        // } catch (\Throwable $e) {
-        //     return $this->respondError($e->getMessage(), 403);
-        // }
     }
 
     public function logout() {
