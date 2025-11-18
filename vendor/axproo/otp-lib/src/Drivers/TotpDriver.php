@@ -21,10 +21,12 @@ class TotpDriver implements OtpDriverInterface
 
     public function generate(string $receiver, $app) {
         $totp = TOTP::create();
+        $totp->setLabel($receiver);
+        $totp->setIssuer($app);
 
         return [
             'secret' => $totp->getSecret(),
-            'uri' => $totp->getProvisioningUri($receiver, $app)
+            'uri' => $totp->getProvisioningUri()
         ];
     }
 }

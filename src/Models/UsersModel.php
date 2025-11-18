@@ -19,6 +19,8 @@ class UsersModel extends Model
         'email_verified',
         'email_verified_at',
         'two_factor_enabled',
+        'totp_secret',
+        'totp_uri',
         'last_login_at',
         'ip_address'
     ];

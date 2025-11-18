@@ -21,6 +21,7 @@ class UsersEntity extends Entity
         'email_verified_at'     => null,
         'two_factor_enabled'    => false,
         'totp_secret'           => null,
+        'totp_uri'              => null,
         'reset_token'           => null,
         'reset_token_expires'   => null,
         'registration_type'     => 'self',
