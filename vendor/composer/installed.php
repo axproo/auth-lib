@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'axproo/otp-lib' => array(
-            'pretty_version' => '1.0.7',
-            'version' => '1.0.7.0',
-            'reference' => '6cee0674ae745449901abee7dd64bb2d42ab6387',
+            'pretty_version' => '1.0.8',
+            'version' => '1.0.8.0',
+            'reference' => 'e24f3caeefa36f2321282639a263938cacce1697',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/otp-lib',
             'aliases' => array(),

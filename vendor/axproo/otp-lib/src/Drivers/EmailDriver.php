@@ -23,10 +23,8 @@ class EmailDriver implements OtpDriverInterface
      */
     public function send(string $receiver, string $code, array $meta = []): bool
     {
-        $expire_time = $meta['expires_in'] ?? 300;
-
         $subject = $meta['subject'] ?? 'Votre code de vérification';
-        $body = $meta['body'] ?? "Votre code OTP est : {$code}\nIl expire dans {$expire_time} secondes.";
+        $body = $meta['body'] ?? 'test';
 
         // Envoi du mail
         $sent = $this->mailer->send($receiver, $subject, $body, []);
