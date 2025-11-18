@@ -28,9 +28,12 @@ class GenerateTotp
         if (!empty($user->totp_secret)) {
             throw new AuthException(lang('Totp.is_generate'));
         }
-        $user->totp_secret = $this->totp->generateTotp();
+        $totp = $this->totp->generateTotp($user->email);
+        $user->totp_secret = $totp;
+        
+        // $this->model->save($user);
         return [
-            'user' => $user
+            'uri' => ''
         ];
     }
 }

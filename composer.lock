@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b3b0520f5343c531b5ab0a49e3e977b",
+    "content-hash": "ce0ac3e850814ff0bea1c3f2009527b7",
     "packages": [
         {
             "name": "axproo/helper-lib",
@@ -128,16 +128,16 @@
         },
         {
             "name": "axproo/otp-lib",
-            "version": "1.0.10",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:axproo/otp-lib.git",
-                "reference": "64c438c50e1106c064d8332e111a477c9111a613"
+                "reference": "2a27901e2fec6bab90e322327cce0d5f01ff4805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/64c438c50e1106c064d8332e111a477c9111a613",
-                "reference": "64c438c50e1106c064d8332e111a477c9111a613",
+                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/2a27901e2fec6bab90e322327cce0d5f01ff4805",
+                "reference": "2a27901e2fec6bab90e322327cce0d5f01ff4805",
                 "shasum": ""
             },
             "require": {
@@ -189,10 +189,10 @@
                 "otp"
             ],
             "support": {
-                "source": "https://github.com/axproo/otp-lib/tree/1.0.10",
+                "source": "https://github.com/axproo/otp-lib/tree/2.0.0",
                 "issues": "https://github.com/axproo/otp-lib/issues"
             },
-            "time": "2025-11-18T10:43:13+00:00"
+            "time": "2025-11-18T14:48:17+00:00"
         },
         {
             "name": "brick/math",

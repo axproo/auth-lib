@@ -83,8 +83,8 @@ class OtpManager
         return $this->repo->verify($receiver, $code, $channel);
     }
 
-    public function generate() {
+    public function generate(string $receiver) {
         $totp = new TotpDriver();
-        return $totp->generate();
+        return $totp->generate($receiver, 'totp');
     }
 }
