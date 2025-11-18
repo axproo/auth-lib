@@ -23,11 +23,12 @@ class EmailDriver implements OtpDriverInterface
      */
     public function send(string $receiver, string $code, array $meta = []): bool
     {
-        $subject = $meta['subject'] ?? 'Votre code de vérification';
+        $subject = $meta['subject'] ?? 'Aucun titre défini pour le mail';
         $body = $meta['body'] ?? 'test';
+        $meta['code'] = $code;
 
         // Envoi du mail
-        $sent = $this->mailer->send($receiver, $subject, $body, []);
+        $sent = $this->mailer->send($receiver, $subject, $body, $meta);
         return $sent ?: false;
     }
 

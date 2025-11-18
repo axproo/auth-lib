@@ -38,6 +38,24 @@ class AuthService extends BaseAuthService
         }
     }
 
+    public function verifyEmail() {
+        $email = $this->request->getVar('email') ?? null;
+        $code = $this->request->getVar('code') ?? null;
+
+        try {
+            $verified = $this->otp->verify($email, $code);
+
+            if (!$verified) {
+                return $this->respondError(lang('Otp.invalid'), 400);
+            }
+            return $this->respondSuccess(lang('Otp.verified'), [
+                'redirectTo' => '/'
+            ]);
+        } catch (\Throwable $e) {
+            return $this->respondError($e->getMessage(), 403);
+        }
+    }
+
     public function logout() {
         $session = new UserSessionService();
 

@@ -24,6 +24,7 @@ class CheckStatus
         switch ($status) {
             case 'pending':
                 $response = $this->otp->sendForEmail($user->email, [
+                    'subject' => 'Votre code de vérification',
                     'body' => 'emails/active_account',
                     'ttl' => 300,
                     'name' => "{$user->first_name} {$user->last_name}"

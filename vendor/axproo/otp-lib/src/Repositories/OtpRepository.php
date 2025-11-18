@@ -17,7 +17,7 @@ class OtpRepository
         // Sécurité: s'assurer que 'redis' est bien un tableau
         $redisOptions = $options['redis'] ?? [];
 
-        if (is_array($redisOptions) && !empty($redisOptions['enabled']) && extension_loaded('redis')) {
+        if (\is_array($redisOptions) && !empty($redisOptions['enabled']) && extension_loaded('redis')) {
             $this->useRedis = true;
             $this->redis = $redisOptions['instance'] ?? null;
         }
@@ -54,8 +54,10 @@ class OtpRepository
                 'channel' => $channel
             ])->orderBy('created_at', 'DESC')->first();
 
+        $expiresAt = Time::parse($row->expires_at);
+        
         if (!$row) return false;
-        if (strtotime($row->expires_at) < Time::now()) return false;
+        if ($expiresAt->isBefore(Time::now())) return false;
         if (!hash_equals($row->code, $code)) return false;
 
         $this->model->delete($row->id);
