@@ -7,11 +7,15 @@ use CodeIgniter\I18n\Time;
 
 class UserSessionService extends BaseAuthService
 {
+    private bool $secure = false;
+    private int $expire = 3600;
     protected SessionsModel $model;
 
     public function __construct() {
         parent::__construct();
         $this->model = new SessionsModel();
+        $this->secure = filter_var(getenv('SECURE_COOKIE'), FILTER_VALIDATE_BOOLEAN);
+        $this->expire = (int) (getenv('JWT_EXPIRE') ?: 3600);
     }
 
     public function registerSession(string $token, object $user) {
@@ -49,13 +53,13 @@ class UserSessionService extends BaseAuthService
         return $this->model->where('user_id', $userId)->delete();
     }
 
-    public function setCookie($token, $expire = 86400) {
+    public function setCookie($token) {
         $this->response->setCookie([
             'name'      => 'jwt',
             'value'     => $token,
-            'expire'    => time() + $expire, // 24h par défaut
+            'expire'    => time() + $this->expire, // 24h par défaut
             'httponly'  => true,
-            'secure'    => false, // mettre à true en production avec HTTPS
+            'secure'    => $this->secure, // mettre à true en production avec HTTPS
             'path'      => '/',
             'samesite'  => 'Lax' // Lax ou Strict pour plus de sécurité
         ]);
@@ -67,7 +71,7 @@ class UserSessionService extends BaseAuthService
             'value' => '',
             'expire' => time() - 3600,
             'httponly' => true,
-            'secure' => false, // Mettre à true en production avec HTTPS
+            'secure' => $this->secure, // Mettre à true en production avec HTTPS
             'path' => '/',
             'samesite' => 'Lax' // Lax ou Strict pour plus de sécurité
         ]);

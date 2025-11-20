@@ -16,6 +16,7 @@
         "axproo/helper-lib": "^1.0",
         "axproo/mailer": "^1.0",
         "codeigniter4/framework": "^4.5",
+        "endroid/qr-code": "^5.0",
         "firebase/php-jwt": "^6.10",
         "spomky-labs/otphp": "^11.3"
     },
@@ -39,7 +40,7 @@
             "Axproo\\Otp\\Tests\\": "tests/"
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
         "test": "phpunit"

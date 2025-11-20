@@ -88,7 +88,8 @@ class AuthService extends BaseAuthService
                 'redirectTo' => '/login'
             ]);
         } catch (\Throwable $e) {
-            return $this->respondError($e->getMessage(), 500);;
+            return axprooResponse(500, 'Token missing', []);
+            // return $this->respondError($e->getMessage(), 500);
         }
     }
 

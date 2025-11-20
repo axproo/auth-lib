@@ -52,7 +52,10 @@ class AuthFilter implements FilterInterface
 
             // Stocker l'utilisateur dans le contexte global
             AccessService::set($decoded);
-        } catch (\Throwable $th) {
+        } catch (\Throwable $e) {
+            $session = new UserSessionService();
+            $session->destroySession($decoded->id);
+            $session->clearCookie();
             return $this->unAuthorizeResponse(lang('Token.invalid'));
         }
     }
