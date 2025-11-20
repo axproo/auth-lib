@@ -48,8 +48,7 @@ class TokenManager
         try {
             return JWT::decode($token, new Key($this->secret, 'HS256'));
         } catch (\Throwable $e) {
-            echo "Error : " . $e->getMessage() . PHP_EOL;
-            return null;
+            throw new \Exception($e->getMessage());
         }
     }
 }

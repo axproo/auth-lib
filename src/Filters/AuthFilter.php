@@ -3,8 +3,8 @@
 namespace Axproo\Auth\Filters;
 
 use Axproo\Auth\Services\AccessService;
-use Axproo\Auth\Services\AuthService;
 use Axproo\Auth\Services\UserSessionService;
+use Axproo\Otp\Libraries\TokenManager;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -26,22 +26,15 @@ class AuthFilter implements FilterInterface
 
         // Décodage du JWT
         try {
-            $authService = new AuthService();
-            $decoded = $authService->validateToken($token);
-
-            // Vérifier si l'utilisateur doit compléter le 2FA
-            if ($decoded->two_factor_enabled === true) {
-                return $this->unAuthorizeResponse(lang('Auth.twofactor_required'), 403);
-            }
-
-            // Vérification du role obligatoire
-            if (!isset($decoded->role) || empty($decoded->role)) {
-                return $this->unAuthorizeResponse(lang('Token.rule_required'));
-            }
-
-            // Vérification du status utilisateur (active, pending, blocked, inactive...)
-            if (!$this->checkStatus($decoded)) {
-                return $this->unAuthorizeResponse(lang('Account.not_allowed'), 403);
+            $otp = new TokenManager();
+            $decoded = $otp->validateToken($token);
+            
+            // Vérification optionnelle selon rôle
+            if (!empty($arguments)) {
+                $requiredRoles = is_array($arguments) ? $arguments : ['arguments'];
+                if (!in_array($decoded->role ?? '', $requiredRoles)) {
+                    return $this->unAuthorizeResponse(lang('Users.rule_required'), 403);
+                }
             }
 
             // Vérification de session unique (empêche connexion ailleurs)
@@ -54,9 +47,11 @@ class AuthFilter implements FilterInterface
             AccessService::set($decoded);
         } catch (\Throwable $e) {
             $session = new UserSessionService();
-            $session->destroySession($decoded->id);
+            
+            if ($token) $session->destroySession($token);
             $session->clearCookie();
-            return $this->unAuthorizeResponse(lang('Token.invalid'));
+            
+            return $this->unAuthorizeResponse($e->getMessage());
         }
     }
 
@@ -64,6 +59,8 @@ class AuthFilter implements FilterInterface
     {
         throw new \Exception('Not implemented');
     }
+
+    /* -------------------------- Tools ----------------------------- */
 
     private function extractToken(RequestInterface $request) : ?string {
         // Authorization: Bearer xxxx
@@ -78,17 +75,6 @@ class AuthFilter implements FilterInterface
             return $matches[1];
         }
         return null;
-    }
-
-    private function checkStatus(object $user) : bool {
-        // Exemples de statuts possibles :
-        // pending  → email pas vérifié
-        // inactive → compte désactivé
-        // blocked  → compte suspendu
-        // active   → OK
-
-        $status = strtolower($user->status ?? '');
-        return \in_array($status, ['active']);
     }
 
     private function unAuthorizeResponse(string $response, ?int $code = 401) : ResponseInterface {

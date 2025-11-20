@@ -49,8 +49,12 @@ class UserSessionService extends BaseAuthService
         return true;
     }
 
-    public function destroySession(int $userId) : bool {
-        return $this->model->where('user_id', $userId)->delete();
+    public function destroySession(string $token) : bool {
+        return $this->model->where('jwt_token', $token)->delete();
+    }
+
+    public function getCookie(string $cookie) {
+        return $this->request->getCookie($cookie ?? 'jwt');
     }
 
     public function setCookie($token) {

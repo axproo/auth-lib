@@ -10,6 +10,6 @@ class Auth
     public function __construct() {
         $this->jwtSecret    = getenv('JWT_SECRET');
         $this->jwtRefresh   = getenv('JWT_REFRESH_SECRET');
-        $this->jwtExpire    = (int) (getenv('JWT_EXPIRE') ?: 3600);
+        $this->jwtExpire    = (int) (env('JWT_EXPIRE') ?: 86400);
     }
 }

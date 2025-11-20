@@ -132,12 +132,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:axproo/otp-lib.git",
-                "reference": "3aac042ce6dd8f4b14ada3dfd95d1522e7b29223"
+                "reference": "b662b2f034d2c20b527151062ea6925c61398f4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/3aac042ce6dd8f4b14ada3dfd95d1522e7b29223",
-                "reference": "3aac042ce6dd8f4b14ada3dfd95d1522e7b29223",
+                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/b662b2f034d2c20b527151062ea6925c61398f4a",
+                "reference": "b662b2f034d2c20b527151062ea6925c61398f4a",
                 "shasum": ""
             },
             "require": {
@@ -194,7 +194,7 @@
                 "source": "https://github.com/axproo/otp-lib/tree/main",
                 "issues": "https://github.com/axproo/otp-lib/issues"
             },
-            "time": "2025-11-20T00:50:16+00:00"
+            "time": "2025-11-20T03:56:02+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
