@@ -7,6 +7,7 @@ use Axproo\Otp\Drivers\EmailDriver;
 use Axproo\Otp\Drivers\SmsDriver;
 use Axproo\Otp\Drivers\TotpDriver;
 use Axproo\Otp\Helpers\OtpGenerator;
+use Axproo\Otp\Libraries\QrcodeManager;
 use Axproo\Otp\Repositories\OtpRepository;
 
 class OtpManager

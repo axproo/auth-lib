@@ -25,10 +25,7 @@ class UsersEntity extends Entity
         'reset_token'           => null,
         'reset_token_expires'   => null,
         'registration_type'     => 'self',
-        'current_sess_token'    => null,
-        'current_sess_ip'       => null,
-        'current_sess_agent'    => null,
-        'current_sess_at'       => null,
+        'last_login_at'         => null,
         'ip_address'            => null,
         'updated_at'            => null,
         'created_at'            => null
@@ -42,6 +39,7 @@ class UsersEntity extends Entity
         'role_id' => 'integer',
         'owner_id' => 'integer',
         'email_verified' => 'boolean',
-        'two_factor_enabled' => 'boolean'
+        'two_factor_enabled' => 'boolean',
+        'last_login_at' => 'datetime'
     ];
 }

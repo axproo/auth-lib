@@ -34,8 +34,4 @@ class OtpService
     public function generateTotp(string $receiver) {
         return $this->manager->generate($receiver);
     }
-
-    public function generateQrCode() {
-        return [];
-    }
 }
