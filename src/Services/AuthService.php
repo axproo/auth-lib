@@ -53,9 +53,11 @@ class AuthService extends BaseAuthService
     public function verifyTwofactor()
     {
         if (!session()->get('2fa_pending') || !session()->get('2fa_user_id')) {
-            return $this->respondError(lang('Auth.login.restart'));
+            return $this->respondError(lang('Auth.login.restart'), 403, [
+                'redirectTo' => '/login'
+            ]);
         }
-        
+
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
 
