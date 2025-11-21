@@ -48,6 +48,30 @@ class AuthService extends BaseAuthService
         }
     }
 
+    public function verifyTwofactor() {
+        $payload = $this->get_data_from_post();
+        $pipeline = new AuthLib();
+
+        try {
+            // Validation des champs emails + code 2FA
+            if (!$this->validate($this->valid->code)) {
+                return $this->respondError($this->validation->getErrors());
+            }
+            $payload['ip_address'] = $this->request->getIPAddress();
+
+            // On relance le pipeline avec le code 2FA
+            $result = $pipeline->handle($payload);
+
+            return $this->respondSuccess('Successfully Login', $result);
+        } catch (AuthException $e) {
+            $payload = $e->getPayload();
+            $code = $e->getCode() ?: 403;
+            return $this->respondError($e->getMessage(), $code, $payload);
+        } catch (\Throwable $t) {
+            return $this->respondError($t->getMessage(), 500);
+        }
+    }
+
     public function verifyEmail() {
         $payload = $this->get_data_from_post();
         $pipeline = new ValidEmailVerified();
