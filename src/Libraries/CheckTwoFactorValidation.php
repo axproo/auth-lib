@@ -15,7 +15,7 @@ class CheckTwoFactorValidation
 
         // Vérifier le code si fourni
         if (!$code || !$this->verifyCode($user, $code)) {
-            throw new AuthException(lang('Auth.twofactor.failed'), 403);
+            throw new AuthException(lang('Auth.twofactor_invalid'), 403);
         }
         
         $data['two_factor_checked'] = true;
