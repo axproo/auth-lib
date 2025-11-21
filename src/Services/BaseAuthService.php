@@ -3,6 +3,7 @@
 namespace Axproo\Auth\Services;
 
 use Axproo\Otp\Libraries\TokenManager;
+use Axproo\Otp\Models\UserModel;
 use Config\Services;
 
 abstract class BaseAuthService
@@ -10,6 +11,7 @@ abstract class BaseAuthService
     protected $request;
     protected $response;
     protected $validation;
+    protected UserModel $model;
     protected TokenManager $token;
 
     public function __construct() {
@@ -17,6 +19,7 @@ abstract class BaseAuthService
         $this->response = service('response');
         $this->validation = Services::validation();
         $this->token = new TokenManager();
+        $this->model = new UserModel();
     }
 
     protected function validate(array $rules) : bool {

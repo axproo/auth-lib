@@ -59,10 +59,17 @@ class AuthService extends BaseAuthService
             }
             $payload['ip_address'] = $this->request->getIPAddress();
 
-            // On relance le pipeline avec le code 2FA
-            // $result = $pipeline->handle($payload);
+            // On suppose que $payload contien 'user_id' et 'two_factor_code'
+            $user = $this->model->find($payload['user_id']);
+            if (!$user) {
+                return $this->respondError(lang('Users.missing'), 404);
+            }
+            $payload['user'] = $user;
 
-            return $this->respondSuccess('Successfully Login', $payload);
+            // On relance le pipeline avec le code 2FA
+            $result = $pipeline->handle($payload);
+
+            return $this->respondSuccess('Successfully Login', $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
