@@ -54,7 +54,7 @@ class AuthService extends BaseAuthService
 
         try {
             // Validation des champs emails + code 2FA
-            if (!$this->validate($this->valid->render(['code']))) {
+            if (!$this->validate($this->valid->code)) {
                 return $this->respondError($this->validation->getErrors());
             }
             $payload['ip_address'] = $this->request->getIPAddress();
@@ -64,6 +64,7 @@ class AuthService extends BaseAuthService
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
+            $payload['email'] = $user->email;
             $payload['user'] = $user;
 
             // On relance le pipeline avec le code 2FA
