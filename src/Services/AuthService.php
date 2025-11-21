@@ -66,6 +66,7 @@ class AuthService extends BaseAuthService
             }
             $payload['skip_password_check'] = true;
             $payload['user'] = $user;
+            $payload['email'] = $user->email;
 
             // On relance le pipeline avec le code 2FA
             $result = $pipeline->handle($payload);
