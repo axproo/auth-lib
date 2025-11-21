@@ -54,7 +54,7 @@ class AuthService extends BaseAuthService
 
         try {
             // Validation des champs emails + code 2FA
-            if (!$this->validate($this->valid->code)) {
+            if (!$this->validate($this->valid->render(['code']))) {
                 return $this->respondError($this->validation->getErrors());
             }
             $payload['ip_address'] = $this->request->getIPAddress();
