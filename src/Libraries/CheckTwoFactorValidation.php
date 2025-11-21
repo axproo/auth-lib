@@ -15,17 +15,13 @@ class CheckTwoFactorValidation
 
         // Vérifier le code si fourni
         if (!$code || !$this->verifyCode($user, $code)) {
-            throw new AuthException(lang('Otp.failed'), 403, [
-                'email' => $user->email,
-                'code' => $code,
-                'verify' => $this->verifyCode($user, $code)
-            ]);
+            throw new AuthException(lang('Otp.failed'), 403);
         }
         
         $data['two_factor_checked'] = true;
         $data['two_factor_pending'] = false;
 
-        log_message("debug", "Step 7: CheckTwoFactorValidation");
+        log_message("debug", "Step 7: CheckTwoFactorValidation -> code vérifié");
         return $data;
     }
 
