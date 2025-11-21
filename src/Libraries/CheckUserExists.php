@@ -14,11 +14,6 @@ class CheckUserExists
     }
 
     public function handle(array $data) : array {
-        // Si déjà validé avant, on skip
-        if (!empty($data['skip_password_check'])) {
-            return $data;
-        }
-        
         $email = $data['email'] ?? null;
 
         if (!$email) {

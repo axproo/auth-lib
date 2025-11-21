@@ -7,6 +7,11 @@ use Axproo\Auth\Exceptions\AuthException;
 class CheckTwoFactor
 {
     public function handle(array $data) : array {
+        // Si déjà validé avant, on skip
+        if (!empty($data['skip_password_check'])) {
+            return $data;
+        }
+        
         $user = $data['user'] ?? null;
         if (!$user) throw new AuthException(lang('Users.missing'));
 
