@@ -38,7 +38,7 @@ class AuthConfig extends BaseConfig
             ]
         ];
         $this->auth = $this->render(['email','password']);
-        $this->code = $this->render(['email', 'code']);
+        $this->code = $this->render(['code']);
     }
 
     public function render(array $fields) : array {
