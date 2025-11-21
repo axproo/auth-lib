@@ -11,22 +11,22 @@ class CheckTwoFactorValidation
         $user = $data['user'] ?? null;
         $code = $data['two_factor_code'] ?? null;
 
-        if (!empty($data['requires_2FA']) && empty($data['two_factor_checked'])) {
-            if (!$code || !$this->verifyCode($user, $code)) {
-                throw new AuthException(lang('Auth.twofactor_invalid'), 403);
-            }
+        if (!$user) throw new AuthException(lang('Users.missing'));
 
-            $data['two_factor_checked'] = true;
-            $data['two_factor_pending'] = false;
+        // Vérifier le code si fourni
+        if (!$code || !$this->verifyCode($user, $code)) {
+            throw new AuthException(lang('Auth.twofactor.failed'), 403);
         }
+        
+        $data['two_factor_checked'] = true;
+        $data['two_factor_pending'] = false;
+
         log_message("debug", "Step 7: CheckTwoFactorValidation");
         return $data;
     }
 
     private function verifyCode($user, string $code) : bool {
         $otp = new OtpService();
-        $verify = $otp->verifyTotp($user->email, $code);
-
-        return $verify;
+        return $otp->verifyTotp($user->email, $code);
     }
 }
