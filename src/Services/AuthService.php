@@ -31,9 +31,9 @@ class AuthService extends BaseAuthService
 
             // Si l'étape 2FA est requise mais non encore validée
             if (!empty($result['requires_2FA']) && empty($result['two_factor_checked'])) {
-                return $this->respondError(403, lang('Otp.twofactor.required'), [
-                    'redirectTo' => '/2FA',
-                    // 'user_id' => $result['user']->id
+                return $this->respondError(lang('Otp.twofactor.required'), 403, [
+                    'redirecTo' => '/2FA',
+                    'user_id' => $result['user']->id
                 ]);
             }
             return axprooResponse(200, 'Successfully Login', $result);
