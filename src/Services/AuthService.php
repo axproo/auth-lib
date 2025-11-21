@@ -52,6 +52,10 @@ class AuthService extends BaseAuthService
 
     public function verifyTwofactor()
     {
+        if (!session()->get('2fa_pending') || !session()->get('2fa_user_id')) {
+            return $this->respondError(lang('Auth.login.restart'));
+        }
+        
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
 
@@ -86,10 +90,6 @@ class AuthService extends BaseAuthService
 
     public function verifyEmail()
     {
-        if (!session()->get('2fa_pending') || !session()->get('2fa_user_id')) {
-            return $this->respondError(lang('Auth.login.restart'));
-        }
-        
         $payload = $this->get_data_from_post();
         $pipeline = new ValidEmailVerified();
 
