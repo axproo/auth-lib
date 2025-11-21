@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Services;
 
@@ -14,7 +14,8 @@ abstract class BaseAuthService
     protected UserModel $user_model;
     protected TokenManager $token;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->request = service('request');
         $this->response = service('response');
         $this->validation = Services::validation();
@@ -22,22 +23,26 @@ abstract class BaseAuthService
         $this->user_model = new UserModel();
     }
 
-    protected function validate(array $rules) : bool {
+    protected function validate(array $rules): bool
+    {
         if (!$this->validation->setRules($rules)->run($this->get_data_from_post())) {
             return false;
         }
         return true;
     }
 
-    protected function respondSuccess(string $message, array $data = []) {
+    protected function respondSuccess(string $message, array $data = [])
+    {
         return axprooResponse(200, $message, $data);
     }
 
-    protected function respondError(string|array $message, int $code = 403, array $data = []) {
+    protected function respondError(string|array $message, int $code = 403, array $data = [])
+    {
         return axprooResponse($code, $message, $data);
     }
 
-    protected function get_data_from_post() {
+    protected function get_data_from_post()
+    {
         return (array) $this->request->getVar();
     }
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Models;
 
@@ -12,7 +12,8 @@ class RoleModel extends Model
     protected $returnType = 'Axproo\Auth\Entities\RoleEntity';
     protected $useTimestamps = true;
 
-    public function findByUser(?int $id) : ?string {
+    public function findByUser(?int $id): ?string
+    {
         $query = $this->find($id);
         return $query->role_name ?? null;
     }

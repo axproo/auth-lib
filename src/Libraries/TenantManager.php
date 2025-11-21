@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Libraries;
 
@@ -8,12 +8,16 @@ class TenantManager
 {
     protected UserTenantModel $model;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new UserTenantModel();
     }
 
-    public function getTenantById(?int $userId) : ?string {
-        if (!$userId) return null;
+    public function getTenantById(?int $userId): ?string
+    {
+        if (!$userId) {
+            return null;
+        }
 
         $userTenant = $this->model
             ->select(select: 't.uuid')

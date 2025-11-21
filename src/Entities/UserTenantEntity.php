@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Entities;
 
@@ -15,7 +15,7 @@ class UserTenantEntity extends Entity
         'updated_at' => null,
         'created_at' => null
     ];
-    
+
     protected $datamap = [];
     protected $dates   = ['created_at', 'updated_at', 'deleted_at'];
     protected $casts   = [

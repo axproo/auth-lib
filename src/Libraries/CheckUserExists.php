@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Libraries;
 
@@ -9,11 +9,13 @@ class CheckUserExists
 {
     protected UsersModel $model;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new UsersModel();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         $email = $data['email'] ?? null;
 
         if (!$email) {

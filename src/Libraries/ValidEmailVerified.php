@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Libraries;
 
@@ -12,12 +12,14 @@ class ValidEmailVerified
     protected UsersModel $model;
     protected OtpService $otp;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new UsersModel();
         $this->otp = new OtpService();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         $email = $data['email' ?? null];
         $user = $this->model->where('email', $email)->first();
 
@@ -33,7 +35,7 @@ class ValidEmailVerified
         $user->status = 'active';
         $user->email_verified = true;
         $user->email_verified_at = Time::now();
-        
+
         $this->model->save($user);
         return ['redirectTo' => '/login'];
     }

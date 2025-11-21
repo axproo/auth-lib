@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Services;
 
@@ -11,14 +11,16 @@ class UserSessionService extends BaseAuthService
     private int $expire = 3600;
     protected SessionsModel $model;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->model = new SessionsModel();
         $this->secure = filter_var(getenv('SECURE_COOKIE'), FILTER_VALIDATE_BOOLEAN);
         $this->expire = (int) (getenv('JWT_EXPIRE') ?: 3600);
     }
 
-    public function registerSession(string $token, object $user) {
+    public function registerSession(string $token, object $user)
+    {
         $data = [
             'user_id' => $user->id,
             'jwt_token' => $token,
@@ -36,11 +38,14 @@ class UserSessionService extends BaseAuthService
         $this->model->save($data);
     }
 
-    public function validateSession(int $userId, string $token) : bool {
+    public function validateSession(int $userId, string $token): bool
+    {
         $row = $this->model->where('user_id', $userId)->first();
 
         // Aucun enregistrement -> autoriser et enregistrer la session
-        if (!$row) return true;
+        if (!$row) {
+            return true;
+        }
 
         // Comparer le token avec celui stocké
         if ($row->jwt_token !== $token) {
@@ -49,15 +54,18 @@ class UserSessionService extends BaseAuthService
         return true;
     }
 
-    public function destroySession(string $token) : bool {
+    public function destroySession(string $token): bool
+    {
         return $this->model->where('jwt_token', $token)->delete();
     }
 
-    public function getCookie(string $cookie) {
+    public function getCookie(string $cookie)
+    {
         return $this->request->getCookie($cookie ?? 'jwt');
     }
 
-    public function setCookie($token) {
+    public function setCookie($token)
+    {
         $this->response->setCookie([
             'name'      => 'jwt',
             'value'     => $token,
@@ -69,7 +77,8 @@ class UserSessionService extends BaseAuthService
         ]);
     }
 
-    public function clearCookie() {
+    public function clearCookie()
+    {
         $this->response->setCookie([
             'name' => 'jwt',
             'value' => '',

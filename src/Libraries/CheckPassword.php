@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Libraries;
 
@@ -6,13 +6,14 @@ use Axproo\Auth\Exceptions\AuthException;
 
 class CheckPassword
 {
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
 
         // Si déjà validé avant, on skip
         if (!empty($data['skip_password_check'])) {
             return $data;
         }
-        
+
         $user = $data['user'] ?? null;
         $password = $data['password'] ?? null;
 

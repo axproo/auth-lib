@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Models;
 
@@ -27,7 +27,8 @@ class UsersModel extends Model
     protected $returnType = 'Axproo\Auth\Entities\UsersEntity';
     protected $useTimestamps = true;
 
-    public function findByEmail(string $email) {
+    public function findByEmail(string $email)
+    {
         return $this->where('email', $email)->first();
     }
 }

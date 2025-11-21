@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Libraries;
 
@@ -18,7 +18,8 @@ class AuthLib
         FinalizeLogin::class
     ];
 
-    public function handle(array $payload) : array {
+    public function handle(array $payload): array
+    {
         $data = $payload;
 
         foreach ($this->steps as $stepClass) {

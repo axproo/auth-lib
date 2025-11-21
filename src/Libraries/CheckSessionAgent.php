@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Libraries;
 
@@ -17,7 +17,8 @@ class CheckSessionAgent
     protected RoleModel $rules;
     protected $request;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new UsersModel();
         $this->token = new TokenManager();
         $this->session = new UserSessionService();
@@ -26,7 +27,8 @@ class CheckSessionAgent
         $this->request = session('request');
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         $user = $data['user'] ?? null;
         if (!$user) {
             throw new AuthException(lang('Auth.invalid_credential'), 401);

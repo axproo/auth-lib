@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Database\Migrations;
 
@@ -18,8 +18,8 @@ class UsersTenants extends Migration
             'updated_at' => ['type' => 'DATETIME', 'null' => true]
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('user_id','users', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('tenant_id','tenants', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('tenant_id', 'tenants', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('users_tenants');
     }
 

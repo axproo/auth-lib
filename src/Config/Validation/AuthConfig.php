@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Config\Validation;
 
@@ -11,7 +11,8 @@ class AuthConfig extends BaseConfig
 
     protected array $baseDefinitions = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->baseDefinitions = [
             'email' => [
                 'rules' => 'required|valid_email|is_not_unique[users.email]',
@@ -41,7 +42,8 @@ class AuthConfig extends BaseConfig
         $this->code = $this->render(['code']);
     }
 
-    public function render(array $fields) : array {
+    public function render(array $fields): array
+    {
         $rules = [];
 
         foreach ($fields as $field) {

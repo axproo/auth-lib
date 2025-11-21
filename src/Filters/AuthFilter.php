@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Filters;
 
@@ -19,7 +19,7 @@ class AuthFilter implements FilterInterface
         if (!$token) {
             return $this->unAuthorizeResponse(lang('Token.missing'));
         }
-        
+
         if (!\is_string($token)) {
             return $this->unAuthorizeResponse(lang('Token.mal_formated'));
         }
@@ -28,7 +28,7 @@ class AuthFilter implements FilterInterface
         try {
             $otp = new TokenManager();
             $decoded = $otp->validateToken($token);
-            
+
             // Vérification optionnelle selon rôle
             if (!empty($arguments)) {
                 $requiredRoles = is_array($arguments) ? $arguments : ['arguments'];
@@ -47,10 +47,12 @@ class AuthFilter implements FilterInterface
             AccessService::set($decoded);
         } catch (\Throwable $e) {
             $session = new UserSessionService();
-            
-            if ($token) $session->destroySession($token);
+
+            if ($token) {
+                $session->destroySession($token);
+            }
             $session->clearCookie();
-            
+
             return $this->unAuthorizeResponse($e->getMessage());
         }
     }
@@ -62,7 +64,8 @@ class AuthFilter implements FilterInterface
 
     /* -------------------------- Tools ----------------------------- */
 
-    private function extractToken(RequestInterface $request) : ?string {
+    private function extractToken(RequestInterface $request): ?string
+    {
         // Authorization: Bearer xxxx
         $header = $request->getHeaderLine('Authorization');
         if ($header && preg_match('/Bearer\s(\S+)/', $header, $matches)) {
@@ -77,7 +80,8 @@ class AuthFilter implements FilterInterface
         return null;
     }
 
-    private function unAuthorizeResponse(string $response, ?int $code = 401) : ResponseInterface {
+    private function unAuthorizeResponse(string $response, ?int $code = 401): ResponseInterface
+    {
         return service('response')->setStatusCode($code)->setBody($response);
     }
 }

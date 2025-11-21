@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Services;
 
@@ -12,12 +12,14 @@ class AuthService extends BaseAuthService
 {
     protected $valid;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
-        $this->valid = new AuthConfig;
+        $this->valid = new AuthConfig();
     }
 
-    public function login() {
+    public function login()
+    {
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
 
@@ -41,14 +43,15 @@ class AuthService extends BaseAuthService
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
-            
+
             return axprooResponse($code, $e->getMessage(), $payload);
         } catch (\Throwable $t) {
             return axprooResponse(500, $t->getMessage());
         }
     }
 
-    public function verifyTwofactor() {
+    public function verifyTwofactor()
+    {
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
 
@@ -81,7 +84,8 @@ class AuthService extends BaseAuthService
         }
     }
 
-    public function verifyEmail() {
+    public function verifyEmail()
+    {
         $payload = $this->get_data_from_post();
         $pipeline = new ValidEmailVerified();
 
@@ -97,16 +101,19 @@ class AuthService extends BaseAuthService
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         $session = new UserSessionService();
-        
+
         try {
             $token = $session->getCookie('jwt');
             if (!$token) {
                 return $this->respondError(lang('Session.destroy'), 403);
             }
             $delete = $session->destroySession($token);
-            if (!$delete) return $this->respondError(lang('Session.not_delete'));
+            if (!$delete) {
+                return $this->respondError(lang('Session.not_delete'));
+            }
 
             $session->clearCookie();
 
