@@ -10,15 +10,12 @@ class CheckTwoFactor
         $user = $data['user'] ?? null;
         if (!$user) throw new AuthException(lang('Users.missing'));
 
-        $force2FA = config('Auth')->force2FA ?? false;
-        $user2FA = $user->two_factor_enabled ?? false;
+        $force2FA   = config('Auth')->force2FA ?? false;
+        $user2FA    = $user->two_factor_enabled ?? false;
 
         if ($force2FA || $this->toBool($user2FA)) {
             $data['requires_2FA'] = true;
             $data['two_factor_pending'] = true;
-            // throw new AuthException(lang('Auth.twofactor_required'), 403, [
-            //     'redirectTo' => '/2FA',
-            // ]);
         } else {
             $data['two_factor_checked'] = true;
         }

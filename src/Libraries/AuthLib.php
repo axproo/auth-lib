@@ -14,6 +14,7 @@ class AuthLib
         CheckEmailVerified::class,
         CheckSessionAgent::class,
         CheckTwoFactor::class,
+        CheckTwoFactorValidation::class,
         FinalizeLogin::class
     ];
 
@@ -36,6 +37,10 @@ class AuthLib
 
             if (!\is_array($data)) {
                 throw new AuthException("Step {$stepClass} must return an array", 500);
+            }
+
+            if (!empty($data['requires_2FA']) && empty($data['two_factor_checked'])) {
+                break;
             }
         }
         return $data;

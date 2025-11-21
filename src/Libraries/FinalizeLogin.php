@@ -20,7 +20,13 @@ class FinalizeLogin
     public function handle(array $data) : array {
         $token = $data['token'] ?? null;
         $user = $data['user'] ?? null;
+
         if (!$user) throw new AuthException(lang('Users.missing'), 500);
+
+        // Vérifier que le 2FA a été validé si nécessaire
+        if (!empty($data['requires_2FA']) && empty($data['two_factor_checked'])) {
+            return $data;
+        }
         
         // update user
         $user->last_login_at  = Time::now();
