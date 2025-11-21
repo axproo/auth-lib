@@ -60,9 +60,9 @@ class AuthService extends BaseAuthService
             $payload['ip_address'] = $this->request->getIPAddress();
 
             // On relance le pipeline avec le code 2FA
-            $result = $pipeline->handle($payload);
+            // $result = $pipeline->handle($payload);
 
-            return $this->respondSuccess('Successfully Login', $result);
+            return $this->respondSuccess('Successfully Login', $payload);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
