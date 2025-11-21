@@ -7,6 +7,7 @@ class OtpModel extends Model
 {
     protected $table = 'otp_codes';
     protected $primaryKey = 'id';
+    protected $useAutoIncrement = true;
     protected $allowedFields = [
         'user_id',
         'code',

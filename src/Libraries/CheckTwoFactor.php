@@ -15,11 +15,13 @@ class CheckTwoFactor
 
         if ($force2FA || $this->toBool($user2FA)) {
             $data['requires_2FA'] = true;
-            throw new AuthException(lang('Auth.twofactor_required'), 403, [
-                'redirectTo' => '/2FA',
-            ]);
+            $data['two_factor_pending'] = true;
+            // throw new AuthException(lang('Auth.twofactor_required'), 403, [
+            //     'redirectTo' => '/2FA',
+            // ]);
+        } else {
+            $data['two_factor_checked'] = true;
         }
-        $data['two_factor_checked'] = true;
         return $data;
     }
 

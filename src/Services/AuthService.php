@@ -28,6 +28,14 @@ class AuthService extends BaseAuthService
             $payload['ip_address'] = $this->request->getIPAddress();
 
             $result = $pipeline->handle($payload);
+
+            // Si l'étape 2FA est requise mais non encore validée
+            if (!empty($result['requires_2FA']) && empty($result['two_factor_checked'])) {
+                return $this->respondError(403, lang('Otp.twofactor.required'), [
+                    'redirectTo' => '/2FA',
+                    'user_id' => $result['user']->id
+                ]);
+            }
             return axprooResponse(200, 'Successfully Login', $result);
 
         } catch (AuthException $e) {
@@ -51,18 +59,6 @@ class AuthService extends BaseAuthService
 
             $result = $pipeline->handle($payload);
             return $this->respondSuccess(lang('Otp.verified'), $result);
-        } catch (\Throwable $e) {
-            return $this->respondError($e->getMessage(), 403);
-        }
-    }
-
-    public function generateOtp() {
-        $pipeline = new GenerateTotp();
-        try {
-            $result = $pipeline->handle();
-            return $this->respondSuccess(lang('Totp.success.generated'), [
-                'data' => $result
-            ]);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 403);
         }

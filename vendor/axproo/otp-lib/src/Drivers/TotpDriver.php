@@ -3,6 +3,7 @@
 namespace Axproo\Otp\Drivers;
 
 use Axproo\Otp\Contracts\OtpDriverInterface;
+use Axproo\Otp\Libraries\QrCodeManager;
 use OTPHP\TOTP; // composer require spomky-labs/otphp
 
 class TotpDriver implements OtpDriverInterface
@@ -15,18 +16,14 @@ class TotpDriver implements OtpDriverInterface
 
     public function verify(string $receiver, string $code): bool
     {
-        $totp = TOTP::create($receiver);
-        return $totp->verify($code);
+        $qrcode = new QrCodeManager();
+        return $qrcode->verify($receiver, $code);
+        // $totp = TOTP::create($receiver);
+        // return $totp->verify($code);
     }
 
     public function generate(string $receiver, $app) {
-        $totp = TOTP::create();
-        $totp->setLabel($receiver);
-        $totp->setIssuer($app);
-
-        return [
-            'secret' => $totp->getSecret(),
-            'uri' => $totp->getProvisioningUri()
-        ];
+        $qrcode = new QrCodeManager();
+        return $qrcode->initialize($receiver, $app);
     }
 }

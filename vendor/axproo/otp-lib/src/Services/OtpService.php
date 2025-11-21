@@ -31,7 +31,7 @@ class OtpService
         return $this->manager->verify($secret, $code, 'totp');
     }
     
-    public function generateTotp(string $receiver) {
-        return $this->manager->generate($receiver);
+    public function generateTotp(string $receiver, string $app) {
+        return $this->manager->generate($receiver, $app);
     }
 }
