@@ -9,13 +9,17 @@ class CheckTwoFactorValidation
 {
     public function handle(array $data) : array {
         $user = $data['user'] ?? null;
-        $code = $data['two_factor_code'] ?? null;
+        $code = $data['code'] ?? null;
 
         if (!$user) throw new AuthException(lang('Users.missing'));
 
         // Vérifier le code si fourni
         if (!$code || !$this->verifyCode($user, $code)) {
-            throw new AuthException(lang('Auth.twofactor_invalid'), 403);
+            throw new AuthException(lang('Otp.failed'), 403, [
+                'email' => $user->email,
+                'code' => $code,
+                'verify' => $this->verifyCode($user, $code)
+            ]);
         }
         
         $data['two_factor_checked'] = true;
