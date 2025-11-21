@@ -11,7 +11,7 @@ abstract class BaseAuthService
     protected $request;
     protected $response;
     protected $validation;
-    protected UserModel $model;
+    protected UserModel $user_model;
     protected TokenManager $token;
 
     public function __construct() {
@@ -19,7 +19,7 @@ abstract class BaseAuthService
         $this->response = service('response');
         $this->validation = Services::validation();
         $this->token = new TokenManager();
-        $this->model = new UserModel();
+        $this->user_model = new UserModel();
     }
 
     protected function validate(array $rules) : bool {

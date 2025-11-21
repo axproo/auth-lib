@@ -60,7 +60,7 @@ class AuthService extends BaseAuthService
             $payload['ip_address'] = $this->request->getIPAddress();
 
             // On suppose que $payload contien 'user_id' et 'two_factor_code'
-            $user = $this->model->find($payload['user_id']);
+            $user = $this->user_model->find($payload['user_id']);
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
