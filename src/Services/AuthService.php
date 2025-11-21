@@ -65,7 +65,6 @@ class AuthService extends BaseAuthService
                 return $this->respondError(lang('Users.missing'), 404);
             }
             $payload['skip_password_check'] = true;
-            // $payload['email'] = $user->email;
             $payload['user'] = $user;
 
             // On relance le pipeline avec le code 2FA

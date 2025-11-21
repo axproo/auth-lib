@@ -19,6 +19,7 @@ class CheckTwoFactorValidation
             $data['two_factor_checked'] = true;
             $data['two_factor_pending'] = false;
         }
+        log_message("debug", "Step 7: CheckTwoFactorValidation");
         return $data;
     }
 

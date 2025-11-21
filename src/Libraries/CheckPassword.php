@@ -26,6 +26,7 @@ class CheckPassword
         }
 
         $data['password_checked'] = true;
+        log_message("debug", "Step 3: CheckPassword");
         return $data;
     }
 }

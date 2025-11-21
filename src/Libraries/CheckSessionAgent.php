@@ -50,6 +50,7 @@ class CheckSessionAgent
         $this->session->setCookie($token);
 
         $data['token'] = $token;
+        log_message("debug", "Step 5: CheckSessionAgent");
         return $data;
     }
 }

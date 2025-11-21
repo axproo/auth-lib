@@ -19,6 +19,7 @@ class CheckEmailVerified
             throw new AuthException(lang('Email.not_verified'), 403, ['redirectTo' => '/verify-email']);
         }
         $data['email_checked'] = true;
+        log_message("debug", "Step 4: CheckEmailVerified");
         return $data;
     }
 

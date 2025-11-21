@@ -20,6 +20,7 @@ class CheckStatus
         }
 
         $status = $user->status ?? 'active';
+        log_message("debug", "Step 2: CheckStatus");
 
         switch ($status) {
             case 'pending':

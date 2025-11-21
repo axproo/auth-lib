@@ -19,6 +19,7 @@ class CheckTwoFactor
         } else {
             $data['two_factor_checked'] = true;
         }
+        log_message("debug", "Step 6: CheckTwoFactor");
         return $data;
     }
 

@@ -31,6 +31,7 @@ class CheckUserExists
             throw new AuthException(lang('Auth.invalid_credential'), 401);
         }
         $data['user'] = $user;
+        log_message("debug", "Step 1: CheckUserExists");
         return $data;
     }
 }

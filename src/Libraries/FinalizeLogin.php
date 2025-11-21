@@ -36,6 +36,7 @@ class FinalizeLogin
 
         // Update last session
         $this->session->registerSession($token, $user);
+        log_message("debug", "Step 8: FinalizeLogin");
         return [
             'redirectTo' => '/dasbhoard',
         ];
