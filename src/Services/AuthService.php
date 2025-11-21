@@ -53,7 +53,7 @@ class AuthService extends BaseAuthService
     public function verifyTwofactor()
     {
         if (!session()->get('2fa_pending') || !session()->get('2fa_user_id')) {
-            return $this->respondError(lang('Auth.login.restart'), 403, [
+            return $this->respondError(lang('Auth.login.unauthorized'), 403, [
                 'redirectTo' => '/login'
             ]);
         }
@@ -69,7 +69,7 @@ class AuthService extends BaseAuthService
             $payload['ip_address'] = $this->request->getIPAddress();
 
             // On suppose que $payload contien 'user_id' et 'two_factor_code'
-            $user = $this->user_model->find($payload['user_id']);
+            $user = $this->user_model->find(session()->get('2fa_user_id'));
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
