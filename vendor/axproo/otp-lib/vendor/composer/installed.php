@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/otp-lib',
-        'pretty_version' => '2.0.1',
-        'version' => '2.0.1.0',
+        'pretty_version' => '2.0.2',
+        'version' => '2.0.2.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -29,8 +29,8 @@
             'dev_requirement' => false,
         ),
         'axproo/otp-lib' => array(
-            'pretty_version' => '2.0.1',
-            'version' => '2.0.1.0',
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',

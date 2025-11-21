@@ -2,7 +2,7 @@
     "name": "axproo/otp-lib",
     "description": "Bibliothèque officielle AXPROO pour la génération, la validation et la gestion des OTP (One-Time Password) et endpoints d’authentification sécurisés.",
     "type": "library",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "licence": "MIT",
     "authors": [
         {
@@ -40,7 +40,7 @@
             "Axproo\\Otp\\Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
         "test": "phpunit"

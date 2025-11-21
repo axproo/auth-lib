@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8eecb5924ffa8f4bbadd12a097e95f4c",
+    "content-hash": "4c242b9732fec6b31abe88e82e69f075",
     "packages": [
         {
             "name": "axproo/helper-lib",
@@ -2495,7 +2495,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,

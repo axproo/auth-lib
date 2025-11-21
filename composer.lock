@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "393e0d29df208e7e651e1715da8705c5",
+    "content-hash": "cf6e8b4e7f62afdd310b88d07cd7b05e",
     "packages": [
         {
             "name": "axproo/helper-lib",
@@ -128,16 +128,16 @@
         },
         {
             "name": "axproo/otp-lib",
-            "version": "dev-main",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:axproo/otp-lib.git",
-                "reference": "e6db2250b4d7067030261a39b35522ee901a3957"
+                "reference": "fa5935093b49b9b6eaca88cca33d35674ddaff3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/e6db2250b4d7067030261a39b35522ee901a3957",
-                "reference": "e6db2250b4d7067030261a39b35522ee901a3957",
+                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/fa5935093b49b9b6eaca88cca33d35674ddaff3d",
+                "reference": "fa5935093b49b9b6eaca88cca33d35674ddaff3d",
                 "shasum": ""
             },
             "require": {
@@ -152,7 +152,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^12.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -191,10 +190,10 @@
                 "otp"
             ],
             "support": {
-                "source": "https://github.com/axproo/otp-lib/tree/main",
+                "source": "https://github.com/axproo/otp-lib/tree/2.0.2",
                 "issues": "https://github.com/axproo/otp-lib/issues"
             },
-            "time": "2025-11-21T02:20:16+00:00"
+            "time": "2025-11-21T05:43:04+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -5309,9 +5308,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "axproo/otp-lib": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -38,14 +38,12 @@
             'dev_requirement' => false,
         ),
         'axproo/otp-lib' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'e6db2250b4d7067030261a39b35522ee901a3957',
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
+            'reference' => 'fa5935093b49b9b6eaca88cca33d35674ddaff3d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/otp-lib',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'bacon/bacon-qr-code' => array(
