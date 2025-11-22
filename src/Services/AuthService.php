@@ -155,8 +155,7 @@ class AuthService extends BaseAuthService
             $payload['ip_address'] = $this->request->getIPAddress();
 
             $result = $pipeline->handle($payload);
-            session()->remove('session_user_id');
-            $sessionService->terminateActiveSession($user->id);
+            
             return $this->respondSuccess('Successfully login', $result);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 500);

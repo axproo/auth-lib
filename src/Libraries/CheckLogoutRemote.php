@@ -35,15 +35,15 @@ class CheckLogoutRemote
             'two_factor_enabled' => filter_var($user->two_factor_enabled, FILTER_VALIDATE_BOOLEAN)
         ]);
 
-        $existingSession = $this->session->validateSession($user->id, $token);
+        // $existingSession = $this->session->validateSession($user->id, $token);
 
-        if (!$existingSession) {
-            session()->set('session_user_id', $user->id);
+        // if (!$existingSession) {
+        //     session()->set('session_user_id', $user->id);
             
-            throw new AuthException(lang('Session.is_connected'), 403, [
-                'redirectTo' => '/logout-remote'
-            ]);
-        }
+        //     throw new AuthException(lang('Session.is_connected'), 403, [
+        //         'redirectTo' => '/logout-remote'
+        //     ]);
+        // }
         $this->session->setCookie($token);
 
         $data['token'] = $token;
