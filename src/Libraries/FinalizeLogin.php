@@ -21,7 +21,7 @@ class FinalizeLogin
     public function handle(array $data): array
     {
         if (!empty($data['skip_logout_remote'])) return $data;
-        
+
         $token = $data['token'] ?? null;
         $user = $data['user'] ?? null;
 
@@ -43,6 +43,7 @@ class FinalizeLogin
         // Update last session
         $this->session->registerSession($token, $user);
         session()->remove('session_user_id');
+        
         log_message("debug", "Step 8: FinalizeLogin");
         return [
             'redirectTo' => '/dasbhoard',

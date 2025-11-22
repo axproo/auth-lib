@@ -38,7 +38,6 @@ class CheckLogoutRemote
         $this->session->setCookie($token);
 
         $data['token'] = $token;
-        $data['skip_logout_remote'] = false;
         log_message("debug", "Step 6: CheckLogoutRemote");
         return $data;
     }
