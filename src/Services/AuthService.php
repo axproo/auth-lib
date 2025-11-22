@@ -20,7 +20,12 @@ class AuthService extends BaseAuthService
 
     public function login()
     {
-        session()->destroy();
+        if (!session()->get('session_user_id')) {
+            return $this->respondError(lang('Session.is_connected'), 403, [
+                'redirectTo' => '/logout-remote'
+            ]);
+        }
+        
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
 
@@ -31,12 +36,6 @@ class AuthService extends BaseAuthService
             $payload['ip_address'] = $this->request->getIPAddress();
 
             $result = $pipeline->handle($payload);
-
-            if (!session()->get('session_user_id')) {
-                return $this->respondError(lang('Session.is_connected'), 403, [
-                    'redirectTo' => '/logout-remote'
-                ]);
-            }
 
             // Si l'étape 2FA est requise mais non encore validée
             if (!empty($result['requires_2FA']) && empty($result['two_factor_checked'])) {
