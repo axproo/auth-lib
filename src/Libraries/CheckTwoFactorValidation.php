@@ -9,7 +9,9 @@ class CheckTwoFactorValidation
 {
     public function handle(array $data): array
     {
-        if (!empty($data['two_factor_checked'])) return $data;
+        if (!empty($data['two_factor_checked'])) {
+            return $data;
+        }
 
         $user = $data['user'] ?? null;
         $code = $data['code'] ?? null;

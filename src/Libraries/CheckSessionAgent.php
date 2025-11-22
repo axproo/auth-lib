@@ -29,8 +29,10 @@ class CheckSessionAgent
 
     public function handle(array $data): array
     {
-        if (!empty($data['skip_logout_remote'])) return $data;
-        
+        if (!empty($data['skip_logout_remote'])) {
+            return $data;
+        }
+
         $user = $data['user'] ?? null;
         if (!$user) {
             throw new AuthException(lang('Auth.invalid_credential'), 401);

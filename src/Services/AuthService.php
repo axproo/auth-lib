@@ -140,7 +140,8 @@ class AuthService extends BaseAuthService
         }
     }
 
-    public function remoteLogout() {
+    public function remoteLogout()
+    {
         $session = session();
 
         if (!$session->get('session_user_id')) {

@@ -17,7 +17,9 @@ class CheckStatus
     public function handle(array $data): array
     {
         // Si déjà validé avant, on skip
-        if (!empty($data['skip_logout_remote']) || !empty($data['skip_password_check'])) return $data;
+        if (!empty($data['skip_logout_remote']) || !empty($data['skip_password_check'])) {
+            return $data;
+        }
 
         $user = $data['user'] ?? null;
         if (!$user) {

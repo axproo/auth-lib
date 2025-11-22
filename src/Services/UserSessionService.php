@@ -61,15 +61,19 @@ class UserSessionService extends BaseAuthService
         return true;
     }
 
-    public function terminateActiveSession(int $userId) : bool {
+    public function terminateActiveSession(int $userId): bool
+    {
         $row = $this->hasActiveSession($userId);
-        if (!$row) return false;
+        if (!$row) {
+            return false;
+        }
 
         // Supprime le token et la session
         return $this->model->where('id', $row->id)->delete();
     }
 
-    public function hasActiveSession(int $userId) : ?object {
+    public function hasActiveSession(int $userId): ?object
+    {
         return $this->model->where('user_id', $userId)->first();
     }
 
