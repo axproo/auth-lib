@@ -156,6 +156,8 @@ class AuthService extends BaseAuthService
 
             $result = $pipeline->handle($payload);
             
+            $sessionService->terminateActiveSession($user->id);
+            session()->remove('session_user_id');
             return $this->respondSuccess('Successfully login', $result);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 500);
