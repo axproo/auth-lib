@@ -16,6 +16,8 @@ class CheckUserExists
 
     public function handle(array $data): array
     {
+        if (!empty($data['skip_logout_remote'])) return $data;
+        
         $email = $data['email'] ?? null;
 
         if (!$email) {

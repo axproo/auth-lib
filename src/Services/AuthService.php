@@ -80,6 +80,8 @@ class AuthService extends BaseAuthService
             // On relance le pipeline avec le code 2FA
             $result = $pipeline->handle($payload);
 
+            session()->remove('2fa_pending');
+            session()->remove('2fa_user_id');
             return $this->respondSuccess('Successfully Login', $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
@@ -126,6 +128,36 @@ class AuthService extends BaseAuthService
             return $this->respondSuccess(lang('Session.disconnected'), [
                 'redirectTo' => '/login'
             ]);
+        } catch (\Throwable $e) {
+            return $this->respondError($e->getMessage(), 500);
+        }
+    }
+
+    public function remoteLogout() {
+        $session = session();
+
+        if (!$session->get('session_user_id')) {
+            return $this->respondError(lang('Auth.login.unauthorized'), 403, [
+                'redirectTo' => '/login'
+            ]);
+        }
+        $payload = $this->get_data_from_post();
+        $pipeline = new AuthLib();
+        $sessionService = new UserSessionService();
+
+        try {
+            $user = $this->user_model->find($session->get('session_user_id'));
+            if (!$user) {
+                return $this->respondError(lang('Users.missing'), 404);
+            }
+            $payload['user'] = $user;
+            $payload['skip_logout_remote'] = true;
+            $payload['ip_address'] = $this->request->getIPAddress();
+
+            $result = $pipeline->handle($payload);
+            session()->remove('session_user_id');
+            $sessionService->terminateActiveSession($user->id);
+            return $this->respondSuccess('Successfully login', $result);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 500);
         }

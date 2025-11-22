@@ -9,6 +9,8 @@ class CheckTwoFactorValidation
 {
     public function handle(array $data): array
     {
+        if (!empty($data['two_factor_checked'])) return $data;
+
         $user = $data['user'] ?? null;
         $code = $data['code'] ?? null;
 
@@ -18,7 +20,9 @@ class CheckTwoFactorValidation
 
         // Vérifier le code si fourni
         if (!$code || !$this->verifyCode($user, $code)) {
-            throw new AuthException(lang('Otp.failed'), 403);
+            throw new AuthException(lang('Otp.failed'), 403, [
+                'data' => $data
+            ]);
         }
 
         $data['two_factor_checked'] = true;
@@ -32,5 +36,19 @@ class CheckTwoFactorValidation
     {
         $otp = new OtpService();
         return $otp->verifyTotp($user->email, $code);
+    }
+
+    private function toBool($val): bool
+    {
+        if (\is_bool($val)) {
+            return $val;
+        }
+        if (\is_int($val)) {
+            return $val === 1;
+        }
+        if (\is_string($val)) {
+            return \in_array(strtolower($val), ['1','true','yes'], true);
+        }
+        return false;
     }
 }

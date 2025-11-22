@@ -29,6 +29,8 @@ class CheckSessionAgent
 
     public function handle(array $data): array
     {
+        if (!empty($data['skip_logout_remote'])) return $data;
+        
         $user = $data['user'] ?? null;
         if (!$user) {
             throw new AuthException(lang('Auth.invalid_credential'), 401);
@@ -47,8 +49,11 @@ class CheckSessionAgent
         $existingSession = $this->session->validateSession($user->id, $token);
 
         if (!$existingSession) {
-            // $data['logout_remote'] = 
-            throw new AuthException(lang('Session.is_connected'), 403);
+            session()->set('session_user_id', $user->id);
+
+            throw new AuthException(lang('Session.is_connected'), 403, [
+                'redirectTo' => '/logout-remote'
+            ]);
         }
         $this->session->setCookie($token);
 

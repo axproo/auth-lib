@@ -9,7 +9,7 @@ class CheckEmailVerified
     public function handle(array $data): array
     {
         // Si déjà validé avant, on skip
-        if (!empty($data['skip_password_check'])) {
+        if (!empty($data['skip_password_check']) || !empty($data['skip_logout_remote'])) {
             return $data;
         }
 
