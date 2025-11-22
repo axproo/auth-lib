@@ -23,7 +23,7 @@ class CheckLogoutRemote
 
     public function handle(array $data) : array {
         $user = $data['user'] ?? null;
-        // $this->session->terminateActiveSession($user->id);
+        $this->session->terminateActiveSession($user->id);
 
         $token = $this->token->generateToken([
             'uid' => $user->id,
@@ -34,19 +34,11 @@ class CheckLogoutRemote
             'status' => $user->status,
             'two_factor_enabled' => filter_var($user->two_factor_enabled, FILTER_VALIDATE_BOOLEAN)
         ]);
-
-        // $existingSession = $this->session->validateSession($user->id, $token);
-
-        // if (!$existingSession) {
-        //     session()->set('session_user_id', $user->id);
-            
-        //     throw new AuthException(lang('Session.is_connected'), 403, [
-        //         'redirectTo' => '/logout-remote'
-        //     ]);
-        // }
+        
         $this->session->setCookie($token);
 
         $data['token'] = $token;
+        $data['skip_logout_remote'] = false;
         log_message("debug", "Step 6: CheckLogoutRemote");
         return $data;
     }

@@ -143,7 +143,6 @@ class AuthService extends BaseAuthService
         }
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
-        $sessionService = new UserSessionService();
 
         try {
             $user = $this->user_model->find($session->get('session_user_id'));
@@ -155,9 +154,6 @@ class AuthService extends BaseAuthService
             $payload['ip_address'] = $this->request->getIPAddress();
 
             $result = $pipeline->handle($payload);
-            
-            $sessionService->terminateActiveSession($user->id);
-            session()->remove('session_user_id');
             return $this->respondSuccess('Successfully login', $result);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 500);
