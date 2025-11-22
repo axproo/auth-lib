@@ -20,12 +20,12 @@ class AuthService extends BaseAuthService
 
     public function login()
     {
-        if (!session()->get('session_user_id')) {
+        if (session()->get('session_user_id')) {
             return $this->respondError(lang('Session.is_connected'), 403, [
                 'redirectTo' => '/logout-remote'
             ]);
         }
-        
+
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
 
