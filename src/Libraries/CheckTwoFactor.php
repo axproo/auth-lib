@@ -25,7 +25,9 @@ class CheckTwoFactor
             session()->set('2fa_user_id', $user->id);
             session()->set('2fa_pending', true);
 
-            throw new AuthException(lang('Auth.twofactor_required'), 403);
+            throw new AuthException(lang('Otp.twofactor_required'), 403, [
+                'redirectTo' => '/2FA'
+            ]);
         } else {
             $data['two_factor_checked'] = true;
         }
