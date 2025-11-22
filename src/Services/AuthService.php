@@ -22,10 +22,10 @@ class AuthService extends BaseAuthService
     {
         if (!session()->get('session_user_id')) {
             return $this->respondError(lang('Session.is_connected'), 403, [
-                'redirectTo' => '/logout-remote'
+                'redirectTo' => '/logout-remote2'
             ]);
         }
-        
+
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();
 
@@ -130,6 +130,7 @@ class AuthService extends BaseAuthService
             }
 
             $session->clearCookie();
+            session()->destroy();
 
             return $this->respondSuccess(lang('Session.disconnected'), [
                 'redirectTo' => '/login'
