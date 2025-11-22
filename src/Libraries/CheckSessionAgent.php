@@ -47,6 +47,7 @@ class CheckSessionAgent
         $existingSession = $this->session->validateSession($user->id, $token);
 
         if (!$existingSession) {
+            // $data['logout_remote'] = 
             throw new AuthException(lang('Session.is_connected'), 403);
         }
         $this->session->setCookie($token);

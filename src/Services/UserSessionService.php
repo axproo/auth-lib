@@ -2,6 +2,7 @@
 
 namespace Axproo\Auth\Services;
 
+use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Auth\Models\SessionsModel;
 use CodeIgniter\I18n\Time;
 
@@ -19,8 +20,21 @@ class UserSessionService extends BaseAuthService
         $this->expire = (int) (getenv('JWT_EXPIRE') ?: 3600);
     }
 
-    public function registerSession(string $token, object $user)
+    public function registerSession(string $token, object $user, bool $force = false)
     {
+        // Vérifier si la session existe
+        $exists = $this->hasActiveSession($user->id);
+
+        if ($exists) {
+            if (!$force) {
+                // Ne pas écraser la session existante
+                throw new AuthException(lang('Session.user.exists'));
+            } else {
+                // Supprimer la session existante pour créer la nouvelle
+                $this->model->where('id', $exists->id)->delete();
+            }
+        }
+
         $data = [
             'user_id' => $user->id,
             'jwt_token' => $token,
@@ -28,13 +42,6 @@ class UserSessionService extends BaseAuthService
             'user_agent' => $this->request->getUserAgent(),
             'last_activity' => Time::now()
         ];
-
-        // Vérifier si la session existe
-        $exists = $this->model->where('user_id', $user->id)->first();
-
-        if ($exists) {
-            $data['id'] = $exists->id;
-        }
         $this->model->save($data);
     }
 
@@ -52,6 +59,18 @@ class UserSessionService extends BaseAuthService
             return false;
         }
         return true;
+    }
+
+    public function terminateActiveSession(int $userId) : bool {
+        $row = $this->hasActiveSession($userId);
+        if (!$row) return false;
+
+        // Supprime le token et la session
+        return $this->model->where('id', $row->id)->delete();
+    }
+
+    public function hasActiveSession(int $userId) : ?object {
+        return $this->model->where('user_id', $userId)->first();
     }
 
     public function destroySession(string $token): bool
