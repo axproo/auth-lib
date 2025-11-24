@@ -7,53 +7,73 @@ use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Auth\Libraries\AuthLib;
 use Axproo\Auth\Libraries\GenerateTotp;
 use Axproo\Auth\Libraries\ValidEmailVerified;
+use Axproo\Auth\Pipelines\AuthPipeline;
 
 class AuthService extends BaseAuthService
 {
     protected $valid;
+    protected $payload;
 
     public function __construct()
     {
         parent::__construct();
         $this->valid = new AuthConfig();
+        $this->payload = $this->get_data_from_post();
+        $this->payload['ip_address'] = $this->request->getIPAddress();
     }
 
     public function login()
     {
-        if (session()->get('session_user_id')) {
-            return $this->respondError(lang('Session.is_connected'), 403, [
-                'redirectTo' => '/logout-remote'
-            ]);
-        }
-
-        $payload = $this->get_data_from_post();
-        $pipeline = new AuthLib();
+        $pipeline = new AuthPipeline();
 
         try {
             if (!$this->validate($this->valid->auth)) {
                 return $this->respondError($this->validation->getErrors());
             }
-            $payload['ip_address'] = $this->request->getIPAddress();
-
-            $result = $pipeline->handle($payload);
-
-            // Si l'étape 2FA est requise mais non encore validée
-            if (!empty($result['requires_2FA']) && empty($result['two_factor_checked'])) {
-                return $this->respondError(lang('Otp.twofactor_required'), 403, [
-                    'redirecTo' => '/2FA',
-                    'user_id' => $result['user']->id
-                ]);
-            }
-            return axprooResponse(200, 'Successfully Login', $result);
-
+            $result = $pipeline->handle($this->payload);
+            return $this->respondSuccess(lang('Auth.success'), $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
 
-            return axprooResponse($code, $e->getMessage(), $payload);
+            return $this->respondError($e->getMessage(), $code, $payload);
         } catch (\Throwable $t) {
-            return axprooResponse(500, $t->getMessage());
+            return $this->respondError($t->getMessage(), 500);
         }
+        // if (session()->get('session_user_id')) {
+        //     return $this->respondError(lang('Session.is_connected'), 403, [
+        //         'redirectTo' => '/logout-remote'
+        //     ]);
+        // }
+
+        // $payload = $this->get_data_from_post();
+        // $pipeline = new AuthLib();
+
+        // try {
+        //     if (!$this->validate($this->valid->auth)) {
+        //         return $this->respondError($this->validation->getErrors());
+        //     }
+        //     $payload['ip_address'] = $this->request->getIPAddress();
+
+        //     $result = $pipeline->handle($payload);
+
+        //     // Si l'étape 2FA est requise mais non encore validée
+        //     if (!empty($result['requires_2FA']) && empty($result['two_factor_checked'])) {
+        //         return $this->respondError(lang('Otp.twofactor_required'), 403, [
+        //             'redirecTo' => '/2FA',
+        //             'user_id' => $result['user']->id
+        //         ]);
+        //     }
+        //     return axprooResponse(200, 'Successfully Login', $result);
+
+        // } catch (AuthException $e) {
+        //     $payload = $e->getPayload();
+        //     $code = $e->getCode() ?: 403;
+
+        //     return axprooResponse($code, $e->getMessage(), $payload);
+        // } catch (\Throwable $t) {
+        //     return axprooResponse(500, $t->getMessage());
+        // }
     }
 
     public function verifyTwofactor()
@@ -114,6 +134,7 @@ class AuthService extends BaseAuthService
                 return $this->respondError(lang('Users.missing'), 404);
             }
             $payload['email'] = $user->email;
+            $payload['skip_status'] = true;
             // $payload['user'] = $user;
             $payload['ip_address'] = $this->request->getIPAddress();
 

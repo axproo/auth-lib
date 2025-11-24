@@ -5,7 +5,7 @@ namespace Axproo\Auth\Libraries;
 use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Auth\Models\UsersModel;
 
-class CheckUserExists
+class CheckUserExists000
 {
     protected UsersModel $model;
 

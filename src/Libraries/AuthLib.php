@@ -8,11 +8,11 @@ use ReflectionClass;
 class AuthLib
 {
     protected array $steps = [
-        CheckUserExists::class,
-        CheckStatus::class,
-        CheckPassword::class,
-        CheckEmailVerified::class,
-        CheckEmailValid::class,
+        // CheckUserExists::class,
+        // CheckStatus::class,
+        // CheckPassword::class,
+        // CheckEmailVerified::class,
+        // CheckEmailValid::class,
         // CheckSessionAgent::class,
         // CheckLogoutRemote::class,
         // CheckTwoFactor::class,
@@ -22,8 +22,8 @@ class AuthLib
 
     // Etapes à exécuter obligatoirement
     protected array $alwaysRun = [
-        CheckUserExists::class,
-        CheckStatus::class,
+        // CheckUserExists::class,
+        // CheckStatus::class,
     ];
 
     public function handle(array $payload): array
