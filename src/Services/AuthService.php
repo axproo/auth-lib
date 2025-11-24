@@ -8,6 +8,7 @@ use Axproo\Auth\Libraries\AuthLib;
 use Axproo\Auth\Libraries\GenerateTotp;
 use Axproo\Auth\Libraries\ValidEmailVerified;
 use Axproo\Auth\Pipelines\AuthPipeline;
+use Axproo\Auth\Pipelines\EmailPipeline;
 
 class AuthService extends BaseAuthService
 {
@@ -118,7 +119,31 @@ class AuthService extends BaseAuthService
         }
     }
 
-    public function verifyEmail()
+    public function verifyEmail() {
+        $pipeline = new EmailPipeline();
+
+        try {
+            if (!$this->validate($this->valid->code)) {
+                return $this->respondError($this->validation->getErrors());
+            }
+            $user = $this->user_model->find(session()->get('session_user_id'));
+            if (!$user) {
+                return $this->respondError(lang('Users.missing'), 404);
+            }
+            
+            $result = $pipeline->handle(($this->payload));
+            return $this->respondSuccess(lang('Otp.verified'), $result);
+        } catch (AuthException $e) {
+            $payload = $e->getPayload();
+            $code = $e->getCode() ?: 403;
+
+            return $this->respondError($e->getMessage(), $code, $payload);
+        } catch (\Throwable $th) {
+            return $this->respondError($th->getMessage(), 500);
+        }
+    }
+
+    public function verifyEmail0()
     {
         $payload = $this->get_data_from_post();
         $pipeline = new AuthLib();

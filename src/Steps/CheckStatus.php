@@ -32,11 +32,13 @@ class CheckStatus
                     'name' => "{$user->first_name} {$user->last_name}"
                 ];
                 $response = $this->otp->sendForEmail($user->email, $payload);
+                session()->set('session_user_id', $user->id);
 
                 throw new AuthException(lang('Users.pending'), 403, [
                     'redirectTo' => '/verify-email',
                     'data' => $response,
-                    'stop_here' => true
+                    'stop_here' => true,
+                    'email' => $user->email
                 ]);
             
             case 'inactive':
