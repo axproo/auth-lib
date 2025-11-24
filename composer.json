@@ -44,7 +44,8 @@
       "dev-main": "1.x-dev"
     },
     "codeigniter4": {
-        "migrations": "src/Database/Migrations"
+        "migrations": "src/Database/Migrations",
+        "seeder": "src/Database/Seeds"
     }
   },
   "require-dev": {

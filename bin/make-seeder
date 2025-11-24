@@ -1,0 +1,40 @@
+#!/usr/bin/env php
+<?php
+
+// Lecture du nom de la migration
+$name = $argv[1] ?? null;
+
+if (!$name) {
+    echo "Usage: make-seeder <Name>\n";
+    exit(1);
+}
+
+function toPascalCase (string $text): string
+{
+    return str_replace(' ', '', ucwords(str_replace(['-','_'], ' ', $text)));
+}
+
+// Classe formatée
+$className = toPascalCase($name);
+$filename = "{$className}.php";
+
+$path = __DIR__ . '/../src/Database/Seeds/' . $filename;
+
+$template = <<<PHP
+<?php
+
+use CodeIgniter\Database\Seeder;
+
+class {$className} extends Seeder
+{
+    public function run()
+    {
+        //
+    }
+}
+PHP;
+
+file_put_contents($path, $template);
+
+echo "Seeder générée : {$filename}\n";
+echo "Chemin : src/Database/Seeds/\n";

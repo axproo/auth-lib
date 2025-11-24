@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b2cc345861ba8f0041ce8b7f36e4c3c",
+    "content-hash": "dcdabf527a438d58e46979e39710793c",
     "packages": [
         {
             "name": "axproo/form-lib",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:axproo/form-lib.git",
-                "reference": "dea3ae2dae3337a41d2740cd3639feacfcfef589"
+                "reference": "eb1f9b5596e47204a350174d98c1c8266970348f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/form-lib/zipball/dea3ae2dae3337a41d2740cd3639feacfcfef589",
-                "reference": "dea3ae2dae3337a41d2740cd3639feacfcfef589",
+                "url": "https://api.github.com/repos/axproo/form-lib/zipball/eb1f9b5596e47204a350174d98c1c8266970348f",
+                "reference": "eb1f9b5596e47204a350174d98c1c8266970348f",
                 "shasum": ""
             },
             "require": {
@@ -60,10 +60,10 @@
             ],
             "description": "Bibliothèque de gestion des formulaires dynamique et validation unifiée pour CI4.",
             "support": {
-                "source": "https://github.com/axproo/form-lib/tree/1.0.0",
+                "source": "https://github.com/axproo/form-lib/tree/1.0.1",
                 "issues": "https://github.com/axproo/form-lib/issues"
             },
-            "time": "2025-11-24T07:26:49+00:00"
+            "time": "2025-11-24T07:56:15+00:00"
         },
         {
             "name": "axproo/helper-lib",

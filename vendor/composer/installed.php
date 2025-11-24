@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'axproo/form-lib' => array(
-            'pretty_version' => '1.0.0',
-            'version' => '1.0.0.0',
-            'reference' => 'dea3ae2dae3337a41d2740cd3639feacfcfef589',
+            'pretty_version' => '1.0.1',
+            'version' => '1.0.1.0',
+            'reference' => 'eb1f9b5596e47204a350174d98c1c8266970348f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/form-lib',
             'aliases' => array(),
