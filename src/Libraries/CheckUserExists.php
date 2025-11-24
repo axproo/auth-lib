@@ -30,8 +30,8 @@ class CheckUserExists
             ]);
         }
         $data['user'] = $user;
-        log_message("debug_auth", "Step 1: CheckUserExists");
-        
+        log_message("debug", "Step 1: CheckUserExists");
+
         return $data;
         // if (!empty($data['skip_logout_remote'])) {
         //     return $data;
