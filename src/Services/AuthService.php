@@ -101,18 +101,30 @@ class AuthService extends BaseAuthService
     public function verifyEmail()
     {
         $payload = $this->get_data_from_post();
-        $pipeline = new ValidEmailVerified();
+        $pipeline = new AuthLib();
 
         try {
             if (!$this->validate($this->valid->code)) {
                 return $this->respondError($this->validation->getErrors());
             }
-
             $result = $pipeline->handle($payload);
             return $this->respondSuccess(lang('Otp.verified'), $result);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 403);
         }
+        // $payload = $this->get_data_from_post();
+        // $pipeline = new ValidEmailVerified();
+
+        // try {
+        //     if (!$this->validate($this->valid->code)) {
+        //         return $this->respondError($this->validation->getErrors());
+        //     }
+
+        //     $result = $pipeline->handle($payload);
+        //     return $this->respondSuccess(lang('Otp.verified'), $result);
+        // } catch (\Throwable $e) {
+        //     return $this->respondError($e->getMessage(), 403);
+        // }
     }
 
     public function logout()
