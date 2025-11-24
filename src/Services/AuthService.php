@@ -113,7 +113,8 @@ class AuthService extends BaseAuthService
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
-            $payload['user'] = $user;
+            $payload['email'] = $user->email;
+            // $payload['user'] = $user;
             $payload['ip_address'] = $this->request->getIPAddress();
 
             $result = $pipeline->handle($payload);
