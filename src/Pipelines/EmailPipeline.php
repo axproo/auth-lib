@@ -2,13 +2,15 @@
 
 namespace Axproo\Auth\Pipelines;
 
-class EmailPipeline
+class EmailPipeline extends BasePipeline
 {
-    protected array $step = [];
+    protected array $steps = [];
+
+    public function __construct() {
+        parent::__construct($this->steps);
+    }
 
     public function handle(array $payload) : array {
-        $data = $payload;
-        
-        return $data;
+        return $this->setHandle($payload);
     }
 }
