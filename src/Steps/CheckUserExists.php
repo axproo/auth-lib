@@ -27,6 +27,7 @@ class CheckUserExists
         }
 
         $data['user'] = $user;
+        $data['user_exist'] = true;
         log_message('debug', "End Step 1\n");
 
         return $data;

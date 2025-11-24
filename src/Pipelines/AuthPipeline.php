@@ -11,6 +11,12 @@ class AuthPipeline
     ];
 
     public function handle(array $payload) : array {
-        return $payload;
+        $data = $payload;
+
+        // Récupération de la progression
+        $currentStep = session()->get('current_step') ?? 0;
+
+        $data['current_step'] = $currentStep;
+        return $data;
     }
 }
