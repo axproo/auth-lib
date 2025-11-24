@@ -16,6 +16,7 @@ class CheckUserExists
 
     public function handle(array $data): array
     {
+        log_message("debug", "Step 1: CheckUserExists\n");
         $email = $data['email'] ?? null;
         if (!$email) {
             throw new AuthException(lang('Email.required'), 400, [
@@ -30,7 +31,7 @@ class CheckUserExists
             ]);
         }
         $data['user'] = $user;
-        log_message("debug", "Step 1: CheckUserExists");
+        log_message("debug", "End Step 1\n");
 
         return $data;
         // if (!empty($data['skip_logout_remote'])) {

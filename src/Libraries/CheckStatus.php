@@ -16,18 +16,20 @@ class CheckStatus
 
     public function handle(array $data): array
     {
-        // Si déjà validé avant, on skip
-        if (!empty($data['skip_logout_remote']) || !empty($data['skip_password_check'])) {
-            return $data;
-        }
+        log_message("debug", "Step 2: CheckStatus\n");
+        // // Si déjà validé avant, on skip
+        // if (!empty($data['skip_logout_remote']) || !empty($data['skip_password_check'])) {
+        //     return $data;
+        // }
 
         $user = $data['user'] ?? null;
         if (!$user) {
-            throw new AuthException(lang('Users.missing'), 500);
+            throw new AuthException(lang('Users.missing'), 500, [
+                'stop_here' => true
+            ]);
         }
 
         $status = $user->status ?? 'active';
-        log_message("debug", "Step 2: CheckStatus");
 
         switch ($status) {
             case 'pending':
@@ -35,20 +37,27 @@ class CheckStatus
                     'subject' => 'Votre code de vérification',
                     'body' => 'emails/active_account',
                     'ttl' => 300,
-                    'name' => "{$user->first_name} {$user->last_name}"
+                    'name' => "{$user->first_name} {$user->last_name}",
+                    'stop_here' => true
                 ]);
 
                 throw new AuthException(lang('Account.pending'), 403, [
                     'redirectTo' => '/verify-email',
-                    'data' => $response
+                    'data' => $response,
+                    'stop_here' => true
                 ]);
 
             case 'inactive':
-                throw new AuthException(lang('Account.inactive'), 403);
+                throw new AuthException(lang('Account.inactive'), 403, [
+                    'stop_here' => true
+                ]);
             case 'blocked':
-                throw new AuthException(lang('Account.blocked'), 403);
+                throw new AuthException(lang('Account.blocked'), 403, [
+                    'stop_here' => true
+                ]);
             case 'active':
             default:
+                log_message("debug", "End Step 2\n");
                 $data['user_status_checked'] = true;
                 return $data;
         }

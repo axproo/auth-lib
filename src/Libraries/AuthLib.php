@@ -9,7 +9,7 @@ class AuthLib
 {
     protected array $steps = [
         CheckUserExists::class,
-        // CheckStatus::class,
+        CheckStatus::class,
         // CheckPassword::class,
         // CheckEmailVerified::class,
         // CheckSessionAgent::class,
