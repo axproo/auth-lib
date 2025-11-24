@@ -3,24 +3,17 @@
 namespace Axproo\Auth\Steps;
 
 use Axproo\Auth\Exceptions\AuthException;
-use Axproo\Otp\Services\OtpService;
 
-class CheckStatus
+class CheckStatus extends BaseStep
 {
-    protected OtpService $otp;
-
     public function __construct() {
-        $this->otp = new OtpService();
+        parent::__construct();
     }
 
     public function handle(array $data) : array {
         log_message("debug", "Step 2: CheckStatus");
 
-        $user = $data['user'] ?? null;
-        if (!$user) {
-            throw new AuthException(lang('Users.missing'), 404, ['stop_here' => true]);
-        }
-
+        $user = $this->getUserData($data);
         $status = $user->status ?? 'active';
 
         switch ($status) {

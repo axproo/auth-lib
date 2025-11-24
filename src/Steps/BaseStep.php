@@ -4,13 +4,24 @@ namespace Axproo\Auth\Steps;
 
 use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Auth\Models\UsersModel;
+use Axproo\Otp\Services\OtpService;
 
 abstract class BaseStep
 {
     protected UsersModel $usersModel;
+    protected OtpService $otp;
 
     public function __construct() {
         $this->usersModel = new UsersModel();
+        $this->otp = new OtpService();
+    }
+
+    protected function getUserData(array $data) {
+        $user = $data['user'] ?? null;
+        if (!$user) {
+            throw new AuthException(lang('Users.missing'), 404, ['stop_here' => true]);
+        }
+        return $user;
     }
 
     protected function getUserByEmail(string $email) {
