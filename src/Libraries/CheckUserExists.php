@@ -16,23 +16,40 @@ class CheckUserExists
 
     public function handle(array $data): array
     {
-        if (!empty($data['skip_logout_remote'])) {
-            return $data;
-        }
-
         $email = $data['email'] ?? null;
-
         if (!$email) {
-            throw new AuthException(lang('Email.required'), 400);
+            throw new AuthException(lang('Email.required'), 400, [
+                'stop_here' => true,
+            ]);
         }
 
         $user = $this->model->where('email', $email)->first();
-
         if (!$user) {
-            throw new AuthException(lang('Auth.invalid_credential'), 401);
+            throw new AuthException(lang('Users.invalid_credential'), 401, [
+                'stop_here' => true
+            ]);
         }
         $data['user'] = $user;
-        log_message("debug", "Step 1: CheckUserExists");
+        log_message("debug_auth", "Step 1: CheckUserExists");
+        
         return $data;
+        // if (!empty($data['skip_logout_remote'])) {
+        //     return $data;
+        // }
+
+        // $email = $data['email'] ?? null;
+
+        // if (!$email) {
+        //     throw new AuthException(lang('Email.required'), 400);
+        // }
+
+        // $user = $this->model->where('email', $email)->first();
+
+        // if (!$user) {
+        //     throw new AuthException(lang('Auth.invalid_credential'), 401);
+        // }
+        // $data['user'] = $user;
+        // log_message("debug", "Step 1: CheckUserExists");
+        // return $data;
     }
 }
