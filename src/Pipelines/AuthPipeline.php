@@ -2,23 +2,21 @@
 
 namespace Axproo\Auth\Pipelines;
 
-use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Auth\Steps\CheckStatus;
 use Axproo\Auth\Steps\CheckUserExists;
-use ReflectionClass;
 
 class AuthPipeline extends BasePipeline
 {
-    protected array $step = [
+    protected array $steps = [
         CheckUserExists::class,
         CheckStatus::class
     ];
 
     public function __construct() {
-        parent::__construct($this->step);
+        parent::__construct($this->steps);
     }
 
     public function handle(array $payload) : array {
-        return $this->handle($payload);
+        return $this->setHandle($payload);
     }
 }

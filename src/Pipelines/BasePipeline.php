@@ -13,7 +13,7 @@ abstract class BasePipeline
         $this->step = $step;
     }
     
-    protected function handle(array $payload) : array {
+    protected function setHandle(array $payload) : array {
         $data = $payload;
 
         // Récupération de la progression
@@ -52,11 +52,15 @@ abstract class BasePipeline
                 session()->set('current_step', $i);
                 return $data;
             }
+
+            // Etapé suivante
+            session()->set('current_step', $i + 1);
         }
         
         // Si toutes les étapes sont finalisées -> on supprime la progression
         session()->remove('current_step');
-        $data['current_step'] = session()->get('current_step');
+        $data['current_step'] = null;
+        
         return $data;
     }
 }
