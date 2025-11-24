@@ -5,7 +5,7 @@ namespace Axproo\Auth\Libraries;
 use Axproo\Auth\Exceptions\AuthException;
 use Axproo\Otp\Services\OtpService;
 
-class CheckStatus
+class CheckStatus000
 {
     protected OtpService $otp;
 
