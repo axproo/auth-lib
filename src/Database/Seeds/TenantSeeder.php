@@ -1,7 +1,5 @@
 <?php
 
-namespace Axproo\Auth\Database\Seeds;
-
 use CodeIgniter\Database\Seeder;
 use Ramsey\Uuid\Uuid;
 
