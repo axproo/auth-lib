@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => '1.1.1',
-        'version' => '1.1.1.0',
+        'pretty_version' => '1.1.2',
+        'version' => '1.1.2.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => '1.1.1',
-            'version' => '1.1.1.0',
+            'pretty_version' => '1.1.2',
+            'version' => '1.1.2.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'axproo/otp-lib' => array(
-            'pretty_version' => '2.0.3',
-            'version' => '2.0.3.0',
-            'reference' => '1717cef06903c57843c92329e948149c212bc7f5',
+            'pretty_version' => '2.0.4',
+            'version' => '2.0.4.0',
+            'reference' => '121e40cca45ba8fb8ebeb430f13a5065964fd8e4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/otp-lib',
             'aliases' => array(),
