@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf6e8b4e7f62afdd310b88d07cd7b05e",
+    "content-hash": "b8cb31a81c3cf6bffb4dd91e7455935a",
     "packages": [
         {
             "name": "axproo/helper-lib",
@@ -128,16 +128,16 @@
         },
         {
             "name": "axproo/otp-lib",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:axproo/otp-lib.git",
-                "reference": "fa5935093b49b9b6eaca88cca33d35674ddaff3d"
+                "reference": "1717cef06903c57843c92329e948149c212bc7f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/fa5935093b49b9b6eaca88cca33d35674ddaff3d",
-                "reference": "fa5935093b49b9b6eaca88cca33d35674ddaff3d",
+                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/1717cef06903c57843c92329e948149c212bc7f5",
+                "reference": "1717cef06903c57843c92329e948149c212bc7f5",
                 "shasum": ""
             },
             "require": {
@@ -152,10 +152,16 @@
             "require-dev": {
                 "phpunit/phpunit": "^12.4"
             },
+            "bin": [
+                "bin/make-migration"
+            ],
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.x.dev"
+                    "dev-main": "2.x.dev"
+                },
+                "codeigniter4": {
+                    "migrations": "src/Database/Migrations"
                 }
             },
             "autoload": {
@@ -190,10 +196,10 @@
                 "otp"
             ],
             "support": {
-                "source": "https://github.com/axproo/otp-lib/tree/2.0.2",
+                "source": "https://github.com/axproo/otp-lib/tree/2.0.3",
                 "issues": "https://github.com/axproo/otp-lib/issues"
             },
-            "time": "2025-11-21T05:43:04+00:00"
+            "time": "2025-11-24T06:56:12+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",

@@ -1,7 +1,5 @@
 <?php
 
-namespace Axproo\Auth\Database\Migrations;
-
 use CodeIgniter\Database\Migration;
 
 class Users extends Migration

@@ -1,9 +1,8 @@
-<?php 
-namespace Axproo\Otp\Database\Migrations;
+<?php
 
 use CodeIgniter\Database\Migration;
 
-class Otp_codes extends Migration
+class OtpCodes extends Migration
 {
     public function up()
     {

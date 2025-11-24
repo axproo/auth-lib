@@ -2,7 +2,7 @@
     "name": "axproo/otp-lib",
     "description": "Bibliothèque officielle AXPROO pour la génération, la validation et la gestion des OTP (One-Time Password) et endpoints d’authentification sécurisés.",
     "type": "library",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "licence": "MIT",
     "authors": [
         {
@@ -30,6 +30,9 @@
             "url": "https://github.com/axproo/mailer.git"
         }
     ],
+    "bin": [
+        "bin/make-migration"
+    ],
     "autoload": {
         "psr-4": {
             "Axproo\\Otp\\": "src/"
@@ -47,7 +50,10 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "1.x.dev"
+            "dev-main": "2.x.dev"
+        },
+        "codeigniter4": {
+            "migrations": "src/Database/Migrations"
         }
     },
     "require-dev": {
