@@ -19,7 +19,11 @@ abstract class BaseStep
     protected function getUserData(array $data) {
         $user = $data['user'] ?? null;
         if (!$user) {
-            throw new AuthException(lang('Users.missing'), 404, ['stop_here' => true]);
+            throw new AuthException(lang('Users.missing'), 404, [
+                'stop_here' => true,
+                'method' => 'getUserData()',
+                'data' => $data
+            ]);
         }
         return $user;
     }
