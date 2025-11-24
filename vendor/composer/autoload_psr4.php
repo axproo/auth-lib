@@ -57,6 +57,7 @@ return array(
     'Axproo\\Otp\\' => array($vendorDir . '/axproo/otp-lib/src'),
     'Axproo\\Mailer\\' => array($vendorDir . '/axproo/mailer/src'),
     'Axproo\\HelperLib\\' => array($vendorDir . '/axproo/helper-lib/src'),
+    'Axproo\\Form\\' => array($vendorDir . '/axproo/form-lib/src'),
     'Axproo\\Auth\\Tests\\' => array($baseDir . '/tests'),
     'Axproo\\Auth\\' => array($baseDir . '/src'),
 );

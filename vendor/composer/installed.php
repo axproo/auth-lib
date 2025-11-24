@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => '1.1.2',
-        'version' => '1.1.2.0',
+        'pretty_version' => '1.1.3',
+        'version' => '1.1.3.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,11 +11,20 @@
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => '1.1.2',
-            'version' => '1.1.2.0',
+            'pretty_version' => '1.1.3',
+            'version' => '1.1.3.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'axproo/form-lib' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => 'dea3ae2dae3337a41d2740cd3639feacfcfef589',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../axproo/form-lib',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -272,9 +281,9 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '12.4.3',
-            'version' => '12.4.3.0',
-            'reference' => 'd8f644d8d9bb904867f7a0aeb1bd306e0d966949',
+            'pretty_version' => '12.4.4',
+            'version' => '12.4.4.0',
+            'reference' => '9253ec75a672e39fcc9d85bdb61448215b8162c7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),

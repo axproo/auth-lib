@@ -108,6 +108,7 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
             'Axproo\\Otp\\' => 11,
             'Axproo\\Mailer\\' => 14,
             'Axproo\\HelperLib\\' => 17,
+            'Axproo\\Form\\' => 12,
             'Axproo\\Auth\\Tests\\' => 18,
             'Axproo\\Auth\\' => 12,
         ),
@@ -317,6 +318,10 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         'Axproo\\HelperLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/axproo/helper-lib/src',
+        ),
+        'Axproo\\Form\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/axproo/form-lib/src',
         ),
         'Axproo\\Auth\\Tests\\' => 
         array (

@@ -1,0 +1,49 @@
+#!/usr/bin/env php
+<?php
+
+// Lecture du nom de la migration
+$name = $argv[1] ?? null;
+
+if (!$name) {
+    echo "Usage: make-migration <Name>\n";
+    exit(1);
+}
+
+function toPascalCase (string $text): string
+{
+    return str_replace(' ', '', ucwords(str_replace(['-','_'], ' ', $text)));
+}
+
+// Classe formatée
+$className = toPascalCase($name);
+
+// Timestamp
+$timestamp = date('Y-m-d-His');
+
+$filename = "{$timestamp}_{$className}.php";
+
+$path = __DIR__ . '/../src/Database/Migrations/' . $filename;
+
+$template = <<<PHP
+<?php
+
+use CodeIgniter\Database\Migration;
+
+class {$className} extends Migration
+{
+    public function up()
+    {
+        //
+    }
+
+    public function down()
+    {
+        //
+    }
+}
+PHP;
+
+file_put_contents($path, $template);
+
+echo "Migration générée : {$filename}\n";
+echo "Chemin : src/Database/Migrations/\n";
