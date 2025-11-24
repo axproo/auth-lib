@@ -3,13 +3,15 @@
 namespace Axproo\Auth\Pipelines;
 
 use Axproo\Auth\Exceptions\AuthException;
+use Axproo\Auth\Steps\CheckStatus;
 use Axproo\Auth\Steps\CheckUserExists;
 use ReflectionClass;
 
 class AuthPipeline
 {
     protected array $step = [
-        CheckUserExists::class
+        CheckUserExists::class,
+        CheckStatus::class
     ];
 
     public function handle(array $payload) : array {
@@ -22,7 +24,9 @@ class AuthPipeline
             $stepClass = $this->step[$i];
 
             if (!class_exists($stepClass)) {
-                throw new AuthException(lang('Steps.not_found', ['step' => $stepClass]), 500);
+                throw new AuthException(lang('Steps.not_found', ['step' => $stepClass]), 500, [
+                    'stop_here' => true
+                ]);
             }
 
             $ref = new ReflectionClass($stepClass);
@@ -32,7 +36,7 @@ class AuthPipeline
                 throw new AuthException(lang('Steps.not_implement', [
                     'step' => $stepClass,
                     'method' => 'handle()'
-                ]), 500);
+                ]), 500, ['stop_here' => true]);
             }
 
             // Exécution de l'étape
@@ -41,7 +45,7 @@ class AuthPipeline
             if (!\is_array($data)) {
                 throw new AuthException(lang('Steps.not_array', [
                     'step' => $stepClass
-                ]), 500);
+                ]), 500, ['stop_here' => true]);
             }
 
             // Si la step n'est pas valide -> arrêt immédiat
