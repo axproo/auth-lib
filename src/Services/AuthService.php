@@ -107,6 +107,15 @@ class AuthService extends BaseAuthService
             if (!$this->validate($this->valid->code)) {
                 return $this->respondError($this->validation->getErrors());
             }
+
+            // On suppose que $payload contien 'user_id'
+            $user = $this->user_model->find(session()->get('user_id'));
+            if (!$user) {
+                return $this->respondError(lang('Users.missing'), 404);
+            }
+            $payload['user'] = $user;
+            $payload['ip_address'] = $this->request->getIPAddress();
+
             $result = $pipeline->handle($payload);
             return $this->respondSuccess(lang('Otp.verified'), $result);
         } catch (\Throwable $e) {
