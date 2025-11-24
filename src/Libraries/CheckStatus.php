@@ -39,11 +39,11 @@ class CheckStatus
                     'ttl' => 300,
                     'name' => "{$user->first_name} {$user->last_name}"
                 ]);
+                session()->set('user_id', $user->id);
 
                 throw new AuthException(lang('Account.pending'), 403, [
                     'redirectTo' => '/verify-email',
                     'data' => $response,
-                    'user_id' => $user->id,
                     'stop_here' => true
                 ]);
 
