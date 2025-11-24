@@ -37,13 +37,13 @@ class CheckStatus
                     'subject' => 'Votre code de vérification',
                     'body' => 'emails/active_account',
                     'ttl' => 300,
-                    'name' => "{$user->first_name} {$user->last_name}",
-                    'stop_here' => true
+                    'name' => "{$user->first_name} {$user->last_name}"
                 ]);
 
                 throw new AuthException(lang('Account.pending'), 403, [
                     'redirectTo' => '/verify-email',
                     'data' => $response,
+                    'user_id' => $user->id,
                     'stop_here' => true
                 ]);
 
