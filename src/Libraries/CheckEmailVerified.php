@@ -9,9 +9,10 @@ class CheckEmailVerified
     public function handle(array $data): array
     {
         // Si déjà validé avant, on skip
-        if (!empty($data['skip_password_check']) || !empty($data['skip_logout_remote'])) {
-            return $data;
-        }
+        // if (!empty($data['skip_password_check']) || !empty($data['skip_logout_remote'])) {
+        //     return $data;
+        // }
+        log_message("debug", "Step 4: CheckEmailVerified");
 
         $user = $data['user'] ?? null;
 
@@ -25,7 +26,7 @@ class CheckEmailVerified
             throw new AuthException(lang('Email.not_verified'), 403, ['redirectTo' => '/verify-email']);
         }
         $data['email_checked'] = true;
-        log_message("debug", "Step 4: CheckEmailVerified");
+        log_message("debug", "End Step 4\n");
         return $data;
     }
 

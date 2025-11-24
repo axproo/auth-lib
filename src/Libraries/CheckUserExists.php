@@ -16,7 +16,7 @@ class CheckUserExists
 
     public function handle(array $data): array
     {
-        log_message("debug", "Step 1: CheckUserExists\n");
+        log_message("debug", "Step 1: CheckUserExists");
         $email = $data['email'] ?? null;
         if (!$email) {
             throw new AuthException(lang('Email.required'), 400, [

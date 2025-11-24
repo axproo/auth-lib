@@ -8,10 +8,11 @@ class CheckPassword
 {
     public function handle(array $data): array
     {
-        // Si déjà validé avant, on skip
-        if (!empty($data['skip_password_check']) || !empty($data['skip_logout_remote'])) {
-            return $data;
-        }
+        // // Si déjà validé avant, on skip
+        // if (!empty($data['skip_password_check']) || !empty($data['skip_logout_remote'])) {
+        //     return $data;
+        // }
+        log_message("debug", "Step 3: CheckPassword");
 
         $user = $data['user'] ?? null;
         $password = $data['password'] ?? null;
@@ -26,7 +27,7 @@ class CheckPassword
         }
 
         $data['password_checked'] = true;
-        log_message("debug", "Step 3: CheckPassword");
+        log_message("debug", "End Step 3\n");
         return $data;
     }
 }
