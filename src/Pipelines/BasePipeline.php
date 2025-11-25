@@ -36,10 +36,6 @@ abstract class BasePipeline
             if (!\is_array($data)) {
                 throw new AuthException("Step class {$stepClass} must return an array", 500);
             }
-
-            if (!empty($data['stop_here'])) {
-                break;
-            }
         }
         return $data;
     }
