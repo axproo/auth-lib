@@ -10,6 +10,7 @@ class CheckUserExists extends BaseStep
     }
     
     public function handle(array $data) : array {
+        session()->destroy();
         log_message('debug', 'Start CheckUserExists');
 
         $email = $data['email'] ?? null;
