@@ -29,7 +29,7 @@ abstract class BaseStep
     }
 
     protected function validCredential(array $user, $password) {
-        if (!$user || $password) {
+        if (!$user || !$password) {
             throw new AuthException(lang('Users.invalid_credential'));
         }
     }
