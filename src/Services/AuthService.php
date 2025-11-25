@@ -16,6 +16,7 @@ class AuthService extends BaseAuthService
 {
     protected $valid;
     protected $payload;
+    protected $session;
 
     public function __construct()
     {
@@ -23,6 +24,7 @@ class AuthService extends BaseAuthService
         $this->valid = new AuthConfig();
         $this->payload = $this->get_data_from_post();
         $this->payload['ip_address'] = $this->request->getIPAddress();
+        $this->session = session();
     }
 
     public function login()
@@ -83,18 +85,25 @@ class AuthService extends BaseAuthService
         $pipeline = new TwofactorPipeline();
 
         try {
+            if (!$this->session->get('session_user_id')) {
+                return $this->respondError(lang('Auth.login.unautorized'), 500, [
+                    'redirectTo' => '/login'
+                ]);
+            }
+
             if (!$this->validate($this->valid->code)) {
                 return $this->respondError($this->validation->getErrors());
             }
-            $user = $this->user_model->find(session()->get('session_user_id'));
+
+            $user = $this->user_model->find($this->session->get('session_user_id'));
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
+
             $this->payload['user'] = $user;
-
             $result = $pipeline->handle($this->payload);
-            return $this->respondSuccess(lang('Otp.verified'), $result);
 
+            return $this->respondSuccess(lang('Otp.verified'), $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
@@ -150,10 +159,16 @@ class AuthService extends BaseAuthService
         $pipeline = new EmailPipeline();
 
         try {
+            if (!$this->session->get('session_user_id')) {
+                return $this->respondError(lang('Auth.login.unautorized'), 500, [
+                    'redirectTo' => '/login'
+                ]);
+            }
+
             if (!$this->validate($this->valid->code)) {
                 return $this->respondError($this->validation->getErrors());
             }
-            $user = $this->user_model->find(session()->get('session_user_id'));
+            $user = $this->user_model->find($this->session->get('session_user_id'));
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
@@ -238,20 +253,20 @@ class AuthService extends BaseAuthService
 
     public function remoteLogout()
     {
-        $session = session();
         $pipeline = new LogoutPipeline();
 
         try {
-            if (!$session->get('session_user_id')) {
+            if (!$this->session->get('session_user_id')) {
                 return $this->respondError(lang('Auth.login.unautorized'), 500, [
                     'redirectTo' => '/login'
                 ]);
             }
+
             if (!$this->validate($this->valid->code)) {
                 return $this->respondError($this->validation->getErrors());
             }
 
-            $user = $this->user_model->find($session->get('session_user_id'));
+            $user = $this->user_model->find($this->session->get('session_user_id'));
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
