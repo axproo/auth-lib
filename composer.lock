@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcdabf527a438d58e46979e39710793c",
+    "content-hash": "358500af1db7be6714e7c2f2ab4a0d71",
     "packages": [
         {
             "name": "axproo/form-lib",
@@ -187,16 +187,16 @@
         },
         {
             "name": "axproo/otp-lib",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "git@github.com:axproo/otp-lib.git",
-                "reference": "121e40cca45ba8fb8ebeb430f13a5065964fd8e4"
+                "reference": "b25e6d4bdb6285c09a0c76bbab92528ddad85c9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/121e40cca45ba8fb8ebeb430f13a5065964fd8e4",
-                "reference": "121e40cca45ba8fb8ebeb430f13a5065964fd8e4",
+                "url": "https://api.github.com/repos/axproo/otp-lib/zipball/b25e6d4bdb6285c09a0c76bbab92528ddad85c9c",
+                "reference": "b25e6d4bdb6285c09a0c76bbab92528ddad85c9c",
                 "shasum": ""
             },
             "require": {
@@ -252,10 +252,10 @@
                 "otp"
             ],
             "support": {
-                "source": "https://github.com/axproo/otp-lib/tree/2.0.4",
+                "source": "https://github.com/axproo/otp-lib/tree/2.0.5",
                 "issues": "https://github.com/axproo/otp-lib/issues"
             },
-            "time": "2025-11-24T07:17:51+00:00"
+            "time": "2025-11-25T05:34:13+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -314,16 +314,16 @@
         },
         {
             "name": "brick/math",
-            "version": "0.14.0",
+            "version": "0.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2"
+                "reference": "f05858549e5f9d7bb45875a75583240a38a281d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2",
-                "reference": "113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2",
+                "url": "https://api.github.com/repos/brick/math/zipball/f05858549e5f9d7bb45875a75583240a38a281d0",
+                "reference": "f05858549e5f9d7bb45875a75583240a38a281d0",
                 "shasum": ""
             },
             "require": {
@@ -362,7 +362,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.14.0"
+                "source": "https://github.com/brick/math/tree/0.14.1"
             },
             "funding": [
                 {
@@ -370,7 +370,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-08-29T12:40:03+00:00"
+            "time": "2025-11-24T14:40:29+00:00"
         },
         {
             "name": "codeigniter4/framework",

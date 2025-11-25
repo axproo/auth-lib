@@ -18,8 +18,6 @@ class TotpDriver implements OtpDriverInterface
     {
         $qrcode = new QrCodeManager();
         return $qrcode->verify($receiver, $code);
-        // $totp = TOTP::create($receiver);
-        // return $totp->verify($code);
     }
 
     public function generate(string $receiver, $app) {

@@ -63,6 +63,9 @@ class QrCodeManager
         $user = $this->model->where('email', $email)->first();
         if (! $user) throw new \Exception(lang('Users.missing'));
 
+        // Forcer le code à 6 digits (garde les zéros)
+        $code = str_pad((string) $code, 6, '0', STR_PAD_LEFT);
+
         // Décryptage du secret
         $secret = $this->crypto->decrypt($user->totp_secret);
 
@@ -72,6 +75,8 @@ class QrCodeManager
         for ($i=0; $i <= 1; $i++) { 
             $t = $timestamp + $i;
             $otp = $this->generateOtp($secret, $t);
+
+            // hash_equals exige une string ->parfait ici
             if (hash_equals($otp, $code)) {
                 $valid = true;
                 break;

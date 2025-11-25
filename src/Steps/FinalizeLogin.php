@@ -29,6 +29,6 @@ class FinalizeLogin extends BaseStep
 
         session()->destroy();
         log_message("debug", "End FinalizeLogin");
-        return ['redirectTo' => '/dashboard', 'session' => session()->get()];
+        return ['redirectTo' => '/dashboard'];
     }
 }

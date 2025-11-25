@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'axproo/auth-lib',
-        'pretty_version' => '1.1.3',
-        'version' => '1.1.3.0',
+        'pretty_version' => '1.1.7',
+        'version' => '1.1.7.0',
         'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'axproo/auth-lib' => array(
-            'pretty_version' => '1.1.3',
-            'version' => '1.1.3.0',
+            'pretty_version' => '1.1.7',
+            'version' => '1.1.7.0',
             'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
@@ -47,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'axproo/otp-lib' => array(
-            'pretty_version' => '2.0.4',
-            'version' => '2.0.4.0',
-            'reference' => '121e40cca45ba8fb8ebeb430f13a5065964fd8e4',
+            'pretty_version' => '2.0.5',
+            'version' => '2.0.5.0',
+            'reference' => 'b25e6d4bdb6285c09a0c76bbab92528ddad85c9c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/otp-lib',
             'aliases' => array(),
@@ -65,9 +65,9 @@
             'dev_requirement' => false,
         ),
         'brick/math' => array(
-            'pretty_version' => '0.14.0',
-            'version' => '0.14.0.0',
-            'reference' => '113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2',
+            'pretty_version' => '0.14.1',
+            'version' => '0.14.1.0',
+            'reference' => 'f05858549e5f9d7bb45875a75583240a38a281d0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../brick/math',
             'aliases' => array(),
