@@ -2,6 +2,8 @@
 
 namespace Axproo\Auth\Pipelines;
 
+use Axproo\Auth\Steps\CheckPassword;
+use Axproo\Auth\Steps\CheckSessionAgent;
 use Axproo\Auth\Steps\CheckStatus;
 use Axproo\Auth\Steps\CheckUserExists;
 
@@ -9,7 +11,9 @@ class AuthPipeline extends BasePipeline
 {
     protected array $steps = [
         CheckUserExists::class,
-        CheckStatus::class
+        CheckStatus::class,
+        CheckPassword::class,
+        CheckSessionAgent::class,
     ];
 
     public function __construct() {
