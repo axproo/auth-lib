@@ -3,7 +3,6 @@
 namespace Axproo\Auth\Pipelines;
 
 use Axproo\Auth\Steps\CheckEmailValidate;
-use Axproo\Auth\Steps\CheckEmailVerified;
 
 class EmailPipeline extends BasePipeline
 {
