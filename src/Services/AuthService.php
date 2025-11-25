@@ -186,46 +186,6 @@ class AuthService extends BaseAuthService
         }
     }
 
-    // public function verifyEmail0()
-    // {
-    //     $payload = $this->get_data_from_post();
-    //     $pipeline = new AuthLib();
-
-    //     try {
-    //         if (!$this->validate($this->valid->code)) {
-    //             return $this->respondError($this->validation->getErrors());
-    //         }
-
-    //         // On suppose que $payload contien 'user_id'
-    //         $user = $this->user_model->find(session()->get('user_id'));
-    //         if (!$user) {
-    //             return $this->respondError(lang('Users.missing'), 404);
-    //         }
-    //         $payload['email'] = $user->email;
-    //         $payload['skip_status'] = true;
-    //         // $payload['user'] = $user;
-    //         $payload['ip_address'] = $this->request->getIPAddress();
-
-    //         $result = $pipeline->handle($payload);
-    //         return $this->respondSuccess(lang('Otp.verified'), $result);
-    //     } catch (\Throwable $e) {
-    //         return $this->respondError($e->getMessage(), 403);
-    //     }
-    //     // $payload = $this->get_data_from_post();
-    //     // $pipeline = new ValidEmailVerified();
-
-    //     // try {
-    //     //     if (!$this->validate($this->valid->code)) {
-    //     //         return $this->respondError($this->validation->getErrors());
-    //     //     }
-
-    //     //     $result = $pipeline->handle($payload);
-    //     //     return $this->respondSuccess(lang('Otp.verified'), $result);
-    //     // } catch (\Throwable $e) {
-    //     //     return $this->respondError($e->getMessage(), 403);
-    //     // }
-    // }
-
     public function logout()
     {
         $session = new UserSessionService();
