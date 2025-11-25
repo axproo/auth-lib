@@ -19,9 +19,7 @@ class CheckTwoFactor extends BaseStep
         $user2FA = $user->two_factor_enabled ?? false;
 
         if ($force2FA || $this->convertToBool($user2FA)) {
-            session()->set('2fa_user_id', $user->id);
-            session()->set('2fa_pending', true);
-
+            session()->set('session_user_id', $user->id);
             throw new AuthException(lang('Otp.twofactor_required'), 403, [
                 'redirectTo' => '/2FA'
             ]);
