@@ -34,6 +34,12 @@ abstract class BaseStep
         }
     }
 
+    protected function verifyCode(string $email, ?int $code) {
+        if (!$code || $this->otp->verifyTotp($email, $code)) {
+            throw new AuthException(lang('Otp.failed'), 403);
+        }
+    }
+
     protected function getUserData(array $data) {
         $user = $data['user'] ?? null;
         if (!$user) {
