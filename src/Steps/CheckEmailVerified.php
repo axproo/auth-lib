@@ -11,7 +11,7 @@ class CheckEmailVerified extends BaseStep
     }
 
     public function handle(array $data) : array {
-        log_message("debug", "Step 1: CheckEmailVerified");
+        log_message("debug", "Start CheckEmailVerified");
 
         $user = $this->getUserData($data);
         $emailVerified = $user->email_verified ?? null;
@@ -19,13 +19,13 @@ class CheckEmailVerified extends BaseStep
         // Force email verification for all users
         $forceVerify = config('Auth')->forceEmailVerification ?? false;
 
-        if ($forceVerify && !$this->toBool($emailVerified)) {
+        if ($forceVerify && !$this->convertToBool($emailVerified)) {
             throw new AuthException(lang('Emails.not_verified'), 403, [
                 'redirectTo' => '/verify-email'
             ]);
         }
         $data['email_checked'] = true;
-        log_message("debug", "End Step 1\n");
+        log_message("debug", "End CheckEmailVerified\n");
         return $data;
     }
 }

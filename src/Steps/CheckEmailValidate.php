@@ -12,7 +12,7 @@ class CheckEmailValidate extends BaseStep
     }
 
     public function handle(array $data) : array {
-        log_message("debug", "Step 1: CheckEmailValid");
+        log_message("debug", "Start CheckEmailValid");
 
         $user = $this->getUserData($data);
 
@@ -29,7 +29,7 @@ class CheckEmailValidate extends BaseStep
 
         $this->usersModel->save($user);
 
-        log_message("debug", "End Step 1\n");
+        log_message("debug", "End CheckEmailValid\n");
         return $data;
     }
 }

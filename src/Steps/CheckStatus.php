@@ -11,7 +11,7 @@ class CheckStatus extends BaseStep
     }
 
     public function handle(array $data) : array {
-        log_message("debug", "Step 2: CheckStatus");
+        log_message("debug", "Start CheckStatus");
 
         $user = $this->getUserData($data);
         $status = $user->status ?? 'active';
@@ -42,7 +42,7 @@ class CheckStatus extends BaseStep
             case 'active':
             default:
                 $data['status_checked'] = true;
-                log_message("debug", "End Step 2\n");
+                log_message("debug", "End CheckStatus\n");
                 return $data;
         }
     }
