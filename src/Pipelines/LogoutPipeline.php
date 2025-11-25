@@ -3,10 +3,12 @@
 namespace Axproo\Auth\Pipelines;
 
 use Axproo\Auth\Steps\CheckRemoteLogout;
+use Axproo\Auth\Steps\CheckTwoFactorValidate;
 
 class LogoutPipeline extends BasePipeline
 {
     protected array $steps = [
+        CheckTwoFactorValidate::class,
         CheckRemoteLogout::class
     ];
 
