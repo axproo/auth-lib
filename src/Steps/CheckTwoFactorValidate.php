@@ -17,8 +17,8 @@ class CheckTwoFactorValidate extends BaseStep
         // Check if code OTP exist
         $this->verifyCode($user->email, $code);
 
-        $data['two_factor_checked'] = true;
-        $data['two_factor_pending'] = false;
+        // $data['two_factor_checked'] = true;
+        // $data['two_factor_pending'] = false;
 
         log_message("debug", "End CheckTwoFactorValidate");
         return $data;

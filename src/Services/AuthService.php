@@ -262,29 +262,5 @@ class AuthService extends BaseAuthService
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 500);
         }
-        // $session = session();
-
-        // if (!$session->get('session_user_id')) {
-        //     return $this->respondError(lang('Auth.login.unauthorized'), 403, [
-        //         'redirectTo' => '/login'
-        //     ]);
-        // }
-        // $payload = $this->get_data_from_post();
-        // $pipeline = new AuthLib();
-
-        // try {
-        //     $user = $this->user_model->find($session->get('session_user_id'));
-        //     if (!$user) {
-        //         return $this->respondError(lang('Users.missing'), 404);
-        //     }
-        //     $payload['user'] = $user;
-        //     $payload['skip_logout_remote'] = true;
-        //     $payload['ip_address'] = $this->request->getIPAddress();
-
-        //     $result = $pipeline->handle($payload);
-        //     return $this->respondSuccess('Successfully login', $result);
-        // } catch (\Throwable $e) {
-        //     return $this->respondError($e->getMessage(), 500);
-        // }
     }
 }

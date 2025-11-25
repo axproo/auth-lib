@@ -88,14 +88,6 @@ abstract class BaseStep
         $this->session->setCookie($token);
     }
 
-    // protected function toBool($val) : bool {
-    //     if (\is_bool($val)) return $val;
-    //     if (\is_int($val)) return $val === 1;
-    //     if (\is_string($val)) return \in_array(strtolower($val), ['1','true','yes'], true);
-
-    //     return false;
-    // }
-
     protected function convertToBool($val) : bool {
         return filter_var($val, FILTER_VALIDATE_BOOLEAN);
     }
