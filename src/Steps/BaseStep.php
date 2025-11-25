@@ -76,7 +76,7 @@ abstract class BaseStep
         $existingSession = $this->session->validateSession($userId, $token);
 
         if (!$existingSession) {
-            // session()->set('session_user_id', )
+            session()->set('session_user_id', $userId);
             throw new AuthException(lang('Session.is_connected'), 403, [
                 'redirectTo' => '/logout-remote'
             ]);
