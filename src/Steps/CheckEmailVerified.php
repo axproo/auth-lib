@@ -1,0 +1,31 @@
+<?php 
+
+namespace Axproo\Auth\Steps;
+
+use Axproo\Auth\Exceptions\AuthException;
+
+class CheckEmailVerified extends BaseStep
+{
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function handle(array $data) : array {
+        log_message("debug", "Step 1: CheckEmailVerified");
+
+        $user = $this->getUserData($data);
+        $emailVerified = $user->email_verified ?? null;
+
+        // Force email verification for all users
+        $forceVerify = config('Auth')->forceEmailVerification ?? false;
+
+        if ($forceVerify && !$this->toBool($emailVerified)) {
+            throw new AuthException(lang('Emails.not_verified'), 403, [
+                'redirectTo' => '/verify-email'
+            ]);
+        }
+        $data['email_checked'] = true;
+        log_message("debug", "End Step 1\n");
+        return $data;
+    }
+}

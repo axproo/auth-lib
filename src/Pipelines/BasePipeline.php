@@ -11,56 +11,36 @@ abstract class BasePipeline
 
     public function __construct(array $step = []) {
         $this->step = $step;
+        if (empty($this->step)) {
+            throw new AuthException("Step not found");
+        }
     }
     
     protected function setHandle(array $payload) : array {
         $data = $payload;
 
-        // Récupération de la progression
-        $currentStep = session()->get('current_step') ?? 0;
-
-        for ($i= $currentStep; $i < \count($this->step); $i++) { 
-            $stepClass = $this->step[$i];
-
+        foreach ($this->step as $stepClass) {
             if (!class_exists($stepClass)) {
-                throw new AuthException(lang('Steps.not_found', ['step' => $stepClass]), 500, [
-                    'stop_here' => true
-                ]);
+                throw new AuthException("Step class {$stepClass} not found", 500);
             }
 
             $ref = new ReflectionClass($stepClass);
             $step = $ref->newInstance();
 
             if (!method_exists($step, 'handle')) {
-                throw new AuthException(lang('Steps.not_implement', [
-                    'step' => $stepClass,
-                    'method' => 'handle()'
-                ]), 500, ['stop_here' => true]);
+                throw new AuthException("Step class {$stepClass} must implement handle()", 500);
             }
 
-            // Exécution de l'étape
             $data = $step->handle($data);
 
             if (!\is_array($data)) {
-                throw new AuthException(lang('Steps.not_array', [
-                    'step' => $stepClass
-                ]), 500, ['stop_here' => true]);
+                throw new AuthException("Step class {$stepClass} must return an array", 500);
             }
 
-            // Si la step n'est pas valide -> arrêt immédiat
-            if (!empty($data['stop_here']) && $data['stop_here'] === true) {
-                session()->set('current_step', $i);
-                return $data;
+            if (!empty($data['stop_here'])) {
+                break;
             }
-
-            // Etapé suivante
-            session()->set('current_step', $i + 1);
         }
-        
-        // Si toutes les étapes sont finalisées -> on supprime la progression
-        session()->remove('current_step');
-        $data['current_step'] = null;
-        
         return $data;
     }
 }

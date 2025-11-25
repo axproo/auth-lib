@@ -30,7 +30,6 @@ class CheckStatus extends BaseStep
                 throw new AuthException(lang('Users.pending'), 403, [
                     'redirectTo' => '/verify-email',
                     'data' => $response,
-                    'stop_here' => true,
                     'email' => $user->email
                 ]);
             

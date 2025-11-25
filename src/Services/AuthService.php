@@ -130,8 +130,9 @@ class AuthService extends BaseAuthService
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
-            
-            $result = $pipeline->handle(($this->payload));
+            $this->payload['user'] = $user;
+
+            $result = $pipeline->handle($this->payload);
             return $this->respondSuccess(lang('Otp.verified'), $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();

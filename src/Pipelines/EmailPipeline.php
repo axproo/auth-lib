@@ -2,9 +2,14 @@
 
 namespace Axproo\Auth\Pipelines;
 
+use Axproo\Auth\Steps\CheckEmailValidate;
+use Axproo\Auth\Steps\CheckEmailVerified;
+
 class EmailPipeline extends BasePipeline
 {
-    protected array $steps = [];
+    protected array $steps = [
+        CheckEmailValidate::class
+    ];
 
     public function __construct() {
         parent::__construct($this->steps);

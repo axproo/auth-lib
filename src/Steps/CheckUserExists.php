@@ -2,10 +2,13 @@
 
 namespace Axproo\Auth\Steps;
 
-use Axproo\Auth\Exceptions\AuthException;
-
 class CheckUserExists extends BaseStep
 {
+
+    public function __construct() {
+        parent::__construct();
+    }
+    
     public function handle(array $data) : array {
         log_message('debug', 'Step 1: CheckUserExists');
 
