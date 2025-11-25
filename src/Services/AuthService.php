@@ -86,7 +86,7 @@ class AuthService extends BaseAuthService
 
         try {
             if (!$this->session->get('session_user_id')) {
-                return $this->respondError(lang('Auth.login.unautorized'), 500, [
+                return $this->respondError(lang('Auth.login.unauthorized'), 500, [
                     'redirectTo' => '/login'
                 ]);
             }
@@ -160,7 +160,7 @@ class AuthService extends BaseAuthService
 
         try {
             if (!$this->session->get('session_user_id')) {
-                return $this->respondError(lang('Auth.login.unautorized'), 500, [
+                return $this->respondError(lang('Auth.login.unauthorized'), 500, [
                     'redirectTo' => '/login'
                 ]);
             }
@@ -217,7 +217,7 @@ class AuthService extends BaseAuthService
 
         try {
             if (!$this->session->get('session_user_id')) {
-                return $this->respondError(lang('Auth.login.unautorized'), 500, [
+                return $this->respondError(lang('Auth.login.unauthorized'), 500, [
                     'redirectTo' => '/login'
                 ]);
             }

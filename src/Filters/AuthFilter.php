@@ -33,7 +33,7 @@ class AuthFilter implements FilterInterface
             if (!empty($arguments)) {
                 $requiredRoles = is_array($arguments) ? $arguments : ['arguments'];
                 if (!in_array($decoded->role ?? '', $requiredRoles)) {
-                    return $this->unAuthorizeResponse(lang('Users.rule_required'), 403);
+                    return $this->unAuthorizeResponse(lang('Users.rule.required'), 403);
                 }
             }
 

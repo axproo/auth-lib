@@ -1,5 +1,9 @@
-<?php 
+<?php
 
 return [
-    'twofactor_required' => 'Vérification en deux étapes obligatoire'
+    'twofactor_required' => 'Authentification à deux facteurs requise',
+    'verified' => 'Vérifié',
+    'required' => 'Requis',
+    'invalid' => 'Invalide',
+    'failed' => 'Échec',
 ];
