@@ -28,7 +28,7 @@ abstract class BaseStep
         $this->rules = new RoleModel();
     }
 
-    protected function validCredential(array $user, $password) {
+    protected function validCredential(?object $user, $password) {
         if (!$user || !$password) {
             throw new AuthException(lang('Users.invalid_credential'));
         }
