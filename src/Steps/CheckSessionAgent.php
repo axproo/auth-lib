@@ -25,7 +25,7 @@ class CheckSessionAgent extends BaseStep
         ]);
         $this->validateSession($user->id, $token);
         
-        $data['token'] = $token;
+        session()->set("token", $token);
         log_message("debug", "End CheckSessionAgent\n");
         return $data;
     }
