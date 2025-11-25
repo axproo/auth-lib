@@ -34,7 +34,7 @@ class AuthService extends BaseAuthService
                 return $this->respondError($this->validation->getErrors());
             }
             $result = $pipeline->handle($this->payload);
-            return $this->respondSuccess(lang('Auth.login_success'), $result);
+            return $this->respondSuccess(lang('Auth.login.success'), $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
@@ -242,11 +242,20 @@ class AuthService extends BaseAuthService
         $pipeline = new LogoutPipeline();
 
         try {
-            $result = [
-                'session' => $session->get('session_user_id'),
-                // 'pipeline' => $pipeline->handle($this->payload)
-            ];
-            return $this->respondSuccess(lang('Auth.login_success'), $result);
+            if (!$session->get('session_user_id')) {
+                return $this->respondError(lang('Auth.login.unautorized'), 500, [
+                    'redirectTo' => '/login'
+                ]);
+            }
+
+            $user = $this->user_model->find($session->get('session_user_id'));
+            if (!$user) {
+                return $this->respondError(lang('Users.missing'), 404);
+            }
+            $this->payload['user'] = $user;
+            $result = $pipeline->handle($this->payload);
+            
+            return $this->respondSuccess(lang('Auth.login.success'), $result);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 500);
         }
