@@ -9,6 +9,7 @@ use Axproo\Auth\Libraries\GenerateTotp;
 use Axproo\Auth\Libraries\ValidEmailVerified;
 use Axproo\Auth\Pipelines\AuthPipeline;
 use Axproo\Auth\Pipelines\EmailPipeline;
+use Axproo\Auth\Pipelines\TwofactorPipeline;
 
 class AuthService extends BaseAuthService
 {
@@ -77,39 +78,22 @@ class AuthService extends BaseAuthService
         // }
     }
 
-    public function verifyTwofactor()
-    {
-        if (!session()->get('2fa_pending') || !session()->get('2fa_user_id')) {
-            return $this->respondError(lang('Auth.login.unauthorized'), 403, [
-                'redirectTo' => '/login'
-            ]);
-        }
-
-        $payload = $this->get_data_from_post();
-        $pipeline = new AuthLib();
+    public function verifyTwofactor() {
+        $pipeline = new TwofactorPipeline();
 
         try {
-            // Validation des champs emails + code 2FA
             if (!$this->validate($this->valid->code)) {
                 return $this->respondError($this->validation->getErrors());
             }
-            $payload['ip_address'] = $this->request->getIPAddress();
-
-            // On suppose que $payload contien 'user_id' et 'two_factor_code'
-            $user = $this->user_model->find(session()->get('2fa_user_id'));
+            $user = $this->user_model->find(session()->get('session_user_id'));
             if (!$user) {
                 return $this->respondError(lang('Users.missing'), 404);
             }
-            $payload['skip_password_check'] = true;
-            $payload['user'] = $user;
-            $payload['email'] = $user->email;
+            $this->payload['user'] = $user;
 
-            // On relance le pipeline avec le code 2FA
-            $result = $pipeline->handle($payload);
+            $result = $pipeline->handle($this->payload);
+            return $this->respondSuccess(lang('Otp.verified'), $result);
 
-            session()->remove('2fa_pending');
-            session()->remove('2fa_user_id');
-            return $this->respondSuccess('Successfully Login', $result);
         } catch (AuthException $e) {
             $payload = $e->getPayload();
             $code = $e->getCode() ?: 403;
@@ -117,6 +101,48 @@ class AuthService extends BaseAuthService
         } catch (\Throwable $t) {
             return $this->respondError($t->getMessage(), 500);
         }
+    }
+
+    public function verifyTwofactor0()
+    {
+        // if (!session()->get('2fa_pending') || !session()->get('2fa_user_id')) {
+        //     return $this->respondError(lang('Auth.login.unauthorized'), 403, [
+        //         'redirectTo' => '/login'
+        //     ]);
+        // }
+
+        // $payload = $this->get_data_from_post();
+        // $pipeline = new AuthLib();
+
+        // try {
+        //     // Validation des champs emails + code 2FA
+        //     if (!$this->validate($this->valid->code)) {
+        //         return $this->respondError($this->validation->getErrors());
+        //     }
+        //     $payload['ip_address'] = $this->request->getIPAddress();
+
+        //     // On suppose que $payload contien 'user_id' et 'two_factor_code'
+        //     $user = $this->user_model->find(session()->get('2fa_user_id'));
+        //     if (!$user) {
+        //         return $this->respondError(lang('Users.missing'), 404);
+        //     }
+        //     $payload['skip_password_check'] = true;
+        //     $payload['user'] = $user;
+        //     $payload['email'] = $user->email;
+
+        //     // On relance le pipeline avec le code 2FA
+        //     $result = $pipeline->handle($payload);
+
+        //     session()->remove('2fa_pending');
+        //     session()->remove('2fa_user_id');
+        //     return $this->respondSuccess('Successfully Login', $result);
+        // } catch (AuthException $e) {
+        //     $payload = $e->getPayload();
+        //     $code = $e->getCode() ?: 403;
+        //     return $this->respondError($e->getMessage(), $code, $payload);
+        // } catch (\Throwable $t) {
+        //     return $this->respondError($t->getMessage(), 500);
+        // }
     }
 
     public function verifyEmail() {
@@ -144,45 +170,45 @@ class AuthService extends BaseAuthService
         }
     }
 
-    public function verifyEmail0()
-    {
-        $payload = $this->get_data_from_post();
-        $pipeline = new AuthLib();
+    // public function verifyEmail0()
+    // {
+    //     $payload = $this->get_data_from_post();
+    //     $pipeline = new AuthLib();
 
-        try {
-            if (!$this->validate($this->valid->code)) {
-                return $this->respondError($this->validation->getErrors());
-            }
+    //     try {
+    //         if (!$this->validate($this->valid->code)) {
+    //             return $this->respondError($this->validation->getErrors());
+    //         }
 
-            // On suppose que $payload contien 'user_id'
-            $user = $this->user_model->find(session()->get('user_id'));
-            if (!$user) {
-                return $this->respondError(lang('Users.missing'), 404);
-            }
-            $payload['email'] = $user->email;
-            $payload['skip_status'] = true;
-            // $payload['user'] = $user;
-            $payload['ip_address'] = $this->request->getIPAddress();
+    //         // On suppose que $payload contien 'user_id'
+    //         $user = $this->user_model->find(session()->get('user_id'));
+    //         if (!$user) {
+    //             return $this->respondError(lang('Users.missing'), 404);
+    //         }
+    //         $payload['email'] = $user->email;
+    //         $payload['skip_status'] = true;
+    //         // $payload['user'] = $user;
+    //         $payload['ip_address'] = $this->request->getIPAddress();
 
-            $result = $pipeline->handle($payload);
-            return $this->respondSuccess(lang('Otp.verified'), $result);
-        } catch (\Throwable $e) {
-            return $this->respondError($e->getMessage(), 403);
-        }
-        // $payload = $this->get_data_from_post();
-        // $pipeline = new ValidEmailVerified();
+    //         $result = $pipeline->handle($payload);
+    //         return $this->respondSuccess(lang('Otp.verified'), $result);
+    //     } catch (\Throwable $e) {
+    //         return $this->respondError($e->getMessage(), 403);
+    //     }
+    //     // $payload = $this->get_data_from_post();
+    //     // $pipeline = new ValidEmailVerified();
 
-        // try {
-        //     if (!$this->validate($this->valid->code)) {
-        //         return $this->respondError($this->validation->getErrors());
-        //     }
+    //     // try {
+    //     //     if (!$this->validate($this->valid->code)) {
+    //     //         return $this->respondError($this->validation->getErrors());
+    //     //     }
 
-        //     $result = $pipeline->handle($payload);
-        //     return $this->respondSuccess(lang('Otp.verified'), $result);
-        // } catch (\Throwable $e) {
-        //     return $this->respondError($e->getMessage(), 403);
-        // }
-    }
+    //     //     $result = $pipeline->handle($payload);
+    //     //     return $this->respondSuccess(lang('Otp.verified'), $result);
+    //     // } catch (\Throwable $e) {
+    //     //     return $this->respondError($e->getMessage(), 403);
+    //     // }
+    // }
 
     public function logout()
     {
