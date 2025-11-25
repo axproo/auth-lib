@@ -9,6 +9,7 @@ use Axproo\Auth\Libraries\GenerateTotp;
 use Axproo\Auth\Libraries\ValidEmailVerified;
 use Axproo\Auth\Pipelines\AuthPipeline;
 use Axproo\Auth\Pipelines\EmailPipeline;
+use Axproo\Auth\Pipelines\LogoutPipeline;
 use Axproo\Auth\Pipelines\TwofactorPipeline;
 
 class AuthService extends BaseAuthService
@@ -237,7 +238,18 @@ class AuthService extends BaseAuthService
 
     public function remoteLogout()
     {
-        $pipeline = '';
+        $session = session();
+        $pipeline = new LogoutPipeline();
+
+        try {
+            $result = [
+                'session' => $session->get('session_user_id'),
+                'pipeline' => $pipeline->handle($this->payload)
+            ];
+            return $this->respondSuccess(lang('Auth.login_success'), $result);
+        } catch (\Throwable $e) {
+            return $this->respondError($e->getMessage(), 500);
+        }
         // $session = session();
 
         // if (!$session->get('session_user_id')) {
