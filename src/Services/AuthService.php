@@ -247,6 +247,9 @@ class AuthService extends BaseAuthService
                     'redirectTo' => '/login'
                 ]);
             }
+            if (!$this->validate($this->valid->code)) {
+                return $this->respondError($this->validation->getErrors());
+            }
 
             $user = $this->user_model->find($session->get('session_user_id'));
             if (!$user) {
