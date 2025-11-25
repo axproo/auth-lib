@@ -12,12 +12,13 @@ class CheckRemoteLogout extends BaseStep
         log_message("debug", "Start CheckRemoteLogout");
         
         $user = $this->getUserData($data);
-        $token = $this->generateToken($user);
+        $this->session->terminateActiveSession($user->id);
+        // $token = $this->generateToken($user);
 
-        $this->setCookies($token);
+        // $this->setCookies($token);
 
-        $data['token'] = $token;
-        log_message("debug", "End CheckRemoteLogout");
-        return $data;
+        // $data['token'] = $token;
+        // log_message("debug", "End CheckRemoteLogout");
+        return ['redirectTo' => '/login'];
     }
 }

@@ -254,8 +254,8 @@ class AuthService extends BaseAuthService
             }
             $this->payload['user'] = $user;
             $result = $pipeline->handle($this->payload);
-            
-            return $this->respondSuccess(lang('Auth.login.success'), $result);
+
+            return $this->respondSuccess(lang('Auth.logout.success'), $result);
         } catch (\Throwable $e) {
             return $this->respondError($e->getMessage(), 500);
         }
