@@ -35,7 +35,7 @@ abstract class BaseStep
     }
 
     protected function verifyCode(string $email, ?int $code) {
-        if ($this->otp->verifyTotp($email, $code)) {
+        if (!$this->otp->verifyTotp($email, $code)) {
             throw new AuthException(lang('Otp.failed'), 403);
         }
     }
