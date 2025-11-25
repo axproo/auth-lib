@@ -21,7 +21,7 @@ class FinalizeLogin extends BaseStep
         $user->ip_address = $data['ip_address'] ?? null;
 
         if (!$token) {
-            throw new AuthException(lang('Token.not_found'));
+            throw new AuthException(lang('Token.missing'));
         }
 
         $this->usersModel->save($user);
@@ -29,6 +29,6 @@ class FinalizeLogin extends BaseStep
 
         session()->destroy();
         log_message("debug", "End FinalizeLogin");
-        return $data;
+        return ['redirectTo' => '/dashboard', 'session' => session()->get()];
     }
 }
