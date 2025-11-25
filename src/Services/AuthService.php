@@ -244,7 +244,7 @@ class AuthService extends BaseAuthService
         try {
             $result = [
                 'session' => $session->get('session_user_id'),
-                'pipeline' => $pipeline->handle($this->payload)
+                // 'pipeline' => $pipeline->handle($this->payload)
             ];
             return $this->respondSuccess(lang('Auth.login_success'), $result);
         } catch (\Throwable $e) {
