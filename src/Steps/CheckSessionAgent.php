@@ -13,16 +13,8 @@ class CheckSessionAgent extends BaseStep
         // Récupérer les données de l'utilisateur
         $user = $this->getUserData($data);
 
-        // Générer le token
-        $token = $this->token->generateToken([
-            'uid' => $user->id,
-            'tenant' => $this->tenant->getTenantById($user->id),
-            'email' => $user->email,
-            'fullname' => "{$user->first_name} {$user->last_name}",
-            'role' => $this->rules->findByUser($user->id),
-            'status' => $user->status,
-            'two_factor_enabled' => $this->convertToBool($user->two_factor_enabled)
-        ]);
+        // Générer et vérifier le token
+        $token = $this->generateToken($user);
         $this->validateSession($user->id, $token);
         
         session()->set("token", $token);
