@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "870ea456ae18bec1dff4c60c02d04bde",
+    "content-hash": "fa67628f8caada61bbfbee6cce7789da",
     "packages": [
         {
             "name": "axproo/form-lib",
@@ -125,7 +125,7 @@
         },
         {
             "name": "axproo/lang-manager",
-            "version": "dev-main",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axproo/lang-manager.git",
@@ -140,13 +140,13 @@
             "require": {
                 "php": ">=8.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Axproo\\LangManager\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -158,8 +158,8 @@
             ],
             "description": "Un générateur de fichiers de langue PHP réutilisable qui analyse les projets et les bibliothèques à la recherche de clés lang() et crée automatiquement des fichiers de langue structurés.",
             "support": {
-                "source": "https://github.com/axproo/lang-manager/tree/1.0.2",
-                "issues": "https://github.com/axproo/lang-manager/issues"
+                "issues": "https://github.com/axproo/lang-manager/issues",
+                "source": "https://github.com/axproo/lang-manager/tree/1.0.2"
             },
             "time": "2025-11-26T13:35:36+00:00"
         },
@@ -5410,9 +5410,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "axproo/lang-manager": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

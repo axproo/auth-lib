@@ -38,14 +38,12 @@
             'dev_requirement' => false,
         ),
         'axproo/lang-manager' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => '1.0.2',
+            'version' => '1.0.2.0',
             'reference' => '3b0f9d09969e7b70363b057356dde521bff30877',
             'type' => 'library',
             'install_path' => __DIR__ . '/../axproo/lang-manager',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'axproo/mailer' => array(

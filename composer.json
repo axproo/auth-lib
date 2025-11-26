@@ -15,7 +15,7 @@
     "php": ">=8.1",
     "axproo/form-lib": "^1.0",
     "axproo/helper-lib": "^1.0.2",
-    "axproo/lang-manager": "dev-main",
+    "axproo/lang-manager": "^1.0",
     "axproo/otp-lib": "^2.0",
     "codeigniter4/framework": "^4.5",
     "firebase/php-jwt": "^6.10",
@@ -67,10 +67,6 @@
     {
       "type": "vcs",
       "url": "https://github.com/axproo/form-lib.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/axproo/lang-manager.git"
     }
   ],
   "keywords": ["codeigniter4", "auth", "jwt", "library", "axproo", "form", "helper", "mailer", "otp", "lang"],

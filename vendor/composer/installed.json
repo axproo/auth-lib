@@ -125,8 +125,8 @@
         },
         {
             "name": "axproo/lang-manager",
-            "version": "dev-main",
-            "version_normalized": "dev-main",
+            "version": "1.0.2",
+            "version_normalized": "1.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axproo/lang-manager.git",
@@ -142,7 +142,6 @@
                 "php": ">=8.0"
             },
             "time": "2025-11-26T13:35:36+00:00",
-            "default-branch": true,
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -150,6 +149,7 @@
                     "Axproo\\LangManager\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -161,8 +161,8 @@
             ],
             "description": "Un générateur de fichiers de langue PHP réutilisable qui analyse les projets et les bibliothèques à la recherche de clés lang() et crée automatiquement des fichiers de langue structurés.",
             "support": {
-                "source": "https://github.com/axproo/lang-manager/tree/1.0.2",
-                "issues": "https://github.com/axproo/lang-manager/issues"
+                "issues": "https://github.com/axproo/lang-manager/issues",
+                "source": "https://github.com/axproo/lang-manager/tree/1.0.2"
             },
             "install-path": "../axproo/lang-manager"
         },
