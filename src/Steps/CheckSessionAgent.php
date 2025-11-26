@@ -1,14 +1,16 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
 class CheckSessionAgent extends BaseStep
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         log_message("debug", "Start CheckSessionAgent");
         // Récupérer les données de l'utilisateur
         $user = $this->getUserData($data);
@@ -16,7 +18,7 @@ class CheckSessionAgent extends BaseStep
         // Générer et vérifier le token
         $token = $this->generateToken($user);
         $this->validateSession($user->id, $token);
-        
+
         session()->set("token", $token);
         log_message("debug", "End CheckSessionAgent\n");
         return $data;

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Pipelines;
 
@@ -12,11 +12,13 @@ class LogoutPipeline extends BasePipeline
         CheckRemoteLogout::class
     ];
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct($this->steps);
     }
 
-    public function handle(array $payload) : array {
+    public function handle(array $payload): array
+    {
         return $this->setHandle($payload);
     }
 }

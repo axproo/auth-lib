@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'twofactor_required' => 'Two-factor authentication required',
-    'verified' => 'Verified',
-    'required' => 'Required',
-    'invalid' => 'Invalid',
-    'failed' => 'Failed',
+    'twofactor_required' => 'twofactor_required',
+    'verified' => 'verified',
+    'required' => 'required',
+    'invalid' => 'invalid',
+    'failed' => 'failed',
 ];

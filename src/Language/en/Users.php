@@ -2,11 +2,11 @@
 
 return [
     'rule' => [
-        'required' => 'Rule required',
+        'required' => 'rule.required',
     ],
-    'missing' => 'User missing',
-    'invalid_credential' => 'Invalid credentials',
-    'pending' => 'Pending',
-    'inactive' => 'Inactive',
-    'blocked' => 'Blocked',
+    'missing' => 'missing',
+    'invalid_credential' => 'invalid_credential',
+    'pending' => 'pending',
+    'inactive' => 'inactive',
+    'blocked' => 'blocked',
 ];

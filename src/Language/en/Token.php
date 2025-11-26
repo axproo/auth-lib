@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'missing' => 'Token missing',
-    'mal_formated' => 'Malformed token',
+    'missing' => 'missing',
+    'mal_formated' => 'mal_formated',
 ];

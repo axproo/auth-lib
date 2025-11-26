@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
@@ -7,11 +7,13 @@ use CodeIgniter\I18n\Time;
 
 class CheckEmailValidate extends BaseStep
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         log_message("debug", "Start CheckEmailValid");
 
         $user = $this->getUserData($data);

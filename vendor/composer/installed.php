@@ -37,6 +37,17 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'axproo/lang-manager' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '3b0f9d09969e7b70363b057356dde521bff30877',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../axproo/lang-manager',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'axproo/mailer' => array(
             'pretty_version' => '1.0.0',
             'version' => '1.0.0.0',
@@ -128,9 +139,9 @@
             'dev_requirement' => false,
         ),
         'endroid/qr-code' => array(
-            'pretty_version' => '6.0.9',
-            'version' => '6.0.9.0',
-            'reference' => '21e888e8597440b2205e2e5c484b6c8e556bcd1a',
+            'pretty_version' => '6.1.0',
+            'version' => '6.1.0.0',
+            'reference' => '5a74873ba8873ddcc557d22755c914ac899563ae',
             'type' => 'library',
             'install_path' => __DIR__ . '/../endroid/qr-code',
             'aliases' => array(),

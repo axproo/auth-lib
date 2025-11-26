@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
@@ -6,11 +6,13 @@ use Axproo\Auth\Exceptions\AuthException;
 
 class CheckTwoFactor extends BaseStep
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         log_message("debug", "Start CheckTwoFactor");
         // Récupérer les donnée de l'utilisateur
         $user = $this->getUserData($data);

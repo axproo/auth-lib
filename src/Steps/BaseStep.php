@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
@@ -19,7 +19,8 @@ abstract class BaseStep
     protected TenantManager $tenant;
     protected RoleModel $rules;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->usersModel = new UsersModel();
         $this->otp = new OtpService();
         $this->token = new TokenManager();
@@ -28,19 +29,22 @@ abstract class BaseStep
         $this->rules = new RoleModel();
     }
 
-    protected function validCredential(?object $user, $password) {
+    protected function validCredential(?object $user, $password)
+    {
         if (!$user || !$password) {
             throw new AuthException(lang('Users.invalid_credential'));
         }
     }
 
-    protected function verifyCode(string $email, ?int $code) {
+    protected function verifyCode(string $email, ?int $code)
+    {
         if (!$code || !$this->otp->verifyTotp($email, $code)) {
             throw new AuthException(lang('Otp.failed'), 403);
         }
     }
 
-    protected function getUserData(array $data) {
+    protected function getUserData(array $data)
+    {
         $user = $data['user'] ?? null;
         if (!$user) {
             throw new AuthException(lang('Users.missing'), 404, [
@@ -52,7 +56,8 @@ abstract class BaseStep
         return $user;
     }
 
-    protected function getUserByEmail(string $email) {
+    protected function getUserByEmail(string $email)
+    {
         $user = $this->usersModel->where('email', $email)->first();
         if (!$user) {
             throw new AuthException(lang('Users.missing'), 404, ['stop_here' => true]);
@@ -60,7 +65,8 @@ abstract class BaseStep
         return $user;
     }
 
-    protected function generateToken(?object $user) {
+    protected function generateToken(?object $user)
+    {
         return $this->token->generateToken([
             'uid' => $user->id,
             'tenant' => $this->tenant->getTenantById($user->id),
@@ -72,7 +78,8 @@ abstract class BaseStep
         ]);
     }
 
-    protected function validateSession($userId, $token) {
+    protected function validateSession($userId, $token)
+    {
         $existingSession = $this->session->validateSession($userId, $token);
 
         if (!$existingSession) {
@@ -84,11 +91,13 @@ abstract class BaseStep
         $this->setCookies($token);
     }
 
-    protected function setCookies($token) {
+    protected function setCookies($token)
+    {
         $this->session->setCookie($token);
     }
 
-    protected function convertToBool($val) : bool {
+    protected function convertToBool($val): bool
+    {
         return filter_var($val, FILTER_VALIDATE_BOOLEAN);
     }
 }

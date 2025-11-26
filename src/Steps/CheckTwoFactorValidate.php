@@ -1,14 +1,16 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
 class CheckTwoFactorValidate extends BaseStep
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         log_message("debug", "Start CheckTwoFactorValidate");
 
         $user = $this->getUserData($data);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "358500af1db7be6714e7c2f2ab4a0d71",
+    "content-hash": "870ea456ae18bec1dff4c60c02d04bde",
     "packages": [
         {
             "name": "axproo/form-lib",
@@ -122,6 +122,46 @@
                 "issues": "https://github.com/axproo/helper-lib/issues"
             },
             "time": "2025-11-16T03:31:13+00:00"
+        },
+        {
+            "name": "axproo/lang-manager",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axproo/lang-manager.git",
+                "reference": "3b0f9d09969e7b70363b057356dde521bff30877"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axproo/lang-manager/zipball/3b0f9d09969e7b70363b057356dde521bff30877",
+                "reference": "3b0f9d09969e7b70363b057356dde521bff30877",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Axproo\\LangManager\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Djomou",
+                    "email": "your-email@example.com"
+                }
+            ],
+            "description": "Un générateur de fichiers de langue PHP réutilisable qui analyse les projets et les bibliothèques à la recherche de clés lang() et crée automatiquement des fichiers de langue structurés.",
+            "support": {
+                "source": "https://github.com/axproo/lang-manager/tree/1.0.2",
+                "issues": "https://github.com/axproo/lang-manager/issues"
+            },
+            "time": "2025-11-26T13:35:36+00:00"
         },
         {
             "name": "axproo/mailer",
@@ -498,26 +538,26 @@
         },
         {
             "name": "endroid/qr-code",
-            "version": "6.0.9",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/endroid/qr-code.git",
-                "reference": "21e888e8597440b2205e2e5c484b6c8e556bcd1a"
+                "reference": "5a74873ba8873ddcc557d22755c914ac899563ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/qr-code/zipball/21e888e8597440b2205e2e5c484b6c8e556bcd1a",
-                "reference": "21e888e8597440b2205e2e5c484b6c8e556bcd1a",
+                "url": "https://api.github.com/repos/endroid/qr-code/zipball/5a74873ba8873ddcc557d22755c914ac899563ae",
+                "reference": "5a74873ba8873ddcc557d22755c914ac899563ae",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^3.0",
-                "php": "^8.2"
+                "php": "^8.4"
             },
             "require-dev": {
                 "endroid/quality": "dev-main",
                 "ext-gd": "*",
-                "khanamiryan/qrcode-detector-decoder": "^2.0.2",
+                "khanamiryan/qrcode-detector-decoder": "^2.0.3",
                 "setasign/fpdf": "^1.8.2"
             },
             "suggest": {
@@ -558,7 +598,7 @@
             ],
             "support": {
                 "issues": "https://github.com/endroid/qr-code/issues",
-                "source": "https://github.com/endroid/qr-code/tree/6.0.9"
+                "source": "https://github.com/endroid/qr-code/tree/6.1.0"
             },
             "funding": [
                 {
@@ -566,7 +606,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-07-13T19:59:45+00:00"
+            "time": "2025-11-25T10:47:45+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -5370,7 +5410,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "axproo/lang-manager": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

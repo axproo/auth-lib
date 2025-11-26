@@ -1,20 +1,22 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
 class CheckRemoteLogout extends BaseStep
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         log_message("debug", "Start CheckRemoteLogout");
-        
+
         $user = $this->getUserData($data);
         $this->session->terminateActiveSession($user->id);
         session()->destroy();
-        
+
         log_message("debug", "End CheckRemoteLogout");
         return ['redirectTo' => '/login'];
     }

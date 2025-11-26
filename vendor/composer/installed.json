@@ -124,6 +124,49 @@
             "install-path": "../axproo/helper-lib"
         },
         {
+            "name": "axproo/lang-manager",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axproo/lang-manager.git",
+                "reference": "3b0f9d09969e7b70363b057356dde521bff30877"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axproo/lang-manager/zipball/3b0f9d09969e7b70363b057356dde521bff30877",
+                "reference": "3b0f9d09969e7b70363b057356dde521bff30877",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "time": "2025-11-26T13:35:36+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Axproo\\LangManager\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Djomou",
+                    "email": "your-email@example.com"
+                }
+            ],
+            "description": "Un générateur de fichiers de langue PHP réutilisable qui analyse les projets et les bibliothèques à la recherche de clés lang() et crée automatiquement des fichiers de langue structurés.",
+            "support": {
+                "source": "https://github.com/axproo/lang-manager/tree/1.0.2",
+                "issues": "https://github.com/axproo/lang-manager/issues"
+            },
+            "install-path": "../axproo/lang-manager"
+        },
+        {
             "name": "axproo/mailer",
             "version": "1.0.0",
             "version_normalized": "1.0.0.0",
@@ -814,27 +857,27 @@
         },
         {
             "name": "endroid/qr-code",
-            "version": "6.0.9",
-            "version_normalized": "6.0.9.0",
+            "version": "6.1.0",
+            "version_normalized": "6.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/endroid/qr-code.git",
-                "reference": "21e888e8597440b2205e2e5c484b6c8e556bcd1a"
+                "reference": "5a74873ba8873ddcc557d22755c914ac899563ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/qr-code/zipball/21e888e8597440b2205e2e5c484b6c8e556bcd1a",
-                "reference": "21e888e8597440b2205e2e5c484b6c8e556bcd1a",
+                "url": "https://api.github.com/repos/endroid/qr-code/zipball/5a74873ba8873ddcc557d22755c914ac899563ae",
+                "reference": "5a74873ba8873ddcc557d22755c914ac899563ae",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^3.0",
-                "php": "^8.2"
+                "php": "^8.4"
             },
             "require-dev": {
                 "endroid/quality": "dev-main",
                 "ext-gd": "*",
-                "khanamiryan/qrcode-detector-decoder": "^2.0.2",
+                "khanamiryan/qrcode-detector-decoder": "^2.0.3",
                 "setasign/fpdf": "^1.8.2"
             },
             "suggest": {
@@ -843,7 +886,7 @@
                 "roave/security-advisories": "Makes sure package versions with known security issues are not installed",
                 "setasign/fpdf": "Enables you to use the PDF writer"
             },
-            "time": "2025-07-13T19:59:45+00:00",
+            "time": "2025-11-25T10:47:45+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -877,7 +920,7 @@
             ],
             "support": {
                 "issues": "https://github.com/endroid/qr-code/issues",
-                "source": "https://github.com/endroid/qr-code/tree/6.0.9"
+                "source": "https://github.com/endroid/qr-code/tree/6.1.0"
             },
             "funding": [
                 {

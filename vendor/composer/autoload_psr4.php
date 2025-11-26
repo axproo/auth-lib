@@ -56,6 +56,7 @@ return array(
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
     'Axproo\\Otp\\' => array($vendorDir . '/axproo/otp-lib/src'),
     'Axproo\\Mailer\\' => array($vendorDir . '/axproo/mailer/src'),
+    'Axproo\\LangManager\\' => array($vendorDir . '/axproo/lang-manager/src'),
     'Axproo\\HelperLib\\' => array($vendorDir . '/axproo/helper-lib/src'),
     'Axproo\\Form\\' => array($vendorDir . '/axproo/form-lib/src'),
     'Axproo\\Auth\\Tests\\' => array($baseDir . '/tests'),

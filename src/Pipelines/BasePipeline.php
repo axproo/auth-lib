@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Pipelines;
 
@@ -9,14 +9,16 @@ abstract class BasePipeline
 {
     protected array $step = [];
 
-    public function __construct(array $step = []) {
+    public function __construct(array $step = [])
+    {
         $this->step = $step;
         if (empty($this->step)) {
             throw new AuthException("Step not found");
         }
     }
-    
-    protected function setHandle(array $payload) : array {
+
+    protected function setHandle(array $payload): array
+    {
         $data = $payload;
 
         foreach ($this->step as $stepClass) {

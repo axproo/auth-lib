@@ -1,15 +1,16 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
 class CheckUserExists extends BaseStep
 {
-
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
-    
-    public function handle(array $data) : array {
+
+    public function handle(array $data): array
+    {
         log_message('debug', 'Start CheckUserExists');
 
         $email = $data['email'] ?? null;

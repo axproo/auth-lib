@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
@@ -6,11 +6,13 @@ use Axproo\Auth\Exceptions\AuthException;
 
 class CheckPassword extends BaseStep
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         log_message("debug", "Start CheckPassword");
 
         $user = $this->getUserData($data);
@@ -18,7 +20,7 @@ class CheckPassword extends BaseStep
 
         // Check the valid credential
         $this->validCredential($user, $password);
-        
+
         // Check Password
         if (!password_verify($password, $user->password)) {
             throw new AuthException(lang('Users.invalid_credential'));

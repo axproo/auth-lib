@@ -107,6 +107,7 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         array (
             'Axproo\\Otp\\' => 11,
             'Axproo\\Mailer\\' => 14,
+            'Axproo\\LangManager\\' => 19,
             'Axproo\\HelperLib\\' => 17,
             'Axproo\\Form\\' => 12,
             'Axproo\\Auth\\Tests\\' => 18,
@@ -314,6 +315,10 @@ class ComposerStaticInit2fa7ee66fe30985065cb8e0a1c0749ce
         'Axproo\\Mailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/axproo/mailer/src',
+        ),
+        'Axproo\\LangManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/axproo/lang-manager/src',
         ),
         'Axproo\\HelperLib\\' => 
         array (

@@ -2,10 +2,10 @@
 
 return [
     'user' => [
-        'exists' => 'L\'utilisateur existe déjà',
+        'exists' => 'user.exists',
     ],
-    'is_connected' => 'Connecté',
-    'destroy' => 'Session terminée',
-    'not_delete' => 'Impossible de supprimer',
-    'disconnected' => 'Déconnecté',
+    'is_connected' => 'is_connected',
+    'destroy' => 'destroy',
+    'not_delete' => 'not_delete',
+    'disconnected' => 'disconnected',
 ];

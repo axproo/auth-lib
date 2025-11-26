@@ -4,9 +4,6 @@ namespace Axproo\Auth\Services;
 
 use Axproo\Auth\Config\Validation\AuthConfig;
 use Axproo\Auth\Exceptions\AuthException;
-use Axproo\Auth\Libraries\AuthLib;
-use Axproo\Auth\Libraries\GenerateTotp;
-use Axproo\Auth\Libraries\ValidEmailVerified;
 use Axproo\Auth\Pipelines\AuthPipeline;
 use Axproo\Auth\Pipelines\EmailPipeline;
 use Axproo\Auth\Pipelines\LogoutPipeline;
@@ -81,7 +78,8 @@ class AuthService extends BaseAuthService
         // }
     }
 
-    public function verifyTwofactor() {
+    public function verifyTwofactor()
+    {
         $pipeline = new TwofactorPipeline();
 
         try {
@@ -155,7 +153,8 @@ class AuthService extends BaseAuthService
         // }
     }
 
-    public function verifyEmail() {
+    public function verifyEmail()
+    {
         $pipeline = new EmailPipeline();
 
         try {

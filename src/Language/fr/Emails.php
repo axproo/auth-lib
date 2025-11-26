@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'not_verified' => 'Non vérifié',
-    'subject' => 'Objet',
+    'not_verified' => 'not_verified',
+    'subject' => 'subject',
 ];

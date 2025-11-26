@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Axproo\Auth\Steps;
 
@@ -6,11 +6,13 @@ use Axproo\Auth\Exceptions\AuthException;
 
 class CheckStatus extends BaseStep
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function handle(array $data) : array {
+    public function handle(array $data): array
+    {
         log_message("debug", "Start CheckStatus");
 
         $user = $this->getUserData($data);
@@ -32,13 +34,13 @@ class CheckStatus extends BaseStep
                     'data' => $response,
                     'email' => $user->email
                 ]);
-            
+
             case 'inactive':
                 throw new AuthException(lang('Users.inactive'), 403, ['stop_here' => true]);
-            
+
             case 'blocked':
                 throw new AuthException(lang('Users.blocked'), 403, ['stop_here' => true]);
-            
+
             case 'active':
             default:
                 $data['status_checked'] = true;
